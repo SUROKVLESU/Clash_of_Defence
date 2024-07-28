@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
         MapController = new MapController();
         ChangingNumberCards = new Action(() => { });
         NewMapBlockButton.onClick.AddListener(() => { MapController.CreateButtonNewMapBlock(); });
+        ReturnCardYourHandButton.onClick.AddListener(() => { MapController.ReturnCardYourHand(); });
     }
     public Action ChangingNumberCards;
     public CardListController CardListController;
@@ -27,5 +28,6 @@ public class GameController : MonoBehaviour
     public GameObject ButtonNewMapBlock;
     public GameObject NewMapBlock;
 
-    public Button NewMapBlockButton;
+    [SerializeField] Button NewMapBlockButton;
+    [SerializeField] Button ReturnCardYourHandButton;
 }

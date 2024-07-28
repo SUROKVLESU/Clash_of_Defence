@@ -194,5 +194,30 @@ public class MapController:MonoBehaviour
         ArrayNewPositionMapBlock = arr;
         ArrayNewMapBlockButton = new GameObject[ArrayNewPositionMapBlock.Length];
     }
+    public void ReturnCardYourHand()
+    {
+        if (SelectedCardGameObject==null)
+        {
+            return;
+        }
+        GameController.instance.CardListController.ReturnCardYourHand(SelectedCardGameObject.CardId);
+        SetFreeCell(new Vector2Int
+            ((int)SelectedCardGameObject.transform.position.x, (int)SelectedCardGameObject.transform.position.z), true);
+        UserInteractionBuilding[] arr = new UserInteractionBuilding[UserInteractionBuilding.Length-1];
+        for (int i = 0,j=0; i < UserInteractionBuilding.Length; i++,j++)
+        {
+            if (UserInteractionBuilding[i].UniqueNumber == SelectedCardGameObject.UniqueNumber)
+            {
+                Destroy(UserInteractionBuilding[i].gameObject);
+                j--;
+            }
+            else
+            {
+                arr [j] = UserInteractionBuilding[i];
+            }
+        }
+        UserInteractionBuilding=arr;
+        SelectedCardGameObject = null;
+    }
 }
 

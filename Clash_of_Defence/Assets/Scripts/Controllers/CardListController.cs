@@ -67,6 +67,26 @@ public class CardListController
         BaseCardsHand = arr;
         GameController.instance.ChangingNumberCards();
     }
+    public void ReturnCardYourHand(int id)
+    {
+        bool add = false;
+        BaseCard[] arr = new BaseCard [BaseCardsMap.Length-1];
+        for (int i = 0,j=0; i < BaseCardsMap.Length; i++,j++)
+        {
+            if (BaseCardsMap[i].Id == id&&!add)
+            {
+                add = true;
+                Add(BaseCardsMap[i]);
+                j--;
+            }
+            else
+            {
+                arr[j] =BaseCardsMap[i];
+            }
+        }
+        BaseCardsMap=arr;
+        GameController.instance.ChangingNumberCards();
+    }
     public CardListController()
     {
         this.BaseCardsHand = new BaseCard[0];

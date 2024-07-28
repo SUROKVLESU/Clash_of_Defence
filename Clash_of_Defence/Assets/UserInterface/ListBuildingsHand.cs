@@ -137,7 +137,15 @@ public class ListBuildingsHand : MonoBehaviour
     {
         if(GameController.instance.CardListController.BaseCardsHand.Length > NumberVisibleCards)
         {
-            CreatePosition = new Vector2(RectTransformCards[0].localPosition.x, 0);
+            if (RectTransformCards[RectTransformCards.Length - 1].localPosition.x - Hand.rect.height < FrontierRCard)
+            {
+                CreatePosition = new Vector2
+                    (FrontierRCard-Hand.rect.height* (GameController.instance.CardListController.BaseCardsHand.Length-1), 0);
+            }
+            else
+            {
+                CreatePosition = new Vector2(RectTransformCards[0].localPosition.x, 0);
+            }
             for (int i = 0;i < RectTransformCards.Length;i++)
             {
                 Destroy(RectTransformCards[i].gameObject);

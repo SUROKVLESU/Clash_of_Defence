@@ -8,12 +8,16 @@ using UnityEngine;
 public class UserInteractionBuilding:MonoBehaviour
 {
     public int CardId;
+    public int UniqueNumber;
+    private static int NextUniqueNumber = 0;
     private Vector3 MousePositionDown;
     private Vector2Int OldPosition;
     private float ScrollStep;
+    private Vector2Int newPosition;
     private void Awake()
     {
         ScrollStep = 180 * (Screen.currentResolution.height/1080);
+        UniqueNumber = NextUniqueNumber++;
     }
     private void OnMouseDown()
     {
@@ -26,19 +30,16 @@ public class UserInteractionBuilding:MonoBehaviour
         Vector3 vector = Input.mousePosition-MousePositionDown;
         int CountX = (int)(vector.x / ScrollStep);
         int CountY = (int)(vector.y / ScrollStep);
-        Vector2Int newPosition = new Vector2Int(OldPosition.x+4*CountX, OldPosition.y+4*CountY);
+        newPosition = new Vector2Int(OldPosition.x+4*CountX, OldPosition.y+4*CountY);
         if(GameController.instance.MapController.IsPositionCell(newPosition))
         {
             GameController.instance.MapController.SetFreeCell(OldPosition, true);
-            OldPosition = newPosition;
             transform.position = new Vector3(newPosition.x, 0, newPosition.y);
-            GameController.instance.MapController.SetFreeCell(newPosition, false);
-            MousePositionDown = Input.mousePosition;
         }
     }
     private void OnMouseUp()
     {
-
+        GameController.instance.MapController.SetFreeCell(newPosition, false);
     }
 }
 
