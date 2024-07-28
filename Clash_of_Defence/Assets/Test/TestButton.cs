@@ -6,11 +6,14 @@ public class TestButton : MonoBehaviour
 {
     private Button button;
     [SerializeField] ListBuildingsHand ListBuildingsHand;
-    [SerializeField] GameObject Obj;
-    private void Awake()
+    [SerializeField] BaseCard BaseCard;
+    private void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(() => { ListBuildingsHand.AddCard(Obj); });
+        button.onClick.AddListener(() => 
+        { 
+            GameController.instance.CardListController.Add(BaseCard);
+        });
     }
 }
 

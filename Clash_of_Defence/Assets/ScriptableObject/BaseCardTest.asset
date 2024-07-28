@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e931b32f61c3f014c96ea4154b4c84a2, type: 3}
+  m_Name: BaseCardTest
+  m_EditorClassIdentifier: 
+  Id: 0
+  Name: 
+  CardCover: {fileID: 4780246985810963226, guid: ff7ce727e9cd5a7459869007d9ebcfb3,
+    type: 3}
+  BuildingFromCard:
+    Building: {fileID: 4867832854460605849, guid: 7d4848def3e0ee84d840289843f0697e,
+      type: 3}
+    CardId: 0
