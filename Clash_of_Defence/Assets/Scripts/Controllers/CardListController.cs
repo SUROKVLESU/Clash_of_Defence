@@ -3,21 +3,22 @@ public class CardListController
 {
     public BaseCard[] BaseCardsHand;
     public BaseCard[] BaseCardsMap;
-    private void Sort()
+    private BaseCard[] Sort(BaseCard[] baseCards)
     {
-        if (BaseCardsHand.Length > 1)
+        if (baseCards.Length > 1)
         {
-            for (int i = 1; i < BaseCardsHand.Length; i++)
+            for (int i = 1; i < baseCards.Length; i++)
             {
-                if (BaseCardsHand[i].Id < BaseCardsHand[i-1].Id)
+                if (baseCards[i].Id < baseCards[i-1].Id)
                 {
-                    BaseCard baseCard = BaseCardsHand[i-1];
-                    BaseCardsHand[i-1] = BaseCardsHand[i];
-                    BaseCardsHand[i] = baseCard;
+                    BaseCard baseCard = baseCards[i-1];
+                    baseCards[i-1] = baseCards[i];
+                    baseCards[i] = baseCard;
                     i = 1;
                 }
             }
         }
+        return baseCards;
     }
     public void UseTheCard(BaseCard baseCard)//перемещает карту из списка руки в список используемых на игровом поле
     {
@@ -67,6 +68,37 @@ public class CardListController
         BaseCardsHand = arr;
         GameController.instance.ChangingNumberCards();
     }
+    public void Add(BaseCard[] baseCards)
+    {
+        baseCards = Sort(baseCards);
+        bool added = false;
+        int k = 0;
+        BaseCard[] arr = new BaseCard[BaseCardsHand.Length + baseCards.Length];
+        for (int i = 0, j = 0; i < BaseCardsHand.Length; i++, j++)
+        {
+            if (!added&& baseCards[k].Id <= BaseCardsHand[i].Id)
+            {
+                arr[j] = baseCards[k];
+                k++;
+                i--;
+                if (k == baseCards.Length) { added = true; }
+            }
+            else
+            {
+                arr[j] = BaseCardsHand[i];
+            }
+        }
+        if (!added)
+        {
+            for(int i =BaseCardsHand.Length+k;i<arr.Length; i++)
+            {
+                arr[i] = baseCards[k];
+                k++;
+            }
+        }
+        BaseCardsHand = arr;
+        GameController.instance.ChangingNumberCards();
+    }
     public void ReturnCardYourHand(int id)
     {
         bool add = false;
@@ -86,6 +118,11 @@ public class CardListController
         }
         BaseCardsMap=arr;
         GameController.instance.ChangingNumberCards();
+    }
+    public void ReturnAllCardYourHand()
+    {
+        Add(BaseCardsMap);
+        BaseCardsMap = new BaseCard[0];
     }
     public CardListController()
     {

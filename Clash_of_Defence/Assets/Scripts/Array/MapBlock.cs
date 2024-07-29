@@ -7,9 +7,11 @@ public class MapBlock
     private const int SizeMap = 5;
     private static int NextId = 0;
     public readonly int Id;
+    public Vector2Int Position;
     public MapBlock(Vector2Int position = new Vector2Int())
     {
         Id = NextId++;
+        Position = position;
         ArrayMapCell = new MapCell[SizeMap, SizeMap];
         for (int i = 0; i < SizeMap; i++)
         {

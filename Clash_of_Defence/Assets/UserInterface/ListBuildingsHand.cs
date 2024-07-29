@@ -60,21 +60,21 @@ public class ListBuildingsHand : MonoBehaviour
             }
             return;
         }
-        if (Math.Abs(OldMousePosition.x-Input.mousePosition.x)<= Sensitivity
+        /*if (Math.Abs(OldMousePosition.x-Input.mousePosition.x)<= Sensitivity
             || Math.Abs(OldMousePosition.x - Input.mousePosition.x) >= CardScrolling)
         {
             OldMousePosition = Input.mousePosition;
             return;
-        }
+        }*/
         float MousePositionX = Input.mousePosition.x-OldMousePosition.x;
-        if (MousePositionX > CardScrolling)
+        /*if (MousePositionX > CardScrolling)
         {
             MousePositionX = CardScrolling;
         }
         else if (MousePositionX < -CardScrolling)
         {
             MousePositionX = -CardScrolling;
-        }
+        }*/
         if (RectTransformCards.Length>=1&& RectTransformCards[0].localPosition.x<=FrontierLCard
             && RectTransformCards[RectTransformCards.Length-1].localPosition.x>=FrontierRCard)
         { 
@@ -109,6 +109,7 @@ public class ListBuildingsHand : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        OldMousePosition = Input.mousePosition;
         if (RectTransformCards.Length == 0)
         { return; }
         for (int i = 0; i < RectTransformCards.Length; i++)
@@ -137,14 +138,19 @@ public class ListBuildingsHand : MonoBehaviour
     {
         if(GameController.instance.CardListController.BaseCardsHand.Length > NumberVisibleCards)
         {
-            if (RectTransformCards[RectTransformCards.Length - 1].localPosition.x - Hand.rect.height < FrontierRCard)
+            if (RectTransformCards .Length>0&& RectTransformCards[RectTransformCards.Length - 1].localPosition.x - Hand.rect.height < FrontierRCard)
             {
                 CreatePosition = new Vector2
                     (FrontierRCard-Hand.rect.height* (GameController.instance.CardListController.BaseCardsHand.Length-1), 0);
             }
-            else
+            else if(RectTransformCards.Length > 0)
             {
                 CreatePosition = new Vector2(RectTransformCards[0].localPosition.x, 0);
+            }
+            else
+            {
+                CreatePosition = new Vector2
+            (-Hand.rect.width / 2 + Hand.rect.height / 2, 0f);
             }
             for (int i = 0;i < RectTransformCards.Length;i++)
             {

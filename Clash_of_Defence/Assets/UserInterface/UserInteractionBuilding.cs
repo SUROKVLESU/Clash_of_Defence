@@ -28,8 +28,10 @@ public class UserInteractionBuilding:MonoBehaviour
     private void OnMouseDrag()
     {
         Vector3 vector = Input.mousePosition-MousePositionDown;
-        int CountX = (int)(vector.x / ScrollStep);
-        int CountY = (int)(vector.y / ScrollStep);
+        int CountX = (int)((vector.x / ScrollStep)
+            *(GameController.instance.Camera.transform.position.y/GameController.instance.StartHeightCamera));
+        int CountY = (int)((vector.y / ScrollStep) 
+            * (GameController.instance.Camera.transform.position.y / GameController.instance.StartHeightCamera));
         newPosition = new Vector2Int(OldPosition.x+4*CountX, OldPosition.y+4*CountY);
         if(GameController.instance.MapController.IsPositionCell(newPosition))
         {

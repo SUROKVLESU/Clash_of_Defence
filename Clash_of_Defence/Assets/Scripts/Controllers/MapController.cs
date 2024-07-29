@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting.Antlr3.Runtime.Tree;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MapController:MonoBehaviour
 {
@@ -7,11 +6,13 @@ public class MapController:MonoBehaviour
     public UserInteractionBuilding[] UserInteractionBuilding;
     public Vector3Int[] ArrayNewPositionMapBlock;
     public Vector3Int[] ArrayOldPositionMapBlock;
+    public Vector4 FrontierMap;
     private GameObject[] ArrayNewMapBlockButton;
     public UserInteractionBuilding SelectedCardGameObject;
     public MapController()
     {
         ArrayMapBlock = new MapBlock[] { new MapBlock() };
+        NewFrontierMap();
         ArrayOldPositionMapBlock = new Vector3Int[] { new Vector3Int() };
         UserInteractionBuilding = new UserInteractionBuilding[0];
         ArrayNewPositionMapBlock = new Vector3Int[4];
@@ -62,6 +63,7 @@ public class MapController:MonoBehaviour
         }
         arr2[ArrayOldPositionMapBlock.Length] = new Vector3Int(position.x,0,position.y);
         ArrayOldPositionMapBlock= arr2;
+        NewFrontierMap();
     }
     public void AddBuilding(BuildingFromCard building)
     {
@@ -80,14 +82,24 @@ public class MapController:MonoBehaviour
     }
     private MapCell SearchFreeCell()
     {
-        for(int i = 0;i<ArrayMapBlock.Length;i++)
+        Vector2Int vector = GetCenterScreenWorldCoordinate();
+        int tryingFind = 1;
+        MapCell result = null;
+        while (result==null)
         {
-            if (ArrayMapBlock[i].IsFreeCell())
+            for (int i = 0; i < ArrayMapBlock.Length; i++)
             {
-                return ArrayMapBlock[i].SearchFreeCell();
+                if (Mathf.Abs(ArrayMapBlock[i].Position.x - vector.x) < 10 * tryingFind
+                    && Mathf.Abs(ArrayMapBlock[i].Position.y - vector.y) < 10 * tryingFind
+                    && ArrayMapBlock[i].IsFreeCell())
+                {
+                    result= ArrayMapBlock[i].SearchFreeCell();
+                    break;
+                }
             }
+            tryingFind++;
         }
-        return null;
+        return result;
     }
     public bool IsPositionCell(Vector2Int position)
     {
@@ -218,6 +230,36 @@ public class MapController:MonoBehaviour
         }
         UserInteractionBuilding=arr;
         SelectedCardGameObject = null;
+    }
+    public void ReturnAllCardYourHand()
+    {
+        if (UserInteractionBuilding.Length == 0) { return; }
+        GameController.instance.CardListController.ReturnAllCardYourHand();
+        for (int i = 0; i < UserInteractionBuilding.Length; i++)
+        {
+            SetFreeCell(new Vector2Int
+            ((int)UserInteractionBuilding[i].transform.position.x, (int)UserInteractionBuilding[i].transform.position.z), true);
+            Destroy (UserInteractionBuilding[i].gameObject);
+        }
+        UserInteractionBuilding = new UserInteractionBuilding [0];
+    }
+    private Vector2Int GetCenterScreenWorldCoordinate()
+    {
+        return new Vector2Int((int)GameController.instance.Camera.transform.position.x,
+            (int)(GameController.instance.Camera.transform.position.z
+            +Mathf.Sqrt
+            (3* GameController.instance.Camera.transform.position.y* GameController.instance.Camera.transform.position.y)/2));
+    }
+    public void NewFrontierMap()
+    {
+        if (FrontierMap == null) { FrontierMap = new Vector4(); }
+        for (int i = 0; i < ArrayMapBlock.Length; i++)
+        {
+            if (ArrayMapBlock[i].Position.x<=FrontierMap.x) { FrontierMap.x = ArrayMapBlock[i].Position.x-10; }
+            if (ArrayMapBlock[i].Position.x >= FrontierMap.y) { FrontierMap.y = ArrayMapBlock[i].Position.x+10; }
+            if (ArrayMapBlock[i].Position.y >= FrontierMap.z) { FrontierMap.z = ArrayMapBlock[i].Position.y+10; }
+            if (ArrayMapBlock[i].Position.y <= FrontierMap.w) { FrontierMap.w = ArrayMapBlock[i].Position.y-10; }
+        }
     }
 }
 
