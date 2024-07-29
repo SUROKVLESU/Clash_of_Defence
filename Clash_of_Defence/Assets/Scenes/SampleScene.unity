@@ -255,8 +255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3357cb55221c62147ad04cd22e9a9cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ListBuildingsHand: {fileID: 1023010499}
-  BaseCard: {fileID: 11400000, guid: 59b9c7fd5a0931645a65dcaf03abd4d8, type: 2}
 --- !u!1 &216970176
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,6 +916,11 @@ MonoBehaviour:
   NewMapBlock: {fileID: 862631872}
   Camera: {fileID: 963194225}
   ZoomAndScroll: {fileID: 1182377365}
+  CollectionCardsController:
+    CardsPower:
+    - Power: 1
+      Cards:
+      - {fileID: 11400000, guid: 59b9c7fd5a0931645a65dcaf03abd4d8, type: 2}
   NewMapBlockButton: {fileID: 1124257061}
   ReturnCardYourHandButton: {fileID: 1001520857}
   DeleteBuildingsButton: {fileID: 1103172500}

@@ -1,4 +1,3 @@
-using UnityEngine.UI;
 using UnityEngine;
 using System;
 
@@ -54,7 +53,7 @@ public class ListBuildingsHand : MonoBehaviour
             {
                 IsCardUsed = false;
                 GameController.instance.MapController.AddBuilding
-                    (GameController.instance.CardListController.BaseCardsHand[IndexSelectedCard].BuildingFromCard);
+                    (GameController.instance.CardListController.BaseCardsHand[IndexSelectedCard]);
                 GameController.instance.CardListController.UseTheCard
                     (GameController.instance.CardListController.BaseCardsHand[IndexSelectedCard]);
             }

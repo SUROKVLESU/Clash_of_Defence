@@ -65,19 +65,19 @@ public class MapController:MonoBehaviour
         ArrayOldPositionMapBlock= arr2;
         NewFrontierMap();
     }
-    public void AddBuilding(BuildingFromCard building)
+    public void AddBuilding(BaseCard baseCard)
     {
         UserInteractionBuilding[] arr = new UserInteractionBuilding[UserInteractionBuilding.Length+1];
         for(int i = 0; UserInteractionBuilding.Length > i; i++)
         {
             arr[i]=UserInteractionBuilding[i];
         }
-        GameObject gameObject = Instantiate(building.Building);
+        GameObject gameObject = Instantiate(baseCard.CardGameObjects[baseCard.GetLevelCard()]);
         MapCell FreeCell = SearchFreeCell();
         gameObject.transform.position = new Vector3(FreeCell.Position.x,0,FreeCell.Position.y);
         arr[UserInteractionBuilding.Length] = gameObject.GetComponent<UserInteractionBuilding>();
         UserInteractionBuilding = arr;
-        UserInteractionBuilding[UserInteractionBuilding.Length-1].CardId = building.CardId;
+        UserInteractionBuilding[UserInteractionBuilding.Length-1].CardId = baseCard.Id;
         FreeCell.Free=false;
     }
     private MapCell SearchFreeCell()

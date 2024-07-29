@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.XR;
 [Serializable]
 public class BuildingFromCard
 {

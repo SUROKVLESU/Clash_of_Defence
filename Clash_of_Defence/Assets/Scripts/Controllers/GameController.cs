@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
         }
         CardListController = new CardListController();
         MapController = new MapController();
+        RandomCardsController = new RandomCardsController();
         StartHeightCamera = Camera.transform.position.y;
         ChangingNumberCards = new Action(() => { });
         NewMapBlockButton.onClick.AddListener(() => { MapController.CreateButtonNewMapBlock(); });
@@ -25,15 +26,20 @@ public class GameController : MonoBehaviour
         DeleteBuildingsButton.onClick.AddListener(() => { MapController.ReturnAllCardYourHand(); });
         ZoomAndScrollButton.onClick.AddListener(() => { OnClickZoomAndScrollButton(); });
     }
-    public float StartHeightCamera;
+    [HideInInspector] public float StartHeightCamera;
     public Action ChangingNumberCards;
     public CardListController CardListController;
-    public MapController MapController;
+    [HideInInspector] public MapController MapController;
+    public RandomCardsController RandomCardsController;
     public GameObject ButtonNewMapBlock;
     public GameObject NewMapBlock;
     public GameObject Camera;
     public GameObject ZoomAndScroll;
 
+    [Header("Cards")]
+    public CollectionCardsController CollectionCardsController;
+
+    [Header("Button")]
     [SerializeField] Button NewMapBlockButton;
     [SerializeField] Button ReturnCardYourHandButton;
     [SerializeField] Button DeleteBuildingsButton;

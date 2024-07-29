@@ -14,9 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 0
   Name: 
+  IsUnlocked: 1
+  Power: 1
   CardCover: {fileID: 4780246985810963226, guid: ff7ce727e9cd5a7459869007d9ebcfb3,
     type: 3}
-  BuildingFromCard:
-    Building: {fileID: 4867832854460605849, guid: 7d4848def3e0ee84d840289843f0697e,
-      type: 3}
-    CardId: 0
+  CardGameObjects:
+  - {fileID: 4867832854460605849, guid: 7d4848def3e0ee84d840289843f0697e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
