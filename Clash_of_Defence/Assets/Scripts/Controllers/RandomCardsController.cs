@@ -4,36 +4,27 @@ using UnityEngine;
 public class RandomCardsController
 {
     private const int MinCountCards = 2;
-    private const int MaxCountCards = 5;
-    private readonly int MaxPowerCard;
+    private const int MaxCountCards = 17;
     public RandomCardsController()
     {
-        int maxPower = 1;
-        for (int i = 0; i < GameController.instance.CollectionCardsController.CardsPower.Length; i++)
-        {
-            if (GameController.instance.CollectionCardsController.CardsPower[i].Power > maxPower)
-            {
-                maxPower = GameController.instance.CollectionCardsController.CardsPower[i].Power;
-            }
-        }
-        MaxPowerCard = maxPower;
+
     }
     public BaseCard[] GetRandomCards(int power)
     {
         int newPower = power;
         int countCards;
         int index = 0;
-        if (power > MaxCountCards)
+        if (power >= MinCountCards&&power<=MaxCountCards)
         {
-            countCards = Random.Range(MaxCountCards, MaxCountCards + 1);
+            countCards = Random.Range(MinCountCards, power + 1);
         }
-        else if (power >= MinCountCards)
+        else if (power >= MaxCountCards)
         {
+            countCards = Random.Range(MinCountCards, MaxCountCards + 1);
+        }
+        else 
+        { 
             countCards = power;
-        }
-        else
-        {
-            countCards = MinCountCards;
         }
         BaseCard[] baseCards = new BaseCard[countCards];
         if (power -countCards==0)
@@ -42,35 +33,20 @@ public class RandomCardsController
         }
         while (true)
         {
-            int newPowerCard = Random.Range(1,newPower-countCards+2);
-            if (newPowerCard > MaxPowerCard) { newPowerCard = MaxPowerCard; }
-            for (int i = 0; i < GameController.instance.CollectionCardsController.CardsPower.Length; i++)
-            {
-                if (GameController.instance.CollectionCardsController.CardsPower[i].Power == newPowerCard)
-                {
-                    baseCards[index] = GameController.instance.CollectionCardsController.CardsPower[i].Cards
-                            [Random.Range(0, GameController.instance.CollectionCardsController.CardsPower[i].Cards.Length)];
-                    index++;
-                    countCards--;
-                    newPower -= newPowerCard; 
-                    break;
-                }
-            }
+            int newPowerCard = Random.Range(1, newPower - countCards + 2);
+            baseCards[index] = GameController.instance.CollectionCardsController.GetRandomCard(newPowerCard);
+            index++;
+            countCards--;
+            newPower -= newPowerCard;
+
             if (newPower == countCards) { return FillOutEnd(index); }
-            if(countCards == 0) { return baseCards; }
+            if (countCards == 0) { return baseCards; }
         }
         BaseCard[] FillOutEnd(int indexFree)
         {
-            for (int i = 0; i < GameController.instance.CollectionCardsController.CardsPower.Length; i++)
+            for (int j = indexFree; j < baseCards.Length; j++)
             {
-                if (GameController.instance.CollectionCardsController.CardsPower[i].Power == 1)
-                {
-                    for (int j = indexFree; j < baseCards.Length; j++)
-                    {
-                        baseCards[j] = GameController.instance.CollectionCardsController.CardsPower[i].Cards
-                            [Random.Range(0, GameController.instance.CollectionCardsController.CardsPower[i].Cards.Length)];
-                    }
-                }
+                baseCards[j] = GameController.instance.CollectionCardsController.GetRandomCard(1);
             }
             return baseCards;
         }

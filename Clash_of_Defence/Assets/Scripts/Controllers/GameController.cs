@@ -19,6 +19,9 @@ public class GameController : MonoBehaviour
         CardListController = new CardListController();
         MapController = new MapController();
         RandomCardsController = new RandomCardsController();
+        CollectionCardsController.Initialization();
+        InterfeceRandomCardsController = new InterfeceRandomCardsController();
+        InterfeceRandomCardsController.Initialization();
         StartHeightCamera = Camera.transform.position.y;
         ChangingNumberCards = new Action(() => { });
         NewMapBlockButton.onClick.AddListener(() => { MapController.CreateButtonNewMapBlock(); });
@@ -30,20 +33,24 @@ public class GameController : MonoBehaviour
     public Action ChangingNumberCards;
     public CardListController CardListController;
     [HideInInspector] public MapController MapController;
+    [HideInInspector] public InterfeceRandomCardsController InterfeceRandomCardsController;
     public RandomCardsController RandomCardsController;
     public GameObject ButtonNewMapBlock;
     public GameObject NewMapBlock;
     public GameObject Camera;
     public GameObject ZoomAndScroll;
+    public GameObject InterfeceRandomCards;
 
     [Header("Cards")]
     public CollectionCardsController CollectionCardsController;
 
-    [Header("Button")]
+    [Header("Button Interfece Hand")]
     [SerializeField] Button NewMapBlockButton;
     [SerializeField] Button ReturnCardYourHandButton;
     [SerializeField] Button DeleteBuildingsButton;
     [SerializeField] Button ZoomAndScrollButton;
+
+    //[Header("InterfeceRandomCards")]
 
     private void OnClickZoomAndScrollButton()
     {

@@ -6,8 +6,9 @@ public class BaseCard:ScriptableObject
     public int Id;
     public string Name;
     private int LevelCard = 1;
-    public bool IsUnlocked;
+    public bool Unlocked;
     public int Power;
+    public float ProbabilityCardFalling;
     public GameObject CardCover;
     public GameObject[] CardGameObjects = new GameObject[10];
     public void SetLevelCard(int levelCard)

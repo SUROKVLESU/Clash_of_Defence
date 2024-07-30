@@ -7,15 +7,16 @@ public class CardListController
     {
         if (baseCards.Length > 1)
         {
-            for (int i = 1; i < baseCards.Length; i++)
+            for (int i = 1; i < baseCards.Length;)
             {
-                if (baseCards[i].Id < baseCards[i-1].Id)
+                if (baseCards[i].Id < baseCards[i - 1].Id)
                 {
-                    BaseCard baseCard = baseCards[i-1];
-                    baseCards[i-1] = baseCards[i];
+                    BaseCard baseCard = baseCards[i - 1];
+                    baseCards[i - 1] = baseCards[i];
                     baseCards[i] = baseCard;
                     i = 1;
                 }
+                else i++;
             }
         }
         return baseCards;

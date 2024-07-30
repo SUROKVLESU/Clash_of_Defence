@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e931b32f61c3f014c96ea4154b4c84a2, type: 3}
-  m_Name: BaseCardTest
+  m_Name: 2
   m_EditorClassIdentifier: 
-  Id: 0
+  Id: 1
   Name: 
   Unlocked: 1
   Power: 1
   ProbabilityCardFalling: 2
-  CardCover: {fileID: 4780246985810963226, guid: ff7ce727e9cd5a7459869007d9ebcfb3,
+  CardCover: {fileID: 9134385167729602409, guid: 329190f01cf1f6443a242db81e6b1b99,
     type: 3}
   CardGameObjects:
-  - {fileID: 4867832854460605849, guid: 7d4848def3e0ee84d840289843f0697e, type: 3}
+  - {fileID: 2865127089177589206, guid: 1e895177c17bcec4181ffb00d612b24a, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
