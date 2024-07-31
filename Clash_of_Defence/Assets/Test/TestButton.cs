@@ -10,6 +10,8 @@ public class TestButton : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(() => 
         {
+            GameController.instance.InterfeceRandomCards.SetActive(true);
+            GameController.instance.InterfeceRandomCardsController.Initialization();
             GameController.instance.InterfeceRandomCardsController.ReceiveRandomCards
                 (GameController.instance.RandomCardsController.GetRandomCards(Random.Range(2, 18)));
         });

@@ -21,13 +21,16 @@ public class GameController : MonoBehaviour
         RandomCardsController = new RandomCardsController();
         CollectionCardsController.Initialization();
         InterfeceRandomCardsController = new InterfeceRandomCardsController();
-        InterfeceRandomCardsController.Initialization();
+        //InterfeceRandomCardsController.Initialization();
         StartHeightCamera = Camera.transform.position.y;
         ChangingNumberCards = new Action(() => { });
         NewMapBlockButton.onClick.AddListener(() => { MapController.CreateButtonNewMapBlock(); });
         ReturnCardYourHandButton.onClick.AddListener(() => { MapController.ReturnCardYourHand(); });
         DeleteBuildingsButton.onClick.AddListener(() => { MapController.ReturnAllCardYourHand(); });
         ZoomAndScrollButton.onClick.AddListener(() => { OnClickZoomAndScrollButton(); });
+        ReverseRandomCardsButton.onClick.AddListener(() => {InterfeceRandomCardsController.ReceiveRandomCards
+                (RandomCardsController.GetRandomCards(UnityEngine.Random.Range(2, 18)));});
+        OkRandomCardsButton.onClick.AddListener(() => { InterfeceRandomCardsController.AddCards(); });
     }
     [HideInInspector] public float StartHeightCamera;
     public Action ChangingNumberCards;
@@ -50,7 +53,9 @@ public class GameController : MonoBehaviour
     [SerializeField] Button DeleteBuildingsButton;
     [SerializeField] Button ZoomAndScrollButton;
 
-    //[Header("InterfeceRandomCards")]
+    [Header("InterfeceRandomCards")]
+    [SerializeField] Button OkRandomCardsButton;
+    [SerializeField] Button ReverseRandomCardsButton;
 
     private void OnClickZoomAndScrollButton()
     {

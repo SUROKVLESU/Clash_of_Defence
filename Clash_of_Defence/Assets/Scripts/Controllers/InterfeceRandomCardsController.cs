@@ -5,16 +5,22 @@ public class InterfeceRandomCardsController:MonoBehaviour
 {
     private RectTransform RectTransform;
     private const int CountCardsRow = 5;
-    //private const float Offset = 0.5f;
-    private float Height;
+    private float Height=0;
     private GameObject[] gameObjects = new GameObject[0];
+    private BaseCard[] baseCards;
     public void Initialization()
     {
-        RectTransform = GameController.instance.InterfeceRandomCards.transform.GetChild(0).GetComponent<RectTransform>();
-        Height = RectTransform.rect.height;
+        if (RectTransform == null)
+        {
+            RectTransform = GameController.instance.InterfeceRandomCards.transform.GetChild(0).GetComponent<RectTransform>();
+            Height = RectTransform.rect.height;
+        }
+        //GameController.instance.InterfeceRandomCards.SetActive(false);
     }
     public void ReceiveRandomCards(BaseCard[] cards)
     {
+        DestroyCards();
+        baseCards = cards;
         RectTransform.parent.gameObject.SetActive(true);
         gameObjects = new GameObject[cards.Length];
         ScaleImage();
@@ -76,5 +82,11 @@ public class InterfeceRandomCardsController:MonoBehaviour
             (RectTransform.Axis.Horizontal, Height);
         rect.SetSizeWithCurrentAnchors
             (RectTransform.Axis.Vertical, Height);
+    }
+    public void AddCards()
+    {
+        RectTransform.parent.gameObject.SetActive(false);
+        GameController.instance.CardListController.Add(baseCards);
+        DestroyCards();
     }
 }
