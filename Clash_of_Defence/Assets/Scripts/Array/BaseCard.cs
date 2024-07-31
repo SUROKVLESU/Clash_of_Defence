@@ -4,16 +4,18 @@
 public class BaseCard:ScriptableObject
 {
     public int Id;
+    private static int NextId = 0;
     public string Name;
-    private int LevelCard = 1;
+    public int LevelCard = 1;
+    public int MaxLevelCard {  get { return CardGameObjects.Length; } }
     public bool Unlocked;
     public int Power;
     public float ProbabilityCardFalling;
     public GameObject CardCover;
-    public GameObject[] CardGameObjects = new GameObject[10];
+    public GameObject[] CardGameObjects;
     public void SetLevelCard(int levelCard)
     {
-        if (levelCard >0&&levelCard<11)
+        if (levelCard >0&&levelCard<=MaxLevelCard)
         {
             this.LevelCard = levelCard;
         }
@@ -21,6 +23,13 @@ public class BaseCard:ScriptableObject
     public int GetLevelCard()
     {
         return LevelCard-1;
+    }public void ResetLevel()
+    {
+        LevelCard = 1;
+    }
+    public BaseCard()
+    {
+        //Id = NextId++;
     }
 }
 

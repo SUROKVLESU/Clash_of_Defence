@@ -108,6 +108,7 @@ public class ListBuildingsHand : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        GameController.instance.MapController.CancellationSelected();
         OldMousePosition = Input.mousePosition;
         if (RectTransformCards.Length == 0)
         { return; }

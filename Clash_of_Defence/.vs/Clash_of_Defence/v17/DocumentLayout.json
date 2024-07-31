@@ -3,48 +3,60 @@
   "WorkspaceRootPath": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\controllers\\interfecerandomcardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\interfecerandomcardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\test\\testbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\testbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\userinterface\\userinteractionbuilding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\userinterface\\userinteractionbuilding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|c:\\unity_next_surok_002\\clash_of_defence\\clash_of_defence\\assets\\userinterface\\scale\\scalebuttoninterfecerandomcards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\userinterface\\scale\\scalebuttoninterfecerandomcards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\controllers\\cardlevelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\cardlevelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\controllers\\cardlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\cardlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\controllers\\collectioncardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\controllers\\mapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\mapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\controllers\\interfecerandomcardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\interfecerandomcardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|c:\\unity_next_surok_002\\clash_of_defence\\clash_of_defence\\assets\\scripts\\controllers\\collectioncardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\collectioncardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\button\\newmapblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\button\\newmapblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\array\\basecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\array\\basecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\userinterface\\zoomandscroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\userinterface\\zoomandscroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\controllers\\randomcardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\randomcardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\userinterface\\listbuildingshand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\userinterface\\listbuildingshand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\userinterface\\userinteractionbuilding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\userinterface\\userinteractionbuilding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\button\\newmapblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\button\\newmapblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\test\\testbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\test\\testbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\userinterface\\scale\\scalebuttoninterfecerandomcards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\userinterface\\scale\\scalebuttoninterfecerandomcards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\controllers\\randomcardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\randomcardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\array\\cardspower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,14 +65,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\array\\mapblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\array\\mapblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\array\\basecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\array\\basecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\controllers\\mapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\mapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\array\\mapcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -82,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,7 +102,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "CardLevelController.cs",
+              "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\CardLevelController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\CardLevelController.cs",
+              "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\CardLevelController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Controllers\\CardLevelController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-31T13:29:53.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "ScaleButtonInterfeceRandomCards.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\UserInterface\\Scale\\ScaleButtonInterfeceRandomCards.cs",
               "RelativeDocumentMoniker": "Assets\\UserInterface\\Scale\\ScaleButtonInterfeceRandomCards.cs",
@@ -106,38 +123,37 @@
               "RelativeToolTip": "Assets\\UserInterface\\Scale\\ScaleButtonInterfeceRandomCards.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-31T07:49:33.953Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-31T07:49:33.953Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "InterfeceRandomCardsController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\InterfeceRandomCardsController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\InterfeceRandomCardsController.cs",
               "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\InterfeceRandomCardsController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Controllers\\InterfeceRandomCardsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-30T12:39:50.82Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "GameController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\GameController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\GameController.cs",
               "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\GameController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Controllers\\GameController.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAQwBcAAAAKAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAgwCIAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-27T08:02:54.471Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "RandomCardsController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\RandomCardsController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\RandomCardsController.cs",
@@ -149,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "CardsPower.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CardsPower.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CardsPower.cs",
@@ -161,20 +177,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CollectionCardsController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\CollectionCardsController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\CollectionCardsController.cs",
               "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\CollectionCardsController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Controllers\\CollectionCardsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEkAAAA7AAAA",
+              "ViewState": "AQIAAHYAAAAAAAAAAAAiwJIAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-29T16:12:03.257Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ZoomAndScroll.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\UserInterface\\ZoomAndScroll.cs",
               "RelativeDocumentMoniker": "Assets\\UserInterface\\ZoomAndScroll.cs",
@@ -187,28 +203,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 4,
               "Title": "MapController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\MapController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\MapController.cs",
               "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\MapController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Controllers\\MapController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEMAAAAuAAAA",
+              "ViewState": "AQIAAP8AAAAAAAAAAAAAABgBAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T18:44:05.517Z"
+              "WhenOpened": "2024-07-27T18:44:05.517Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "NewMapBlock.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Button\\NewMapBlock.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Button\\NewMapBlock.cs",
               "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Button\\NewMapBlock.cs",
               "RelativeToolTip": "Assets\\Scripts\\Button\\NewMapBlock.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAxAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-28T16:02:38.158Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-28T16:02:38.158Z"
             },
             {
               "$type": "Document",
@@ -218,25 +234,26 @@
               "RelativeDocumentMoniker": "Assets\\UserInterface\\ListBuildingsHand.cs",
               "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\UserInterface\\ListBuildingsHand.cs",
               "RelativeToolTip": "Assets\\UserInterface\\ListBuildingsHand.cs",
-              "ViewState": "AQIAAGsAAAAAAAAAAAAwwIUAAAA8AAAA",
+              "ViewState": "AQIAAGIAAAAAAAAAAAAIwG4AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-28T09:26:12.9Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
               "Title": "UserInteractionBuilding.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\UserInterface\\UserInteractionBuilding.cs",
               "RelativeDocumentMoniker": "Assets\\UserInterface\\UserInteractionBuilding.cs",
               "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\UserInterface\\UserInteractionBuilding.cs",
               "RelativeToolTip": "Assets\\UserInterface\\UserInteractionBuilding.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAwwDIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-28T09:18:48.684Z"
+              "WhenOpened": "2024-07-28T09:18:48.684Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "BuildingFromCard.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\BuildingFromCard.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\BuildingFromCard.cs",
@@ -248,7 +265,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "MapBlock.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\MapBlock.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\MapBlock.cs",
@@ -260,7 +277,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "MapCell.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\MapCell.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\MapCell.cs",
@@ -272,32 +289,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 7,
               "Title": "BaseCard.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\BaseCard.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\BaseCard.cs",
               "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\BaseCard.cs",
               "RelativeToolTip": "Assets\\Scripts\\Array\\BaseCard.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T08:26:37.062Z"
+              "WhenOpened": "2024-07-27T08:26:37.062Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "CardListController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\CardListController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\CardListController.cs",
               "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\CardListController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Controllers\\CardListController.cs",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAwwBIAAAAZAAAA",
+              "ViewState": "AQIAAGcAAAAAAAAAAAAcwGwAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-27T08:19:49.368Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "TestButton.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Test\\TestButton.cs",
               "RelativeDocumentMoniker": "Assets\\Test\\TestButton.cs",
@@ -305,12 +323,11 @@
               "RelativeToolTip": "Assets\\Test\\TestButton.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-23T11:59:39.661Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-23T11:59:39.661Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "ListBuildingsHand.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Interface\\ListBuildingsHand.cs",
               "RelativeDocumentMoniker": "Assets\\Interface\\ListBuildingsHand.cs",

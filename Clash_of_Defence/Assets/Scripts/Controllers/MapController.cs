@@ -77,7 +77,7 @@ public class MapController:MonoBehaviour
         gameObject.transform.position = new Vector3(FreeCell.Position.x,0,FreeCell.Position.y);
         arr[UserInteractionBuilding.Length] = gameObject.GetComponent<UserInteractionBuilding>();
         UserInteractionBuilding = arr;
-        UserInteractionBuilding[UserInteractionBuilding.Length-1].CardId = baseCard.Id;
+        UserInteractionBuilding[UserInteractionBuilding.Length-1].Card = baseCard;
         FreeCell.Free=false;
     }
     private MapCell SearchFreeCell()
@@ -121,6 +121,7 @@ public class MapController:MonoBehaviour
     }
     public void CreateButtonNewMapBlock()
     {
+        GameController.instance.MapController.CancellationSelected();
         for (int i = 0; i < ArrayNewPositionMapBlock.Length; ++i)
         {
             ArrayNewMapBlockButton[i] = Instantiate(GameController.instance.ButtonNewMapBlock);
@@ -212,7 +213,7 @@ public class MapController:MonoBehaviour
         {
             return;
         }
-        GameController.instance.CardListController.ReturnCardYourHand(SelectedCardGameObject.CardId);
+        GameController.instance.CardListController.ReturnCardYourHand(SelectedCardGameObject.Card);
         SetFreeCell(new Vector2Int
             ((int)SelectedCardGameObject.transform.position.x, (int)SelectedCardGameObject.transform.position.z), true);
         UserInteractionBuilding[] arr = new UserInteractionBuilding[UserInteractionBuilding.Length-1];
@@ -259,6 +260,29 @@ public class MapController:MonoBehaviour
             if (ArrayMapBlock[i].Position.x >= FrontierMap.y) { FrontierMap.y = ArrayMapBlock[i].Position.x+10; }
             if (ArrayMapBlock[i].Position.y >= FrontierMap.z) { FrontierMap.z = ArrayMapBlock[i].Position.y+10; }
             if (ArrayMapBlock[i].Position.y <= FrontierMap.w) { FrontierMap.w = ArrayMapBlock[i].Position.y-10; }
+        }
+    }
+    public void CancellationSelected()
+    { 
+        for (int i = 0; i < UserInteractionBuilding.Length; i++)
+        {
+            UserInteractionBuilding[i].ResetPosition();
+        }
+    }
+    public void LewelUpBuilding(BaseCard baseCard)
+    {
+        for (int i = 0; UserInteractionBuilding.Length > i; i++)
+        {
+            if (UserInteractionBuilding[i].Card.Id == baseCard.Id)
+            {
+                GameObject gameObject = Instantiate(baseCard.CardGameObjects[baseCard.GetLevelCard()]);
+                gameObject.transform.position = new Vector3
+                    (UserInteractionBuilding[i].transform.position.x,
+                    0, UserInteractionBuilding[i].transform.position.z);
+                Destroy(UserInteractionBuilding[i].gameObject);
+                UserInteractionBuilding[i] = gameObject.GetComponent<UserInteractionBuilding>();
+                UserInteractionBuilding[i].Card = baseCard;
+            }
         }
     }
 }

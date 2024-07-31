@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 1
   Name: 
+  LevelCard: 1
   Unlocked: 1
   Power: 1
   ProbabilityCardFalling: 2
@@ -21,12 +22,3 @@ MonoBehaviour:
     type: 3}
   CardGameObjects:
   - {fileID: 2865127089177589206, guid: 1e895177c17bcec4181ffb00d612b24a, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}

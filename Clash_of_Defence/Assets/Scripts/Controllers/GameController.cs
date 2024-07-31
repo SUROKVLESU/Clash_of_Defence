@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
         CollectionCardsController.Initialization();
         InterfeceRandomCardsController = new InterfeceRandomCardsController();
         //InterfeceRandomCardsController.Initialization();
+        CardLevelController = new CardLevelController();
         StartHeightCamera = Camera.transform.position.y;
         ChangingNumberCards = new Action(() => { });
         NewMapBlockButton.onClick.AddListener(() => { MapController.CreateButtonNewMapBlock(); });
@@ -31,18 +32,22 @@ public class GameController : MonoBehaviour
         ReverseRandomCardsButton.onClick.AddListener(() => {InterfeceRandomCardsController.ReceiveRandomCards
                 (RandomCardsController.GetRandomCards(UnityEngine.Random.Range(2, 18)));});
         OkRandomCardsButton.onClick.AddListener(() => { InterfeceRandomCardsController.AddCards(); });
+        LevelUpBuildingButton.onClick.AddListener(() => { CardLevelController.LewelUpBuilding
+                                                            (MapController.SelectedCardGameObject?.Card); });
     }
     [HideInInspector] public float StartHeightCamera;
     public Action ChangingNumberCards;
     public CardListController CardListController;
     [HideInInspector] public MapController MapController;
     [HideInInspector] public InterfeceRandomCardsController InterfeceRandomCardsController;
+    [HideInInspector] public CardLevelController CardLevelController;
     public RandomCardsController RandomCardsController;
     public GameObject ButtonNewMapBlock;
     public GameObject NewMapBlock;
     public GameObject Camera;
     public GameObject ZoomAndScroll;
     public GameObject InterfeceRandomCards;
+    public GameObject LevelPanel;
 
     [Header("Cards")]
     public CollectionCardsController CollectionCardsController;
@@ -52,6 +57,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Button ReturnCardYourHandButton;
     [SerializeField] Button DeleteBuildingsButton;
     [SerializeField] Button ZoomAndScrollButton;
+    [SerializeField] Button LevelUpBuildingButton;
 
     [Header("InterfeceRandomCards")]
     [SerializeField] Button OkRandomCardsButton;
@@ -65,6 +71,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            MapController.CancellationSelected();
             ZoomAndScroll.SetActive(true);
         }
     }

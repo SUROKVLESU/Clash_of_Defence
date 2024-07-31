@@ -17,7 +17,7 @@ public class CollectionCardsController
             }
         }
         MaxPowerCard = maxPower;
-        InitializationUnlockedCardsPower();
+        Reset();
     }
     public CollectionCardsController()
     {
@@ -105,6 +105,46 @@ public class CollectionCardsController
                 j++;
             }
         }
+    }
+    public BaseCard GetBaseCard(BaseCard card)
+    {
+        for (int i = 0; i < UnlockedCardsPower.Length; i++)
+        {
+            for (int j = 0; j < UnlockedCardsPower[i].Length; j++)
+            {
+                if (UnlockedCardsPower[i][j].Id == card.Id)
+                {
+                    return UnlockedCardsPower[i][j];
+                }
+            }
+        }
+        return null;
+    }
+    public BaseCard LevelUpBaseCard(BaseCard card)
+    {
+        for (int i = 0; i < UnlockedCardsPower.Length; i++)
+        {
+            for (int j = 0; j < UnlockedCardsPower[i].Length; j++)
+            {
+                if (UnlockedCardsPower[i][j].Id == card.Id)
+                {
+                    UnlockedCardsPower[i][j].SetLevelCard(UnlockedCardsPower[i][j].GetLevelCard()+2);
+                    return UnlockedCardsPower[i][j];
+                }
+            }
+        }
+        return null;
+    }
+    public void Reset()
+    {
+        for (int i = 0; i < AllCardsPower.Length; i++)
+        {
+            for (int j = 0; j < AllCardsPower[i].Length; j++)
+            {
+                AllCardsPower[i][j].ResetLevel();
+            }
+        }
+        InitializationUnlockedCardsPower();
     }
 }
 

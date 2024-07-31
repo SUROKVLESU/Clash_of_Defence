@@ -100,13 +100,13 @@ public class CardListController
         BaseCardsHand = arr;
         GameController.instance.ChangingNumberCards();
     }
-    public void ReturnCardYourHand(int id)
+    public void ReturnCardYourHand(BaseCard baseCard)
     {
         bool add = false;
         BaseCard[] arr = new BaseCard [BaseCardsMap.Length-1];
         for (int i = 0,j=0; i < BaseCardsMap.Length; i++,j++)
         {
-            if (BaseCardsMap[i].Id == id&&!add)
+            if (BaseCardsMap[i].Id == baseCard.Id&&!add)
             {
                 add = true;
                 Add(BaseCardsMap[i]);
