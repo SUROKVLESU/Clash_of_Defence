@@ -249,7 +249,7 @@ public class MapController:MonoBehaviour
         return new Vector2Int((int)GameController.instance.Camera.transform.position.x,
             (int)(GameController.instance.Camera.transform.position.z
             +Mathf.Sqrt
-            (3* GameController.instance.Camera.transform.position.y* GameController.instance.Camera.transform.position.y)/2));
+            ((1/3)* GameController.instance.Camera.transform.position.y* GameController.instance.Camera.transform.position.y)/2));
     }
     public void NewFrontierMap()
     {
@@ -263,11 +263,12 @@ public class MapController:MonoBehaviour
         }
     }
     public void CancellationSelected()
-    { 
+    {
         for (int i = 0; i < UserInteractionBuilding.Length; i++)
         {
             UserInteractionBuilding[i].ResetPosition();
         }
+        GameController.instance.CardLevelController.OnOffUpdeteMenu(false);
     }
     public void LewelUpBuilding(BaseCard baseCard)
     {
@@ -276,12 +277,11 @@ public class MapController:MonoBehaviour
             if (UserInteractionBuilding[i].Card.Id == baseCard.Id)
             {
                 GameObject gameObject = Instantiate(baseCard.CardGameObjects[baseCard.GetLevelCard()]);
-                gameObject.transform.position = new Vector3
-                    (UserInteractionBuilding[i].transform.position.x,
-                    0, UserInteractionBuilding[i].transform.position.z);
+                gameObject.transform.position = UserInteractionBuilding[i].transform.position;
                 Destroy(UserInteractionBuilding[i].gameObject);
                 UserInteractionBuilding[i] = gameObject.GetComponent<UserInteractionBuilding>();
                 UserInteractionBuilding[i].Card = baseCard;
+                UserInteractionBuilding[i].SelectedBuilding(true);
             }
         }
     }

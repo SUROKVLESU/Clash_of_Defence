@@ -128,7 +128,7 @@ public class CollectionCardsController
             {
                 if (UnlockedCardsPower[i][j].Id == card.Id)
                 {
-                    UnlockedCardsPower[i][j].SetLevelCard(UnlockedCardsPower[i][j].GetLevelCard()+2);
+                    UnlockedCardsPower[i][j].LevelUp();
                     return UnlockedCardsPower[i][j];
                 }
             }

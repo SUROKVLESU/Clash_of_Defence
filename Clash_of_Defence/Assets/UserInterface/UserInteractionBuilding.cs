@@ -49,11 +49,10 @@ public class UserInteractionBuilding : MonoBehaviour
         {
             SelectedBuilding(!Selected);
         }
-        }
-    private void SelectedBuilding(bool selected)
+    }
+    public void SelectedBuilding(bool selected)
     {
         GameController.instance.MapController.CancellationSelected();
-        GameController.instance.CardLevelController.OnOffUpdeteMenu(selected);
         if (selected)
         {
             GameController.instance.MapController.SelectedCardGameObject = this;
@@ -66,6 +65,7 @@ public class UserInteractionBuilding : MonoBehaviour
             Selected = false;
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
+        GameController.instance.CardLevelController.OnOffUpdeteMenu(selected);
     }
     public void ResetPosition()
     {

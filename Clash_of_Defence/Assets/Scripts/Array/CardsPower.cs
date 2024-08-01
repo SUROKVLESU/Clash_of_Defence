@@ -15,7 +15,7 @@ public class CardsPower
         if(Cards.Length == 0) return false;
         for (int i = 0; i < Cards.Length; i++)
         {
-            if (Cards[i].Unlocked)
+            if (Cards[i].GetCurrentMaxLevelCard()>0)
             {
                 return true;
             }
@@ -28,7 +28,7 @@ public class CardsPower
         if (Cards.Length == 0) return count;
         for (int i = 0; i < Cards.Length; i++)
         {
-            if (Cards[i].Unlocked)
+            if (Cards[i].GetCurrentMaxLevelCard()>0)
             {
                 count++;
             }
@@ -40,7 +40,7 @@ public class CardsPower
         BaseCard[] arr = new BaseCard[CountUnlocked()];
         for (int i = 0,j=0; i < Cards.Length; i++)
         {
-            if (Cards[i].Unlocked)
+            if (Cards[i].GetCurrentMaxLevelCard()>0)
             {
                 arr[j] = Cards[i];
                 j++;

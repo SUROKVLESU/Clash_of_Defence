@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: 0
   Name: 
   LevelCard: 1
-  Unlocked: 1
+  CurrentMaxLevelCard: 2
   Power: 1
   ProbabilityCardFalling: 2
   CardCover: {fileID: 4780246985810963226, guid: ff7ce727e9cd5a7459869007d9ebcfb3,
@@ -23,3 +23,4 @@ MonoBehaviour:
   CardGameObjects:
   - {fileID: 4867832854460605849, guid: 7d4848def3e0ee84d840289843f0697e, type: 3}
   - {fileID: 8374920033024172914, guid: c221f1e62c32d134fb528c0b79a5c1d4, type: 3}
+  Characteristics: {fileID: 11400000, guid: 6239603c8342f0749b7bc5e49dff488d, type: 2}
