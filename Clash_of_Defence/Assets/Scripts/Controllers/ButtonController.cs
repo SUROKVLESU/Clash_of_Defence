@@ -21,7 +21,7 @@ public class ButtonController:MonoBehaviour
         ZoomAndScrollButton.onClick.AddListener(() => { OnClickZoomAndScrollButton(); });
         ReverseRandomCardsButton.onClick.AddListener(() => {
             GameController.instance.InterfeceRandomCardsController.ReceiveRandomCards
-                (GameController.instance.RandomCardsController.GetRandomCards(UnityEngine.Random.Range(2, 18)));
+                (GameController.instance.RandomController.GetRandomCards(UnityEngine.Random.Range(2, 18)));
         });
         OkRandomCardsButton.onClick.AddListener(() => { GameController.instance.InterfeceRandomCardsController.AddCards(); });
         LevelUpBuildingButton.onClick.AddListener(() => {

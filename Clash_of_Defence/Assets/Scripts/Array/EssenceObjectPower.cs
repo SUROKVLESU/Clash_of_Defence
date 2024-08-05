@@ -1,11 +1,11 @@
 ﻿using System;
 using UnityEngine;
 [Serializable]
-public class CardsPower
+public class EssenceObjectPower
 {
     public int Power;
-    [SerializeField] BaseCard[] Cards;
-    public void SetCaeds(BaseCard[] cards)
+    [SerializeField] BaseEssenceObject[] Cards;
+    public void SetCards(BaseEssenceObject[] cards)
     {
         Cards = cards;
     }
@@ -15,7 +15,7 @@ public class CardsPower
         if(Cards.Length == 0) return false;
         for (int i = 0; i < Cards.Length; i++)
         {
-            if (Cards[i].GetCurrentMaxLevelCard()>0)
+            if (Cards[i].GetCurrentMaxLevel()>0)
             {
                 return true;
             }
@@ -28,19 +28,19 @@ public class CardsPower
         if (Cards.Length == 0) return count;
         for (int i = 0; i < Cards.Length; i++)
         {
-            if (Cards[i].GetCurrentMaxLevelCard()>0)
+            if (Cards[i].GetCurrentMaxLevel()>0)
             {
                 count++;
             }
         }
         return count;
     }
-    public BaseCard[] GetArrayUnlockedBaseCard()
+    public BaseEssenceObject[] GetArrayUnlockedBaseCard()
     {
-        BaseCard[] arr = new BaseCard[CountUnlocked()];
+        BaseEssenceObject[] arr = new BaseEssenceObject[CountUnlocked()];
         for (int i = 0,j=0; i < Cards.Length; i++)
         {
-            if (Cards[i].GetCurrentMaxLevelCard()>0)
+            if (Cards[i].GetCurrentMaxLevel()>0)
             {
                 arr[j] = Cards[i];
                 j++;
@@ -48,7 +48,7 @@ public class CardsPower
         }
         return arr;
     }
-    public BaseCard this[int index]
+    public BaseEssenceObject this[int index]
     {
         get
         {

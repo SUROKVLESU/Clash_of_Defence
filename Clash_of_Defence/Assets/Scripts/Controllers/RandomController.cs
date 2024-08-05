@@ -1,14 +1,12 @@
 ﻿//using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class RandomCardsController
+public class RandomController
 {
     private const int MinCountCards = 2;
-    private const int MaxCountCards = 17;
-    public RandomCardsController()
-    {
-
-    }
+    private const int MaxCountCards = 7;
     public BaseCard[] GetRandomCards(int power)
     {
         int newPower = power;
@@ -34,7 +32,7 @@ public class RandomCardsController
         while (true)
         {
             int newPowerCard = Random.Range(1, newPower - countCards + 2);
-            baseCards[index] = GameController.instance.CollectionCardsController.GetRandomCard(newPowerCard);
+            baseCards[index] = (BaseCard)GameController.instance.CollectionCardsController.GetRandomCard(newPowerCard);
             index++;
             countCards--;
             newPower -= newPowerCard;
@@ -46,10 +44,29 @@ public class RandomCardsController
         {
             for (int j = indexFree; j < baseCards.Length; j++)
             {
-                baseCards[j] = GameController.instance.CollectionCardsController.GetRandomCard(1);
+                baseCards[j] = (BaseCard)GameController.instance.CollectionCardsController.GetRandomCard(1);
             }
             return baseCards;
         }
+    }
+    public BaseEssenceObject[] GetRandomEnemies(int power)
+    {
+        List<BaseEssenceObject> enemies = new();
+        int newPower = power;
+        while (true)
+        {
+            int newPowerCard = Random.Range(1, newPower + 1);
+            BaseEssenceObject enemy = GameController.instance.CollectionCardsController.GetRandomEnemy(newPowerCard);
+            enemies.Add(enemy);
+            newPower -= enemy.Power;
+            if (newPower <= 0) { break; }
+        }
+        BaseEssenceObject[] arr = new BaseEssenceObject[enemies.Count];
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            arr[i]= enemies[i];
+        }
+        return arr;
     }
 }
 

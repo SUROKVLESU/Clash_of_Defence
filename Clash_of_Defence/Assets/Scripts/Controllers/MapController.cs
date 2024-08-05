@@ -5,10 +5,12 @@ public class MapController:MonoBehaviour
     public MapBlock[] ArrayMapBlock;
     public UserInteractionBuilding[] UserInteractionBuilding;
     public Vector3Int[] ArrayNewPositionMapBlock;
-    public Vector3Int[] ArrayOldPositionMapBlock;
-    public Vector4 FrontierMap;
-    private GameObject[] ArrayNewMapBlockButton;
+    public Vector3Int[] ArrayOldPositionMapBlock;            //(3)
+    public Vector4 FrontierMap;                             //(1)(2)
+    private GameObject[] ArrayNewMapBlockButton;           //  (4)   -это порядок границ карты.
     public UserInteractionBuilding SelectedCardGameObject;
+    private float Radius = 10;
+    private const int SizeMapXxX = 20;
     public MapController()
     {
         ArrayMapBlock = new MapBlock[] { new MapBlock() };
@@ -22,16 +24,16 @@ public class MapController:MonoBehaviour
             switch (i)
             {
                 case 0:
-                    ArrayNewPositionMapBlock[i] = new Vector3Int(0, 0, 20);
+                    ArrayNewPositionMapBlock[i] = new Vector3Int(0, 0, SizeMapXxX);
                     break;
                 case 1:
-                    ArrayNewPositionMapBlock[i] = new Vector3Int(0, 0, -20);
+                    ArrayNewPositionMapBlock[i] = new Vector3Int(0, 0, -SizeMapXxX);
                     break;
                 case 2:
-                    ArrayNewPositionMapBlock[i] = new Vector3Int(-20, 0, 0);
+                    ArrayNewPositionMapBlock[i] = new Vector3Int(-SizeMapXxX, 0, 0);
                     break;
                 case 3:
-                    ArrayNewPositionMapBlock[i] = new Vector3Int(20, 0, 0);
+                    ArrayNewPositionMapBlock[i] = new Vector3Int(SizeMapXxX, 0, 0);
                     break;
             }
         }
@@ -72,7 +74,7 @@ public class MapController:MonoBehaviour
         {
             arr[i]=UserInteractionBuilding[i];
         }
-        GameObject gameObject = Instantiate(baseCard.CardGameObjects[baseCard.GetLevelCard()]);
+        GameObject gameObject = Instantiate(baseCard.GameObjects[baseCard.GetLevel()]);
         MapCell FreeCell = SearchFreeCell();
         gameObject.transform.position = new Vector3(FreeCell.Position.x,0,FreeCell.Position.y);
         arr[UserInteractionBuilding.Length] = gameObject.GetComponent<UserInteractionBuilding>();
@@ -89,8 +91,8 @@ public class MapController:MonoBehaviour
         {
             for (int i = 0; i < ArrayMapBlock.Length; i++)
             {
-                if (Mathf.Abs(ArrayMapBlock[i].Position.x - vector.x) < 10 * tryingFind
-                    && Mathf.Abs(ArrayMapBlock[i].Position.y - vector.y) < 10 * tryingFind
+                if (Mathf.Abs(ArrayMapBlock[i].Position.x - vector.x) < SizeMapXxX * tryingFind/2
+                    && Mathf.Abs(ArrayMapBlock[i].Position.y - vector.y) < SizeMapXxX * tryingFind/2
                     && ArrayMapBlock[i].IsFreeCell())
                 {
                     result= ArrayMapBlock[i].SearchFreeCell();
@@ -156,16 +158,16 @@ public class MapController:MonoBehaviour
             switch (i)
             {
                 case 0:
-                    arr2[i] = new Vector3Int(position.x, 0, position.z+ 20);
+                    arr2[i] = new Vector3Int(position.x, 0, position.z+ SizeMapXxX);
                     break;
                 case 1:
-                    arr2[i] = new Vector3Int(position.x, 0, position.z - 20);
+                    arr2[i] = new Vector3Int(position.x, 0, position.z - SizeMapXxX);
                     break;
                 case 2:
-                    arr2[i] = new Vector3Int(position.x - 20, 0, position.z);
+                    arr2[i] = new Vector3Int(position.x - SizeMapXxX, 0, position.z);
                     break;
                 case 3:
-                    arr2[i] = new Vector3Int(position.x+20, 0, position.z);
+                    arr2[i] = new Vector3Int(position.x+ SizeMapXxX, 0, position.z);
                     break;
             }
         }
@@ -248,18 +250,17 @@ public class MapController:MonoBehaviour
     {
         return new Vector2Int((int)GameController.instance.Camera.transform.position.x,
             (int)(GameController.instance.Camera.transform.position.z
-            +Mathf.Sqrt
-            ((1/3)* GameController.instance.Camera.transform.position.y* GameController.instance.Camera.transform.position.y)/2));
+            + Mathf.Abs(GameController.instance.Camera.transform.position.y) / Mathf.Sqrt(3)));
     }
     public void NewFrontierMap()
     {
         if (FrontierMap == null) { FrontierMap = new Vector4(); }
         for (int i = 0; i < ArrayMapBlock.Length; i++)
         {
-            if (ArrayMapBlock[i].Position.x<=FrontierMap.x) { FrontierMap.x = ArrayMapBlock[i].Position.x-10; }
-            if (ArrayMapBlock[i].Position.x >= FrontierMap.y) { FrontierMap.y = ArrayMapBlock[i].Position.x+10; }
-            if (ArrayMapBlock[i].Position.y >= FrontierMap.z) { FrontierMap.z = ArrayMapBlock[i].Position.y+10; }
-            if (ArrayMapBlock[i].Position.y <= FrontierMap.w) { FrontierMap.w = ArrayMapBlock[i].Position.y-10; }
+            if (ArrayMapBlock[i].Position.x<=FrontierMap.x) { FrontierMap.x = ArrayMapBlock[i].Position.x- Radius; }
+            if (ArrayMapBlock[i].Position.x >= FrontierMap.y) { FrontierMap.y = ArrayMapBlock[i].Position.x+ Radius; }
+            if (ArrayMapBlock[i].Position.y >= FrontierMap.z) { FrontierMap.z = ArrayMapBlock[i].Position.y+ Radius; }
+            if (ArrayMapBlock[i].Position.y <= FrontierMap.w) { FrontierMap.w = ArrayMapBlock[i].Position.y- Radius; }
         }
     }
     public void CancellationSelected()
@@ -270,17 +271,17 @@ public class MapController:MonoBehaviour
         }
         GameController.instance.CardLevelController.OnOffUpdeteMenu(false);
     }
-    public void LewelUpBuilding(BaseCard baseCard)
+    public void LewelUpBuilding(BaseEssenceObject baseCard)
     {
         for (int i = 0; UserInteractionBuilding.Length > i; i++)
         {
             if (UserInteractionBuilding[i].Card.Id == baseCard.Id)
             {
-                GameObject gameObject = Instantiate(baseCard.CardGameObjects[baseCard.GetLevelCard()]);
+                GameObject gameObject = Instantiate(baseCard.GameObjects[baseCard.GetLevel()]);
                 gameObject.transform.position = UserInteractionBuilding[i].transform.position;
                 Destroy(UserInteractionBuilding[i].gameObject);
                 UserInteractionBuilding[i] = gameObject.GetComponent<UserInteractionBuilding>();
-                UserInteractionBuilding[i].Card = baseCard;
+                UserInteractionBuilding[i].Card = (BaseCard)baseCard;
                 UserInteractionBuilding[i].SelectedBuilding(true);
             }
         }

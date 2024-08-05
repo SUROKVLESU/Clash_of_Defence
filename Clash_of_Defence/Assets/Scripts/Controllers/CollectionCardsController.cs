@@ -3,27 +3,37 @@ using UnityEngine;
 [Serializable]
 public class CollectionCardsController
 {
-    [SerializeField] CardsPower[] AllCardsPower;
-    [HideInInspector] public CardsPower[] UnlockedCardsPower;
+    [Header("Cards")]
+    [SerializeField] EssenceObjectPower[] AllCardsPower;
+    [HideInInspector] public EssenceObjectPower[] UnlockedCardsPower;
+    [Header("Enemy")]
+    [SerializeField] EssenceObjectPower[] AllEnemiesPower;
+    [HideInInspector] public EssenceObjectPower[] UnlockedEnemiesPower;
     private int MaxPowerCard;
+    private int MaxPowerEnemy;
     public void Initialization()
     {
-        int maxPower = 1;
+        int maxPowerCard = 1;
+        int maxPowerEnemy = 1;
         for (int i = 0; i < UnlockedCardsPower.Length; i++)
         {
-            if (UnlockedCardsPower[i].Power > maxPower)
+            if (UnlockedCardsPower[i].Power > maxPowerCard)
             {
-                maxPower = UnlockedCardsPower[i].Power;
+                maxPowerCard = UnlockedCardsPower[i].Power;
             }
         }
-        MaxPowerCard = maxPower;
+        MaxPowerCard = maxPowerCard;
+        for (int i = 0; i < UnlockedEnemiesPower.Length; i++)
+        {
+            if (UnlockedEnemiesPower[i].Power > maxPowerCard)
+            {
+                maxPowerCard = UnlockedEnemiesPower[i].Power;
+            }
+        }
+        MaxPowerEnemy = maxPowerEnemy;
         Reset();
     }
-    public CollectionCardsController()
-    {
-
-    }
-    public BaseCard GetRandomCard(int power)
+    public BaseEssenceObject GetRandomCard(int power)
     {
         if (power > MaxPowerCard) { power = MaxPowerCard; }
         power = CheckingAvailabilityCardsSelectedPower(power);
@@ -38,19 +48,19 @@ public class CollectionCardsController
             }
         }
         return null;
-        float MaxProbability(CardsPower cards)
+        float MaxProbability(EssenceObjectPower cards)
         {
             float maxProbability=0;
             for (int i = 0; i < cards.Length; i++)
             {
-                maxProbability += cards[i].ProbabilityCardFalling;
+                maxProbability += cards[i].ProbabilityFalling;
             }
             return maxProbability;
         }
-        int GetIndexRandomCard(CardsPower cards, float probability)
+        int GetIndexRandomCard(EssenceObjectPower cards, float probability)
         {
             float currentProbability= 0;
-            float newProbability = currentProbability + cards[0].ProbabilityCardFalling;
+            float newProbability = currentProbability + cards[0].ProbabilityFalling;
             for (int i = 0; i < cards.Length; i++)
             {
                 if (probability >= currentProbability && probability <= newProbability)
@@ -60,7 +70,7 @@ public class CollectionCardsController
                 else
                 {
                     currentProbability = newProbability;
-                    newProbability += cards[i+1].ProbabilityCardFalling;
+                    newProbability += cards[i+1].ProbabilityFalling;
                 }
             }
             return 0;
@@ -80,7 +90,64 @@ public class CollectionCardsController
             }
         }
     }
-    private int CountUnlocked()
+    public BaseEssenceObject GetRandomEnemy(int power)
+    {
+        if (power > MaxPowerEnemy) { power = MaxPowerEnemy; }
+        power = CheckingAvailabilityCardsSelectedPower(power);
+        float maxProbability;
+        for (int i = 0; i < UnlockedEnemiesPower.Length; i++)
+        {
+            if (UnlockedEnemiesPower[i].Power == power)
+            {
+                maxProbability = MaxProbability(UnlockedEnemiesPower[i]);
+                return UnlockedEnemiesPower[i]
+                    [GetIndexRandomCard(UnlockedEnemiesPower[i], UnityEngine.Random.Range(0f, maxProbability))];
+            }
+        }
+        return null;
+        float MaxProbability(EssenceObjectPower cards)
+        {
+            float maxProbability = 0;
+            for (int i = 0; i < cards.Length; i++)
+            {
+                maxProbability += cards[i].ProbabilityFalling;
+            }
+            return maxProbability;
+        }
+        int GetIndexRandomCard(EssenceObjectPower cards, float probability)
+        {
+            float currentProbability = 0;
+            float newProbability = currentProbability + cards[0].ProbabilityFalling;
+            for (int i = 0; i < cards.Length; i++)
+            {
+                if (probability >= currentProbability && probability <= newProbability)
+                {
+                    return i;
+                }
+                else
+                {
+                    currentProbability = newProbability;
+                    newProbability += cards[i + 1].ProbabilityFalling;
+                }
+            }
+            return 0;
+        }
+        int CheckingAvailabilityCardsSelectedPower(int power)
+        {
+            while (true)
+            {
+                for (int i = 0; i < UnlockedEnemiesPower.Length; i++)
+                {
+                    if (UnlockedEnemiesPower[i].Power == power)
+                    {
+                        return power;
+                    }
+                }
+                power--;
+            }
+        }
+    }
+    private int CountUnlockedCard()
     {
         int count = 0;
         if (AllCardsPower.Length == 0) return count;
@@ -93,20 +160,43 @@ public class CollectionCardsController
         }
         return count;
     }
-    public void InitializationUnlockedCardsPower()
+    private int CountUnlockedEnemy()
     {
-        UnlockedCardsPower = new CardsPower[CountUnlocked()];
+        int count = 0;
+        if (AllEnemiesPower.Length == 0) return count;
+        for (int i = 0; i < AllEnemiesPower.Length; i++)
+        {
+            if (AllEnemiesPower[i].IsUnlocked())
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+    public void InitializationUnlockedPower()
+    {
+        UnlockedCardsPower = new EssenceObjectPower[CountUnlockedCard()];
         for (int i = 0,j=0; i < AllCardsPower.Length; i++)
         {
             if (AllCardsPower[i].IsUnlocked())
             {
-                UnlockedCardsPower[j] = new CardsPower() { Power = AllCardsPower[i].Power};
-                UnlockedCardsPower[j].SetCaeds(AllCardsPower[i].GetArrayUnlockedBaseCard());
+                UnlockedCardsPower[j] = new EssenceObjectPower() { Power = AllCardsPower[i].Power};
+                UnlockedCardsPower[j].SetCards(AllCardsPower[i].GetArrayUnlockedBaseCard());
+                j++;
+            }
+        }
+        UnlockedEnemiesPower = new EssenceObjectPower[CountUnlockedEnemy()];
+        for (int i = 0, j = 0; i < AllEnemiesPower.Length; i++)
+        {
+            if (AllEnemiesPower[i].IsUnlocked())
+            {
+                UnlockedEnemiesPower[j] = new EssenceObjectPower() { Power = AllEnemiesPower[i].Power };
+                UnlockedEnemiesPower[j].SetCards(AllEnemiesPower[i].GetArrayUnlockedBaseCard());
                 j++;
             }
         }
     }
-    public BaseCard GetBaseCard(BaseCard card)
+    public BaseEssenceObject GetBaseCard(BaseEssenceObject card)
     {
         for (int i = 0; i < UnlockedCardsPower.Length; i++)
         {
@@ -120,7 +210,7 @@ public class CollectionCardsController
         }
         return null;
     }
-    public BaseCard LevelUpBaseCard(BaseCard card)
+    public BaseEssenceObject LevelUpBaseCard(BaseEssenceObject card)
     {
         for (int i = 0; i < UnlockedCardsPower.Length; i++)
         {
@@ -135,6 +225,21 @@ public class CollectionCardsController
         }
         return null;
     }
+    public BaseEssenceObject LevelUpEnemy(BaseEssenceObject card)
+    {
+        for (int i = 0; i < UnlockedEnemiesPower.Length; i++)
+        {
+            for (int j = 0; j < UnlockedEnemiesPower[i].Length; j++)
+            {
+                if (UnlockedEnemiesPower[i][j].Id == card.Id)
+                {
+                    UnlockedEnemiesPower[i][j].LevelUp();
+                    return UnlockedEnemiesPower[i][j];
+                }
+            }
+        }
+        return null;
+    }
     public void Reset()
     {
         for (int i = 0; i < AllCardsPower.Length; i++)
@@ -144,7 +249,14 @@ public class CollectionCardsController
                 AllCardsPower[i][j].ResetLevel();
             }
         }
-        InitializationUnlockedCardsPower();
+        for (int i = 0; i < AllEnemiesPower.Length; i++)
+        {
+            for (int j = 0; j < AllEnemiesPower[i].Length; j++)
+            {
+                AllEnemiesPower[i][j].ResetLevel();
+            }
+        }
+        InitializationUnlockedPower();
     }
 }
 
