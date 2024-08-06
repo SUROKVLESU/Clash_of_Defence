@@ -9,8 +9,7 @@ public class BaseEssenceObject: ScriptableObject
     {
         get
         {
-            if (GameObjects.Length <= Characteristics.HP.Length) { return GameObjects.Length; }
-            else { return Characteristics.HP.Length; }
+            return GameObjects.Length;
         }
     }
     /*[HideInInspector]*/
@@ -18,8 +17,6 @@ public class BaseEssenceObject: ScriptableObject
     public int Power;
     public float ProbabilityFalling;
     public GameObject[] GameObjects;
-    [Header("Characteristics")]
-    public BaseCharacteristics Characteristics;
     public void LevelUp()
     {
         Level++;

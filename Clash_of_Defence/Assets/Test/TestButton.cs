@@ -10,12 +10,10 @@ public class TestButton : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(() => 
         {
-            //GameController.instance.InterfeceRandomCards.SetActive(true);
+            GameController.instance.InterfeceRandomCards.SetActive(true);
             GameController.instance.InterfeceRandomCardsController.Initialization();
-            /*GameController.instance.InterfeceRandomCardsController.ReceiveRandomCards
-                (GameController.instance.RandomCardsController.GetRandomCards(Random.Range(2, 18)));*/
-            GameController.instance.SpawnEnemiesController.SpawnEnemies
-            (GameController.instance.RandomController.GetRandomEnemies(10));
+            GameController.instance.InterfeceRandomCardsController.ReceiveRandomCards
+                (GameController.instance.RandomController.GetRandomCards(Random.Range(2, 18)));
         });
     }
 }

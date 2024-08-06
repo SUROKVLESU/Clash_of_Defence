@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 1
   Name: 
-  Level: 1
   CurrentMaxLevel: 1
   Power: 1
   ProbabilityFalling: 2
   GameObjects:
   - {fileID: 2865127089177589206, guid: 1e895177c17bcec4181ffb00d612b24a, type: 3}
-  Characteristics: {fileID: 11400000, guid: e7d21a53ed767c14fad3d41d5a0f26d7, type: 2}
   CardCover: {fileID: 9134385167729602409, guid: 329190f01cf1f6443a242db81e6b1b99,
     type: 3}
+  Price:
+  - Gold: 0
+    Iron: 0
+    Power: 0

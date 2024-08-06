@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
         CardLevelController = new CardLevelController();
         ResourcesController = new();
         SpawnEnemiesController = gameObject.AddComponent<SpawnEnemiesController>();
+        EnemiesController = new();
         StartHeightCamera = Camera.transform.position.y;
         ChangingNumberCards = new Action(() => { });
     }
@@ -36,6 +37,7 @@ public class GameController : MonoBehaviour
     [HideInInspector] public CardLevelController CardLevelController;
     [HideInInspector] public ResourcesController ResourcesController;
     [HideInInspector] public SpawnEnemiesController SpawnEnemiesController;
+    [HideInInspector] public EnemiesController EnemiesController;
     public RandomController RandomController;
     public GameObject ButtonNewMapBlock;
     public GameObject NewMapBlock;
@@ -44,5 +46,5 @@ public class GameController : MonoBehaviour
     public GameObject InterfeceRandomCards;
     public GameObject LevelPanel;
     [SerializeField] public ButtonController ButtonController;
-    public CollectionCardsController CollectionCardsController;
+    public CollectionsController CollectionCardsController;
 }

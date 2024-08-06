@@ -21,6 +21,7 @@ public class SpawnEnemiesController:MonoBehaviour
         {
             GameObject enemy = Instantiate(enemies[i].GameObjects[enemies[i].GetLevel()]);
             enemy.transform.position = GetRandomPosition();
+            GameController.instance.EnemiesController.Enemies.Add(enemy);
             countSpawnEnemies--;
             if (countSpawnEnemies == 0)
             {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 [Serializable]
-public class CollectionCardsController
+public class CollectionsController
 {
     [Header("Cards")]
     [SerializeField] EssenceObjectPower[] AllCardsPower;

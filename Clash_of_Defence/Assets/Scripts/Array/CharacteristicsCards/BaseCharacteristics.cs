@@ -1,10 +1,24 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BaseCardCharacteristics", menuName = "Characteristics/BaseCardCharacteristics")]
-public class BaseCharacteristics: ScriptableObject
+public class BaseCharacteristics:MonoBehaviour, IBaseInterface
 {
-    public float[] HP;
-    public Attributes[] Protection;
-    public int[] Price;
+    [SerializeField] protected float HP;
+    [SerializeField] protected Attributes Protection;
+
+    public virtual bool TakingDamage(Attributes damage)
+    {
+        HP -= damage - Protection;
+        if (HP < 0)
+        {
+            gameObject.SetActive(false);
+            return false;
+        }
+        else return true;
+    }
+}
+public interface IBaseInterface
+{
+    public bool TakingDamage(Attributes damage);
 }

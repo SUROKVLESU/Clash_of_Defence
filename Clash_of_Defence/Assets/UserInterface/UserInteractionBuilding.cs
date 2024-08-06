@@ -2,8 +2,8 @@
 
 public class UserInteractionBuilding : MonoBehaviour
 {
-    public BaseCard Card;
-    public int UniqueNumber;
+    [HideInInspector] public BaseCard Card;
+    [HideInInspector] public int UniqueNumber;
     private static int NextUniqueNumber = 0;
     private Vector3 MousePositionDown;
     private Vector2Int OldPosition;

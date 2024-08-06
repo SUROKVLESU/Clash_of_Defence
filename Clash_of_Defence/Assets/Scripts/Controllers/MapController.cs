@@ -3,7 +3,7 @@
 public class MapController:MonoBehaviour
 {
     public MapBlock[] ArrayMapBlock;
-    public UserInteractionBuilding[] UserInteractionBuilding;
+    public GameObject[] Buildings;
     public Vector3Int[] ArrayNewPositionMapBlock;
     public Vector3Int[] ArrayOldPositionMapBlock;            //(3)
     public Vector4 FrontierMap;                             //(1)(2)
@@ -16,7 +16,7 @@ public class MapController:MonoBehaviour
         ArrayMapBlock = new MapBlock[] { new MapBlock() };
         NewFrontierMap();
         ArrayOldPositionMapBlock = new Vector3Int[] { new Vector3Int() };
-        UserInteractionBuilding = new UserInteractionBuilding[0];
+        Buildings = new GameObject[0];
         ArrayNewPositionMapBlock = new Vector3Int[4];
         ArrayNewMapBlockButton = new GameObject[4];
         for (int i = 0; i < 4; i++)
@@ -69,17 +69,17 @@ public class MapController:MonoBehaviour
     }
     public void AddBuilding(BaseCard baseCard)
     {
-        UserInteractionBuilding[] arr = new UserInteractionBuilding[UserInteractionBuilding.Length+1];
-        for(int i = 0; UserInteractionBuilding.Length > i; i++)
+        GameObject[] arr = new GameObject[Buildings.Length+1];
+        for(int i = 0; Buildings.Length > i; i++)
         {
-            arr[i]=UserInteractionBuilding[i];
+            arr[i]=Buildings[i];
         }
         GameObject gameObject = Instantiate(baseCard.GameObjects[baseCard.GetLevel()]);
         MapCell FreeCell = SearchFreeCell();
         gameObject.transform.position = new Vector3(FreeCell.Position.x,0,FreeCell.Position.y);
-        arr[UserInteractionBuilding.Length] = gameObject.GetComponent<UserInteractionBuilding>();
-        UserInteractionBuilding = arr;
-        UserInteractionBuilding[UserInteractionBuilding.Length-1].Card = baseCard;
+        arr[Buildings.Length] = gameObject;
+        Buildings = arr;
+        Buildings[Buildings.Length-1].GetComponent<UserInteractionBuilding>().Card = baseCard;
         FreeCell.Free=false;
     }
     private MapCell SearchFreeCell()
@@ -218,33 +218,33 @@ public class MapController:MonoBehaviour
         GameController.instance.CardListController.ReturnCardYourHand(SelectedCardGameObject.Card);
         SetFreeCell(new Vector2Int
             ((int)SelectedCardGameObject.transform.position.x, (int)SelectedCardGameObject.transform.position.z), true);
-        UserInteractionBuilding[] arr = new UserInteractionBuilding[UserInteractionBuilding.Length-1];
-        for (int i = 0,j=0; i < UserInteractionBuilding.Length; i++,j++)
+        GameObject[] arr = new GameObject[Buildings.Length-1];
+        for (int i = 0,j=0; i < Buildings.Length; i++,j++)
         {
-            if (UserInteractionBuilding[i].UniqueNumber == SelectedCardGameObject.UniqueNumber)
+            if (Buildings[i].GetComponent<UserInteractionBuilding>().UniqueNumber == SelectedCardGameObject.UniqueNumber)
             {
-                Destroy(UserInteractionBuilding[i].gameObject);
+                Destroy(Buildings[i].gameObject);
                 j--;
             }
             else
             {
-                arr [j] = UserInteractionBuilding[i];
+                arr [j] = Buildings[i];
             }
         }
-        UserInteractionBuilding=arr;
+        Buildings=arr;
         SelectedCardGameObject = null;
     }
     public void ReturnAllCardYourHand()
     {
-        if (UserInteractionBuilding.Length == 0) { return; }
+        if (Buildings.Length == 0) { return; }
         GameController.instance.CardListController.ReturnAllCardYourHand();
-        for (int i = 0; i < UserInteractionBuilding.Length; i++)
+        for (int i = 0; i < Buildings.Length; i++)
         {
             SetFreeCell(new Vector2Int
-            ((int)UserInteractionBuilding[i].transform.position.x, (int)UserInteractionBuilding[i].transform.position.z), true);
-            Destroy (UserInteractionBuilding[i].gameObject);
+            ((int)Buildings[i].transform.position.x, (int)Buildings[i].transform.position.z), true);
+            Destroy (Buildings[i].gameObject);
         }
-        UserInteractionBuilding = new UserInteractionBuilding [0];
+        Buildings = new GameObject [0];
     }
     private Vector2Int GetCenterScreenWorldCoordinate()
     {
@@ -265,24 +265,24 @@ public class MapController:MonoBehaviour
     }
     public void CancellationSelected()
     {
-        for (int i = 0; i < UserInteractionBuilding.Length; i++)
+        for (int i = 0; i < Buildings.Length; i++)
         {
-            UserInteractionBuilding[i].ResetPosition();
+            Buildings[i].GetComponent<UserInteractionBuilding>().ResetPosition();
         }
         GameController.instance.CardLevelController.OnOffUpdeteMenu(false);
     }
     public void LewelUpBuilding(BaseEssenceObject baseCard)
     {
-        for (int i = 0; UserInteractionBuilding.Length > i; i++)
+        for (int i = 0; Buildings.Length > i; i++)
         {
-            if (UserInteractionBuilding[i].Card.Id == baseCard.Id)
+            if (Buildings[i].GetComponent<UserInteractionBuilding>().Card.Id == baseCard.Id)
             {
                 GameObject gameObject = Instantiate(baseCard.GameObjects[baseCard.GetLevel()]);
-                gameObject.transform.position = UserInteractionBuilding[i].transform.position;
-                Destroy(UserInteractionBuilding[i].gameObject);
-                UserInteractionBuilding[i] = gameObject.GetComponent<UserInteractionBuilding>();
-                UserInteractionBuilding[i].Card = (BaseCard)baseCard;
-                UserInteractionBuilding[i].SelectedBuilding(true);
+                gameObject.transform.position = Buildings[i].transform.position;
+                Destroy(Buildings[i].gameObject);
+                Buildings[i] = gameObject;
+                Buildings[i].GetComponent<UserInteractionBuilding>().Card = (BaseCard)baseCard;
+                Buildings[i].GetComponent<UserInteractionBuilding>().SelectedBuilding(true);
             }
         }
     }

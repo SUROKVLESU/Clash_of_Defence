@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3284217293626631849}
   - component: {fileID: 9206670507920334987}
   - component: {fileID: 4257142951684222017}
+  - component: {fileID: 1041385001189318442}
   m_Layer: 0
   m_Name: CubeTest
   m_TagString: Untagged
@@ -118,5 +119,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0482fe3192d4f94eb9c6e716f683507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardId: 0
+  Card: {fileID: 0}
   UniqueNumber: 0
+--- !u!114 &1041385001189318442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4867832854460605849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cde2536006da3a4a859b22eadca8354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 100
+  Protection:
+    Physical: 0
+    Acid: 0
+    Ice: 0
+  Damage:
+    Physical: 10
+    Acid: 0
+    Ice: 0
+  AttackReloading: 1
+  AttackRadius: 10
