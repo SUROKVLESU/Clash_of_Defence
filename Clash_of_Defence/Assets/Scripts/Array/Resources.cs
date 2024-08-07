@@ -29,5 +29,19 @@ public class Resources
             return true;
         else return false;
     }
+    public static Resources operator -(Resources resourcesL, Resources resourcesR)
+    {
+        return new Resources() { Gold = resourcesL.Gold-resourcesR.Gold, 
+            Iron = resourcesL.Iron-resourcesR.Iron, Power=resourcesL.Power-resourcesR.Power };
+    }
+    public static Resources operator +(Resources resourcesL, Resources resourcesR)
+    {
+        return new Resources()
+        {
+            Gold = resourcesL.Gold + resourcesR.Gold,
+            Iron = resourcesL.Iron + resourcesR.Iron,
+            Power = resourcesL.Power + resourcesR.Power
+        };
+    }
 }
 

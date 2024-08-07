@@ -4,48 +4,53 @@ using UnityEngine;
 public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
 {
     [SerializeField] protected float SpeedMovement;
-    protected Coroutine Coroutine;
-    protected event Action ActionMovement;
+    [SerializeField] protected Resources FallingResources;
+    protected event Action MovementEvent;
 
-    public virtual void Move(Vector3 vector)
+    public virtual void Move()
     {
-        Coroutine = StartCoroutine(MovementCoroutine(vector));
+        Coroutine = StartCoroutine(MovementCoroutine());
     }
     public override bool TakingDamage(Attributes damage)
     {
         HP -= damage - Protection;
         if (HP < 0)
         {
+            GameController.instance.ResourcesController.UpdateGameResources(FallingResources);
             GameController.instance.EnemiesController.Enemies.Remove(gameObject);
             Destroy(gameObject);
+            if(GameController.instance.EnemiesController.Enemies.Count == 0 ) 
+                GameController.instance.WaveController.ResetBuildingsAndEnemies();
             return false;
         }
         else return true;
     }
-    protected virtual IEnumerator MovementCoroutine(Vector3 vector)
+    protected virtual IEnumerator MovementCoroutine()
     {
+        if (TransformAttackTarget == null) yield break;
         while (true)
         {
             if (!TransformAttackTarget.gameObject.activeSelf)
             {
                 SearchAttackTarget();
-                Move(TransformAttackTarget.position);
+                Move();
                 yield break;
             }
-            transform.position = Vector3.MoveTowards(transform.position , vector, SpeedMovement*Time.deltaTime);
-            if((vector - transform.position).sqrMagnitude<= (AttackRadius * AttackRadius)) break;
+            transform.position = Vector3.MoveTowards(transform.position , TransformAttackTarget.position, SpeedMovement*Time.deltaTime);
+            if((TransformAttackTarget.position - transform.position).sqrMagnitude<= (AttackRadius * AttackRadius)) break;
             yield return null;
         }
-        ActionMovement();
+        MovementEvent();
     }
     protected override IEnumerator AttackCoroutine()
     {
+        if(TransformAttackTarget == null||GameController.instance.MapController.ActiveCount==0) yield break;
         while (true)
         {
             if (!TransformAttackTarget.gameObject.activeSelf)
             {
                 SearchAttackTarget();
-                Move(TransformAttackTarget.position);
+                Move();
                 yield break;
             }
             AttackTarget.TakingDamage(Damage);
@@ -54,6 +59,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     }
     public override void SearchAttackTarget()
     {
+        if(GameController.instance.MapController.Buildings.Length==0) return;
         GameObject attackTarget = GameController.instance.MapController.Buildings[0];
         for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
         {
@@ -75,12 +81,17 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
         TransformAttackTarget = attackTarget.transform;
         AttackTarget = TransformAttackTarget.GetComponent<IBaseInterface>();
     }
+    public override void ActivationBuildings()
+    {
+        TransformAttackTarget = null;
+        AttackTarget = null;
+    }
     private void Awake()
     {
-        ActionMovement += Attack;
+        MovementEvent += Attack;
     }
 }
 public interface IMovement
 {
-    public void Move(Vector3 vector);
+    public void Move();
 }

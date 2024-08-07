@@ -1,6 +1,4 @@
-﻿//using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class RandomController
@@ -32,7 +30,7 @@ public class RandomController
         while (true)
         {
             int newPowerCard = Random.Range(1, newPower - countCards + 2);
-            baseCards[index] = (BaseCard)GameController.instance.CollectionCardsController.GetRandomCard(newPowerCard);
+            baseCards[index] = (BaseCard)GameController.instance.CollectionController.GetRandomCard(newPowerCard);
             index++;
             countCards--;
             newPower -= newPowerCard;
@@ -44,7 +42,7 @@ public class RandomController
         {
             for (int j = indexFree; j < baseCards.Length; j++)
             {
-                baseCards[j] = (BaseCard)GameController.instance.CollectionCardsController.GetRandomCard(1);
+                baseCards[j] = (BaseCard)GameController.instance.CollectionController.GetRandomCard(1);
             }
             return baseCards;
         }
@@ -56,7 +54,7 @@ public class RandomController
         while (true)
         {
             int newPowerCard = Random.Range(1, newPower + 1);
-            BaseEssenceObject enemy = GameController.instance.CollectionCardsController.GetRandomEnemy(newPowerCard);
+            BaseEssenceObject enemy = GameController.instance.CollectionController.GetRandomEnemy(newPowerCard);
             enemies.Add(enemy);
             newPower -= enemy.Power;
             if (newPower <= 0) { break; }

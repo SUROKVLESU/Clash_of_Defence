@@ -9,6 +9,7 @@ public class MapController:MonoBehaviour
     public Vector4 FrontierMap;                             //(1)(2)
     private GameObject[] ArrayNewMapBlockButton;           //  (4)   -это порядок границ карты.
     public UserInteractionBuilding SelectedCardGameObject;
+    public int ActiveCount {  get;  set; }
     private float Radius = 10;
     private const int SizeMapXxX = 20;
     public MapController()
@@ -81,6 +82,7 @@ public class MapController:MonoBehaviour
         Buildings = arr;
         Buildings[Buildings.Length-1].GetComponent<UserInteractionBuilding>().Card = baseCard;
         FreeCell.Free=false;
+        ActiveCount += 1;
     }
     private MapCell SearchFreeCell()
     {
@@ -123,6 +125,7 @@ public class MapController:MonoBehaviour
     }
     public void CreateButtonNewMapBlock()
     {
+        if (ArrayNewMapBlockButton[0] != null) return;
         GameController.instance.MapController.CancellationSelected();
         for (int i = 0; i < ArrayNewPositionMapBlock.Length; ++i)
         {
@@ -232,6 +235,7 @@ public class MapController:MonoBehaviour
             }
         }
         Buildings=arr;
+        ActiveCount -= 1;
         SelectedCardGameObject = null;
     }
     public void ReturnAllCardYourHand()
@@ -245,6 +249,7 @@ public class MapController:MonoBehaviour
             Destroy (Buildings[i].gameObject);
         }
         Buildings = new GameObject [0];
+        ActiveCount = 0;
     }
     private Vector2Int GetCenterScreenWorldCoordinate()
     {
@@ -285,6 +290,33 @@ public class MapController:MonoBehaviour
                 Buildings[i].GetComponent<UserInteractionBuilding>().SelectedBuilding(true);
             }
         }
+    }
+    public void ActivationBuildings()
+    {
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            Buildings[i].SetActive(true);
+            IBaseInterface attacking = Buildings[i].GetComponent<IBaseInterface>();
+            attacking.ResetHP();
+            attacking.ActivationBuildings();
+        }
+        ActiveCount = Buildings.Length;
+    }
+    public void Pause()
+    {
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            Buildings[i].GetComponent<IBaseInterface>().Stop();
+        }
+    }
+    public void OffPause()
+    {
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            IBaseInterface attacking = Buildings[i].GetComponent<IBaseInterface>();
+            attacking.ActivationBuildings();
+        }
+        ActiveCount = Buildings.Length;
     }
 }
 

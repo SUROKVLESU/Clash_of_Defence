@@ -133,13 +133,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cde2536006da3a4a859b22eadca8354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
+  HP: 10000
   Protection:
     Physical: 0
     Acid: 0
     Ice: 0
   Damage:
-    Physical: 10
+    Physical: 1
     Acid: 0
     Ice: 0
   AttackReloading: 1

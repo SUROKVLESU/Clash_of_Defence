@@ -10,7 +10,7 @@ public class TestButton2:MonoBehaviour
         button.onClick.AddListener(() =>
         {
             GameController.instance.SpawnEnemiesController.SpawnEnemies
-            (GameController.instance.RandomController.GetRandomEnemies(10));
+            (GameController.instance.RandomController.GetRandomEnemies(2));
         });
     }
 }

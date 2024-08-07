@@ -6,5 +6,10 @@ public class Turret1:AttackingBuildingCharacteristics
     {
         Attack();
     }
+    public override void ActivationBuildings()
+    {
+        base.ActivationBuildings();
+        Attack();
+    }
 }
 

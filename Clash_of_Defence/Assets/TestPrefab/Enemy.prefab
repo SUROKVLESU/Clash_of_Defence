@@ -132,3 +132,7 @@ MonoBehaviour:
   AttackReloading: 1
   AttackRadius: 3
   SpeedMovement: 5
+  FallingResources:
+    Gold: 25
+    Iron: 1
+    Power: 0

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 public class ButtonController:MonoBehaviour
 {
@@ -13,6 +12,15 @@ public class ButtonController:MonoBehaviour
     [Header("InterfeceRandomCards")]
     [SerializeField] Button OkRandomCardsButton;
     [SerializeField] Button ReverseRandomCardsButton;
+    [Header("Pause")]
+    [SerializeField] Button PauseButton;
+    [SerializeField] GameObject OnPauseButton;
+    [SerializeField] GameObject OffPauseButton;
+    [Header("LostInterfeceButton")]
+    [SerializeField] Button MenuButton;
+    [SerializeField] Button RestartButton;
+    [SerializeField] Button NewLifeButton;
+    [SerializeField] Button MultiplyGoldButton;
     private void Awake()
     {
         NewMapBlockButton.onClick.AddListener(() => { GameController.instance.MapController.CreateButtonNewMapBlock(); });
@@ -28,6 +36,25 @@ public class ButtonController:MonoBehaviour
             GameController.instance.CardLevelController.LewelUpBuilding
                 (GameController.instance.MapController.SelectedCardGameObject?.Card);
         });
+        PauseButton.onClick.AddListener(() =>
+        {
+            if (OnPauseButton.activeSelf)
+            {
+                OnPauseButton.SetActive(false);
+                OffPauseButton.SetActive(true);
+                GameController.instance.MapController.Pause();
+                GameController.instance.EnemiesController.Pause();
+                GameController.instance.SpawnEnemiesController.Pause();
+            }
+            else
+            {
+                OnPauseButton.SetActive(true);
+                OffPauseButton.SetActive(false);
+                GameController.instance.MapController.OffPause();
+                GameController.instance.EnemiesController.OffPause();
+                GameController.instance.SpawnEnemiesController.OffPause();
+            }
+        });
     }
     private void OnClickZoomAndScrollButton()
     {
@@ -41,6 +68,5 @@ public class ButtonController:MonoBehaviour
             GameController.instance.ZoomAndScroll.SetActive(true);
         }
     }
-    //public void 
 }
 

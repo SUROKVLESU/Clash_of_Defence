@@ -6,7 +6,7 @@ public class ZoomAndScroll:MonoBehaviour
     private RectTransform rectTransform;
     private const float RegionZoom = 0.1f;
     private const float MultiplierZoom = 2f;
-    private const float MultiplierScroll = 3f;
+    private const float MultiplierScroll = 1f;
     private const float MinY = 5;
     private const float MaxY = 45;
     private const float CorrectionCameraPositionTop = 10f;

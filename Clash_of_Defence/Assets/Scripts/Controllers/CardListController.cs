@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿
 public class CardListController
 {
     public BaseCard[] BaseCardsHand;

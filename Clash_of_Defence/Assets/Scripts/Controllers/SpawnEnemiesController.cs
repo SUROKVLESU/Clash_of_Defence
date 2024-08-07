@@ -5,33 +5,38 @@ public class SpawnEnemiesController:MonoBehaviour
 {
     private const float DistanceSpawn = 40;
     private const float DepthSpawn = 5;//пока не используется(глубина спавна)
-    private bool Spawning;
+    private const float SpawnReloading = 2;
     private Coroutine Coroutine;
     private const float MaxStartFraction = 0.5f;
+    private BaseEssenceObject[] EnemiesSpawn;
+    private int OldCountSpawnEnemies;
     public void SpawnEnemies(BaseEssenceObject[] enemies)
     {
+        EnemiesSpawn = enemies;
         Coroutine = StartCoroutine(SpawnEnemiesCoroutine(enemies));
     }
-    private IEnumerator SpawnEnemiesCoroutine(BaseEssenceObject[] enemies)
+    private IEnumerator SpawnEnemiesCoroutine(BaseEssenceObject[] enemies,int startIndex=0)
     {
         int countSpawnEnemies = UnityEngine.Random.Range(1, (int)((enemies.Length + 1)* MaxStartFraction));
         int oldCountSpawnEnemies = countSpawnEnemies;
-        if (countSpawnEnemies > enemies.Length) countSpawnEnemies = enemies.Length;
-        for (int i = 0; i < enemies.Length; i++)
+        OldCountSpawnEnemies = oldCountSpawnEnemies;
+        for (int i = startIndex; i < enemies.Length; i++)
         {
             GameObject enemy = Instantiate(enemies[i].GameObjects[enemies[i].GetLevel()]);
             enemy.transform.position = GetRandomPosition();
             GameController.instance.EnemiesController.Enemies.Add(enemy);
             countSpawnEnemies--;
+            OldCountSpawnEnemies++;
             if (countSpawnEnemies == 0)
             {
                 countSpawnEnemies = UnityEngine.Random.Range(1, enemies.Length + 1-oldCountSpawnEnemies);
                 if (countSpawnEnemies+oldCountSpawnEnemies > enemies.Length) 
                     countSpawnEnemies= enemies.Length-oldCountSpawnEnemies;
                 oldCountSpawnEnemies += countSpawnEnemies;
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(SpawnReloading);
             }
         }
+        EnemiesSpawn = new BaseEssenceObject[0];
     }
     private Vector3 GetRandomPosition()
     {
@@ -61,13 +66,15 @@ public class SpawnEnemiesController:MonoBehaviour
                 return Vector3.zero;
         }
     }
-    private IEnumerator Print()
+    public void Pause()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            Debug.Log(i);
-            yield return new WaitForSeconds(1);
-        }
+        if(EnemiesSpawn.Length == 0)return;
+        StopCoroutine(Coroutine);
+    }
+    public void OffPause()
+    {
+        if (EnemiesSpawn.Length == 0) return;
+        Coroutine = StartCoroutine(SpawnEnemiesCoroutine(EnemiesSpawn,OldCountSpawnEnemies-1));
     }
 }
 

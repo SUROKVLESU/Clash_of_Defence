@@ -5,7 +5,13 @@ public class Zombi1:BaseEnemyCharacteristics
     private void Start()
     {
         SearchAttackTarget();
-        Move(TransformAttackTarget.position);
+        Move();
+    }
+    public override void ActivationBuildings()
+    {
+        base.ActivationBuildings();
+        SearchAttackTarget();
+        Move();
     }
 }
 

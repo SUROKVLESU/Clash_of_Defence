@@ -7,6 +7,7 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
     [SerializeField] protected float AttackRadius;
     protected IBaseInterface AttackTarget;
     protected Transform TransformAttackTarget;
+    protected Coroutine Coroutine;
 
     public virtual void SearchAttackTarget()
     {
@@ -25,7 +26,7 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
     }
     public virtual void Attack()
     {
-        StartCoroutine(AttackCoroutine());
+        Coroutine=StartCoroutine(AttackCoroutine());
     }
     protected virtual IEnumerator AttackCoroutine()
     {
@@ -44,6 +45,15 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
             }
             yield return new WaitForSeconds(AttackReloading);
         }
+    }
+    public override void ActivationBuildings() 
+    {
+        TransformAttackTarget = null;
+        AttackTarget = null;
+    }
+    public override void Stop()
+    {
+        StopCoroutine(Coroutine);
     }
 }
 public interface IAttackInterface

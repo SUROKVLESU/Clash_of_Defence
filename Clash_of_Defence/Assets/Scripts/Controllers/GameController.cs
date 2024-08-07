@@ -1,7 +1,5 @@
 using System;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -20,12 +18,13 @@ public class GameController : MonoBehaviour
         CardListController = new CardListController();
         MapController = new MapController();
         RandomController = new RandomController();
-        CollectionCardsController.Initialization();
+        CollectionController.Initialization();
         InterfeceRandomCardsController = new InterfeceRandomCardsController();
         CardLevelController = new CardLevelController();
-        ResourcesController = new();
+        ResourcesController = gameObject.GetComponent<ResourcesController>();
         SpawnEnemiesController = gameObject.AddComponent<SpawnEnemiesController>();
         EnemiesController = new();
+        WaveController = new();
         StartHeightCamera = Camera.transform.position.y;
         ChangingNumberCards = new Action(() => { });
     }
@@ -38,13 +37,16 @@ public class GameController : MonoBehaviour
     [HideInInspector] public ResourcesController ResourcesController;
     [HideInInspector] public SpawnEnemiesController SpawnEnemiesController;
     [HideInInspector] public EnemiesController EnemiesController;
+    [HideInInspector] public WaveController WaveController;
     public RandomController RandomController;
+    public GameObject InterfeceHand;
     public GameObject ButtonNewMapBlock;
     public GameObject NewMapBlock;
     public GameObject Camera;
     public GameObject ZoomAndScroll;
     public GameObject InterfeceRandomCards;
     public GameObject LevelPanel;
+    public GameObject DefeatInterfece;
     [SerializeField] public ButtonController ButtonController;
-    public CollectionsController CollectionCardsController;
+    public CollectionsController CollectionController;
 }
