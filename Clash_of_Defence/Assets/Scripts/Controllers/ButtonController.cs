@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class ButtonController:MonoBehaviour
 {
@@ -31,12 +32,11 @@ public class ButtonController:MonoBehaviour
         ZoomAndScrollButton.onClick.AddListener(() => { OnClickZoomAndScrollButton(); });
         ReverseRandomCardsButton.onClick.AddListener(() => {
             GameController.instance.InterfeceRandomCardsController.ReceiveRandomCards
-                (GameController.instance.RandomController.GetRandomCards(UnityEngine.Random.Range(2, 18)));
+                (GameController.instance.RandomController.GetRandomCards
+                (GameController.instance.WaveController.CurentPowerCards));
         });
         OkRandomCardsButton.onClick.AddListener(() => { 
-            GameController.instance.InterfeceRandomCardsController.AddCards();
-            OnInterfeceHand();
-        });
+            GameController.instance.InterfeceRandomCardsController.AddCards();});
         LevelUpBuildingButton.onClick.AddListener(() => {
             GameController.instance.CardLevelController.LewelUpBuilding
                 (GameController.instance.MapController.SelectedCardGameObject?.Card);
@@ -62,6 +62,8 @@ public class ButtonController:MonoBehaviour
             }
         });
         StartWaveButton.onClick.AddListener(() => { GameController.instance.WaveController.StartWave(); });
+        MenuButton.onClick.AddListener(() => { GameController.instance.WaveController.OnMenuInterfece(); });
+        RestartButton.onClick.AddListener(() => { OffMenuInterfece(); });
     }
     private void OnClickZoomAndScrollButton()
     {
@@ -110,6 +112,23 @@ public class ButtonController:MonoBehaviour
     public void OffStartWaveButton()
     {
         StartWaveButton.enabled = false;
+    }
+    public void OnMenuInterfece()
+    {
+        GameController.instance.InterfeceHand.SetActive(false);
+        GameController.instance.MenuInterfece.SetActive(true);
+    }
+    public void OffMenuInterfece()
+    {
+        GameController.instance.InterfeceHand.SetActive(true);
+        GameController.instance.MenuInterfece.SetActive(false);
+        GameController.instance.DefeatInterfece.SetActive(false);
+        GameController.instance.WaveController.Initialization();
+        GameController.instance.ResourcesController.ResetController();
+        GameController.instance.MapController.ResetController();
+        GameController.instance.CollectionController.Initialization();
+        GameController.instance.CardListController.ResetController();
+        GameController.instance.Camera.transform.position = new Vector3(0,15,-12);
     }
 }
 

@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
     }
     private void Start()
     {
-        InterfeceRandomCardsController.GetRandomCards();
+        ButtonController.OnMenuInterfece();
     }
     [HideInInspector] public float StartHeightCamera;
     public Action ChangingNumberCards;
@@ -53,5 +53,11 @@ public class GameController : MonoBehaviour
     public GameObject InterfeceRandomCards;
     public GameObject LevelPanel;
     public GameObject DefeatInterfece;
+    public GameObject MenuInterfece;
     public CollectionsController CollectionController;
+    public void StartGame()
+    {
+        WaveController.Initialization();
+        InterfeceRandomCardsController.GetRandomCards();
+    }
 }

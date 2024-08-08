@@ -1,9 +1,9 @@
 ﻿
 public class WaveController
 {
-    public int CurentPowerCards = UnityEngine.Random.Range(2, 18);
+    public int CurentPowerCards;
     private const int MaxBoostCards = 3;
-    public int CurentPowerEnemies = UnityEngine.Random.Range(2, 18);
+    public int CurentPowerEnemies;
     private const int MaxBoostEnemies = 6;
     public bool IsGame = false;
     public void ResetBuildingsAndEnemies()
@@ -32,6 +32,7 @@ public class WaveController
         IsGame = false ;
         GameController.instance.EnemiesController.DestroyEnemies();
         Defeat();
+        GameController.instance.ResourcesController.SaveGameGold();
     }
     public void PowerBoost()
     {
@@ -51,6 +52,16 @@ public class WaveController
         GameController.instance.SpawnEnemiesController.SpawnEnemies
             (GameController.instance.RandomController.GetRandomEnemies(GameController.instance.WaveController.CurentPowerEnemies));
         GameController.instance.ButtonController.OffInterfeceHand();
+    }
+    public void Initialization()
+    {
+        CurentPowerCards = UnityEngine.Random.Range(2, 18);
+        CurentPowerEnemies = UnityEngine.Random.Range(2, 18);
+    }
+    public void OnMenuInterfece()
+    {
+        GameController.instance.MenuInterfece.SetActive(true);
+        GameController.instance.ButtonController.OnMenuInterfece();
     }
 }
 

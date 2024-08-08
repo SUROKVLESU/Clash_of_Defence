@@ -10,7 +10,9 @@ public class NewMapBlock : MonoBehaviour
         GameController.instance.MapController.DestroyButtonNewMapBlock();
         GameController.instance.MapController.AddMapBlock(new Vector2Int(NewVector3Int.x, NewVector3Int.z));
         GameController.instance.MapController.NewArrayNewPositionMapBlock(NewVector3Int);
-        Instantiate(GameController.instance.NewMapBlock).transform.position=NewVector3Int;
+        GameObject mapBlock = Instantiate(GameController.instance.NewMapBlock);
+        mapBlock.transform.position = NewVector3Int;
+        GameController.instance.MapController.ArrayMapBlockGameObjects.Add(mapBlock);
     }
 }
 

@@ -130,4 +130,10 @@ public class CardListController
         this.BaseCardsHand = new BaseCard[0];
         this.BaseCardsMap = new BaseCard[0];
     }
+    public void ResetController()
+    {
+        BaseCardsHand = new BaseCard[0];
+        BaseCardsMap = new BaseCard[0];
+        GameController.instance.ChangingNumberCards();
+    }
 }

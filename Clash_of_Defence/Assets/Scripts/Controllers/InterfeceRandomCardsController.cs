@@ -88,6 +88,8 @@ public class InterfeceRandomCardsController:MonoBehaviour
         RectTransform.parent.gameObject.SetActive(false);
         GameController.instance.CardListController.Add(baseCards);
         DestroyCards();
+        GameController.instance.ButtonController.OnInterfeceHand();
+        GameController.instance.ButtonController.OnStartWaveButton();
     }
     public void GetRandomCards()
     {
@@ -96,5 +98,6 @@ public class InterfeceRandomCardsController:MonoBehaviour
         ReceiveRandomCards(GameController.instance.RandomController.GetRandomCards
             (GameController.instance.WaveController.CurentPowerCards));
         GameController.instance.ButtonController.GetRandomCards();
+        GameController.instance.ButtonController.OffStartWaveButton();
     }
 }

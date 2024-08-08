@@ -51,4 +51,14 @@ public class ResourcesController:MonoBehaviour
         PriceNewMapBlock *= MultiplierPriceNewMapBlock;
         PriceNewMapBlockText.text = ":" + PriceNewMapBlock.Gold;
     }
+    public void SaveGameGold()
+    {
+        Gold += GameResources.Gold;
+    }
+    public void ResetController()
+    {
+        GameResources = new();
+        PriceNewMapBlock = new Resources() { Gold = 500 };
+        Start();
+    }
 }

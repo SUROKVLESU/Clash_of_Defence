@@ -1,9 +1,11 @@
-﻿using Unity.VisualScripting;
+﻿using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MapController:MonoBehaviour
 {
     public MapBlock[] ArrayMapBlock;
+    public List<GameObject> ArrayMapBlockGameObjects=new List<GameObject>();
     public GameObject[] Buildings;
     public Vector3Int[] ArrayNewPositionMapBlock;
     public Vector3Int[] ArrayOldPositionMapBlock;            //(3)
@@ -330,6 +332,43 @@ public class MapController:MonoBehaviour
             if (Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>())
             {
                 Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>().GetResources();   
+            }
+        }
+    }
+    public void ResetController()
+    {
+        for (int i = 0; i < ArrayMapBlockGameObjects.Count; i++)
+        {
+            Destroy(ArrayMapBlockGameObjects[i]);
+        }
+        ArrayMapBlockGameObjects.Clear();
+        ArrayMapBlock = new MapBlock[] { new MapBlock() };
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            Destroy(Buildings[i]);
+        }
+        Buildings = new GameObject[0];
+        ArrayOldPositionMapBlock = new Vector3Int[] { new Vector3Int() };
+        ArrayNewPositionMapBlock = new Vector3Int[4];
+        NewFrontierMap();
+        SelectedCardGameObject=null;
+        ArrayNewMapBlockButton = new GameObject[4];
+        for (int i = 0; i < 4; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    ArrayNewPositionMapBlock[i] = new Vector3Int(0, 0, SizeMapXxX);
+                    break;
+                case 1:
+                    ArrayNewPositionMapBlock[i] = new Vector3Int(0, 0, -SizeMapXxX);
+                    break;
+                case 2:
+                    ArrayNewPositionMapBlock[i] = new Vector3Int(-SizeMapXxX, 0, 0);
+                    break;
+                case 3:
+                    ArrayNewPositionMapBlock[i] = new Vector3Int(SizeMapXxX, 0, 0);
+                    break;
             }
         }
     }
