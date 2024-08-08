@@ -15,8 +15,7 @@ public class BaseCharacteristics:MonoBehaviour, IBaseInterface
             GameController.instance.MapController.ActiveCount--;
             if (GameController.instance.MapController.ActiveCount == 0)
             {
-                GameController.instance.EnemiesController.DestroyEnemies();
-                GameController.instance.WaveController.Defeat();
+                GameController.instance.WaveController.PlayerDefeat();
             }
             return false;
         }

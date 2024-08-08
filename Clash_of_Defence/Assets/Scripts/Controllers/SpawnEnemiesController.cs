@@ -76,5 +76,10 @@ public class SpawnEnemiesController:MonoBehaviour
         if (EnemiesSpawn.Length == 0) return;
         Coroutine = StartCoroutine(SpawnEnemiesCoroutine(EnemiesSpawn,OldCountSpawnEnemies-1));
     }
+    public bool IsAllSpawnEnemies()
+    {
+        if(EnemiesSpawn.Length > 0) return false;
+        else return true;
+    }
 }
 

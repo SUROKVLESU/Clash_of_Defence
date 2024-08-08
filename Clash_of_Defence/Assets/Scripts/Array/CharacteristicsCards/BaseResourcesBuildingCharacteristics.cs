@@ -1,8 +1,11 @@
-﻿using System;
-using UnityEngine;
-[CreateAssetMenu(fileName = "BaseCardCharacteristics", menuName = "Characteristics/BaseResourcesBuildingCharacteristics")]
+﻿using UnityEngine;
 public class BaseResourcesBuildingCharacteristics : BaseCharacteristics
 {
-    public Resources[] Resources;
+    public Resources Resources;
+    public virtual void GetResources()
+    {
+        if(!gameObject.activeSelf) return;
+        GameController.instance.ResourcesController.UpdateGameResources(Resources);
+    }
 }
 

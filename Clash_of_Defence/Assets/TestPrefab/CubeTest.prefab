@@ -139,7 +139,7 @@ MonoBehaviour:
     Acid: 0
     Ice: 0
   Damage:
-    Physical: 1
+    Physical: 3
     Acid: 0
     Ice: 0
   AttackReloading: 1

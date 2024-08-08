@@ -9,6 +9,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
 
     public virtual void Move()
     {
+        if (GameController.instance.MapController.ActiveCount == 0) return;
         Coroutine = StartCoroutine(MovementCoroutine());
     }
     public override bool TakingDamage(Attributes damage)
@@ -19,8 +20,11 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
             GameController.instance.ResourcesController.UpdateGameResources(FallingResources);
             GameController.instance.EnemiesController.Enemies.Remove(gameObject);
             Destroy(gameObject);
-            if(GameController.instance.EnemiesController.Enemies.Count == 0 ) 
-                GameController.instance.WaveController.ResetBuildingsAndEnemies();
+            if (GameController.instance.EnemiesController.Enemies.Count == 0
+                && GameController.instance.SpawnEnemiesController.IsAllSpawnEnemies())
+            {
+                GameController.instance.WaveController.EnemiesDefeat();
+            }
             return false;
         }
         else return true;
@@ -58,8 +62,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
         }
     }
     public override void SearchAttackTarget()
-    {
-        if(GameController.instance.MapController.Buildings.Length==0) return;
+    {   
         GameObject attackTarget = GameController.instance.MapController.Buildings[0];
         for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
         {
@@ -85,6 +88,11 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     {
         TransformAttackTarget = null;
         AttackTarget = null;
+    }
+    public override void Attack()
+    {
+        if (GameController.instance.MapController.ActiveCount == 0) return;
+        base.Attack();
     }
     private void Awake()
     {

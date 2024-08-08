@@ -43,5 +43,10 @@ public class Resources
             Power = resourcesL.Power + resourcesR.Power
         };
     }
+    public static Resources operator *(Resources resources, float multiplier)
+    {
+        return new Resources() {Gold = (int)(resources.Gold * multiplier),Iron = (int)(resources.Iron * multiplier),
+            Power=(int)(resources.Power*multiplier)};
+    }
 }
 

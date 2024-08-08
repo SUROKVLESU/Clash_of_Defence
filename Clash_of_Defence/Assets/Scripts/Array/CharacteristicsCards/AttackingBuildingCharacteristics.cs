@@ -53,6 +53,7 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
     }
     public override void Stop()
     {
+        if (Coroutine == null) return;
         StopCoroutine(Coroutine);
     }
 }

@@ -15,5 +15,16 @@ public class WaveController
         GameController.instance.DefeatInterfece.SetActive(true);
         GameController.instance.InterfeceHand.SetActive(false);
     }
+    public void EnemiesDefeat()
+    {
+        GameController.instance.MapController.GetResources();
+        GameController.instance.WaveController.ResetBuildingsAndEnemies();
+        GameController.instance.ButtonController.OnInterfeceHand();
+    }
+    public void PlayerDefeat()
+    {
+        GameController.instance.EnemiesController.DestroyEnemies();
+        GameController.instance.WaveController.Defeat();
+    }
 }
 

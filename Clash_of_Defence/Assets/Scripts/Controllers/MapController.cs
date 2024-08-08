@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public class MapController:MonoBehaviour
 {
@@ -125,8 +126,11 @@ public class MapController:MonoBehaviour
     }
     public void CreateButtonNewMapBlock()
     {
-        if (ArrayNewMapBlockButton[0] != null) return;
+        if (ArrayNewMapBlockButton[0] != null
+            ||GameController.instance.ResourcesController.GameResources
+                <=GameController.instance.ResourcesController.PriceNewMapBlock) return;
         GameController.instance.MapController.CancellationSelected();
+        GameController.instance.ResourcesController.UbdatePriceNewMapBlockText();
         for (int i = 0; i < ArrayNewPositionMapBlock.Length; ++i)
         {
             ArrayNewMapBlockButton[i] = Instantiate(GameController.instance.ButtonNewMapBlock);
@@ -317,6 +321,16 @@ public class MapController:MonoBehaviour
             attacking.ActivationBuildings();
         }
         ActiveCount = Buildings.Length;
+    }
+    public void GetResources()
+    {
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            if (Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>())
+            {
+                Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>().GetResources();   
+            }
+        }
     }
 }
 

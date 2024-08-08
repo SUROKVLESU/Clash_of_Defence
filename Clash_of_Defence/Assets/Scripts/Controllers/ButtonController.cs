@@ -8,6 +8,7 @@ public class ButtonController:MonoBehaviour
     [SerializeField] Button DeleteBuildingsButton;
     [SerializeField] Button ZoomAndScrollButton;
     [SerializeField] Button LevelUpBuildingButton;
+    [SerializeField] BoxCollider HandBoxCollider;
 
     [Header("InterfeceRandomCards")]
     [SerializeField] Button OkRandomCardsButton;
@@ -67,6 +68,29 @@ public class ButtonController:MonoBehaviour
             GameController.instance.MapController.CancellationSelected();
             GameController.instance.ZoomAndScroll.SetActive(true);
         }
+    }
+    public void OffInterfeceHand()
+    {
+        HandBoxCollider.isTrigger = false;
+        NewMapBlockButton.enabled = false;
+        ReturnCardYourHandButton.enabled = false;
+        DeleteBuildingsButton.enabled = false;
+        ZoomAndScrollButton.enabled = false;
+        GameController.instance.MapController.CancellationSelected();
+        for (int i = 0; i < GameController.instance.LevelPanel.transform.childCount; i++)
+        {
+            GameController.instance.LevelPanel.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        GameController.instance.ZoomAndScroll.SetActive(true);
+    }
+    public void OnInterfeceHand()
+    {
+        HandBoxCollider.isTrigger = true;
+        NewMapBlockButton.enabled = true;
+        ReturnCardYourHandButton.enabled = true;
+        DeleteBuildingsButton.enabled = true;
+        ZoomAndScrollButton.enabled = true;
+        GameController.instance.ZoomAndScroll.SetActive(false);
     }
 }
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1294678037494189922}
   - component: {fileID: 1955100166262761089}
   - component: {fileID: 8298946595769488406}
+  - component: {fileID: -2286728025149541405}
   m_Layer: 0
   m_Name: SphereTest
   m_TagString: Untagged
@@ -118,5 +119,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0482fe3192d4f94eb9c6e716f683507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardId: 0
+  Card: {fileID: 0}
   UniqueNumber: 0
+--- !u!114 &-2286728025149541405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865127089177589206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0007805012a9cb8448c5dd8ec1af0c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 1
+  Protection:
+    Physical: 0
+    Acid: 0
+    Ice: 0
+  Resources:
+    Gold: 0
+    Iron: 40
+    Power: 0

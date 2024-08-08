@@ -12,6 +12,7 @@ public class UserInteractionBuilding : MonoBehaviour
     private bool Selected = false;
     private bool Moved = false;
     private const float LiftingHeight = 1;
+    private const int SizeCell = 4;
     private void Awake()
     {
         ScrollStep = 180 * (Screen.currentResolution.height / 1080);
@@ -29,7 +30,7 @@ public class UserInteractionBuilding : MonoBehaviour
             *(GameController.instance.Camera.transform.position.y/GameController.instance.StartHeightCamera));
         int CountY = (int)((vector.y / ScrollStep) 
             * (GameController.instance.Camera.transform.position.y / GameController.instance.StartHeightCamera));
-        newPosition = new Vector2Int(OldPosition.x+4*CountX, OldPosition.y+4*CountY);
+        newPosition = new Vector2Int(OldPosition.x+ SizeCell * CountX, OldPosition.y+ SizeCell * CountY);
         if(GameController.instance.MapController.IsPositionCell(newPosition))
         {
             GameController.instance.MapController.SetFreeCell(OldPosition, true);

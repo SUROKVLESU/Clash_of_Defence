@@ -4,9 +4,18 @@ public class ResourcesController:MonoBehaviour
 {
     [HideInInspector] public int Gold;
     [HideInInspector] public Resources GameResources;
+    [HideInInspector] public Resources PriceNewMapBlock = new Resources() { Gold=500};
+    private const float MultiplierPriceNewMapBlock = 1.4f;
+    [Header("GameResources")]
     [SerializeField] Text TextGold;
     [SerializeField] Text TextIron;
     [SerializeField] Text TextPower;
+    [Header("GameLevelUpBuilding")]
+    [SerializeField] Text LevelUpTextGold;
+    [SerializeField] Text LevelUpTextIron;
+    [SerializeField] Text LevelUpTextPower;
+    [Header("PriceNewMapBlock")]
+    [SerializeField] Text PriceNewMapBlockText;
     public ResourcesController()
     {
         GameResources = new() {Gold=200,Iron=0,Power=0 };
@@ -25,8 +34,21 @@ public class ResourcesController:MonoBehaviour
         TextIron.text = ":" + GameResources.Iron;
         TextPower.text = ":" + GameResources.Power;
     }
+    public void SetTextOnUpdate(Resources resources)
+    {
+        LevelUpTextGold.text = ":"+resources.Gold;
+        LevelUpTextIron.text = ":" + resources.Iron;
+        LevelUpTextPower.text = ":" + resources.Power;
+    }
     private void Start()
     {
         UpdateGameResources(new Resources());
+        PriceNewMapBlockText.text = ":"+ PriceNewMapBlock.Gold;
+    }
+    public void UbdatePriceNewMapBlockText()
+    {
+        UpdateGameResources(PriceNewMapBlock,false);
+        PriceNewMapBlock *= MultiplierPriceNewMapBlock;
+        PriceNewMapBlockText.text = ":" + PriceNewMapBlock.Gold;
     }
 }
