@@ -4,6 +4,7 @@ public class NewMapBlock : MonoBehaviour
 {
     private void OnMouseDown()
     {
+        GameController.instance.ButtonController.OnStartWaveButton();
         GameController.instance.MapController.CancellationSelected();
         Vector3Int NewVector3Int = new Vector3Int((int)transform.position.x, 0, (int)transform.position.z);
         GameController.instance.MapController.DestroyButtonNewMapBlock();

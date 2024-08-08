@@ -129,6 +129,7 @@ public class MapController:MonoBehaviour
         if (ArrayNewMapBlockButton[0] != null
             ||GameController.instance.ResourcesController.GameResources
                 <=GameController.instance.ResourcesController.PriceNewMapBlock) return;
+        GameController.instance.ButtonController.OffStartWaveButton();
         GameController.instance.MapController.CancellationSelected();
         GameController.instance.ResourcesController.UbdatePriceNewMapBlockText();
         for (int i = 0; i < ArrayNewPositionMapBlock.Length; ++i)

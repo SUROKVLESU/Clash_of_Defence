@@ -89,4 +89,12 @@ public class InterfeceRandomCardsController:MonoBehaviour
         GameController.instance.CardListController.Add(baseCards);
         DestroyCards();
     }
+    public void GetRandomCards()
+    {
+        GameController.instance.InterfeceRandomCards.SetActive(true);
+        Initialization();
+        ReceiveRandomCards(GameController.instance.RandomController.GetRandomCards
+            (GameController.instance.WaveController.CurentPowerCards));
+        GameController.instance.ButtonController.GetRandomCards();
+    }
 }

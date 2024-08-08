@@ -1,10 +1,11 @@
 ﻿
 public class WaveController
 {
-    public WaveController()
-    {
-
-    }
+    public int CurentPowerCards = UnityEngine.Random.Range(2, 18);
+    private const int MaxBoostCards = 3;
+    public int CurentPowerEnemies = UnityEngine.Random.Range(2, 18);
+    private const int MaxBoostEnemies = 6;
+    public bool IsGame = false;
     public void ResetBuildingsAndEnemies()
     {
         GameController.instance.MapController.ActivationBuildings();
@@ -17,14 +18,39 @@ public class WaveController
     }
     public void EnemiesDefeat()
     {
+        GameController.instance.ButtonController.OnStartWaveButton();
+        IsGame = false ;
         GameController.instance.MapController.GetResources();
         GameController.instance.WaveController.ResetBuildingsAndEnemies();
         GameController.instance.ButtonController.OnInterfeceHand();
+        PowerBoost();
+        GameController.instance.InterfeceRandomCardsController.GetRandomCards();
     }
     public void PlayerDefeat()
     {
+        GameController.instance.ButtonController.OnStartWaveButton();
+        IsGame = false ;
         GameController.instance.EnemiesController.DestroyEnemies();
-        GameController.instance.WaveController.Defeat();
+        Defeat();
+    }
+    public void PowerBoost()
+    {
+        CurentPowerCards+= UnityEngine.Random.Range(1, MaxBoostCards+1);
+        CurentPowerEnemies += UnityEngine.Random.Range(1, MaxBoostEnemies + 1);
+    }
+    public void StartWave()
+    {
+        if (GameController.instance.MapController.ActiveCount == 0)
+        {
+            PlayerDefeat();
+            return;
+        }
+        GameController.instance.ButtonController.OffStartWaveButton();
+        IsGame= true;
+        GameController.instance.MapController.CancellationSelected();
+        GameController.instance.SpawnEnemiesController.SpawnEnemies
+            (GameController.instance.RandomController.GetRandomEnemies(GameController.instance.WaveController.CurentPowerEnemies));
+        GameController.instance.ButtonController.OffInterfeceHand();
     }
 }
 

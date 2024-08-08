@@ -8,7 +8,7 @@ public class SpawnEnemiesController:MonoBehaviour
     private const float SpawnReloading = 2;
     private Coroutine Coroutine;
     private const float MaxStartFraction = 0.5f;
-    private BaseEssenceObject[] EnemiesSpawn;
+    private BaseEssenceObject[] EnemiesSpawn = new BaseEssenceObject[0];
     private int OldCountSpawnEnemies;
     public void SpawnEnemies(BaseEssenceObject[] enemies)
     {

@@ -16,17 +16,22 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
         CardListController = new CardListController();
-        MapController = new MapController();
+        MapController = gameObject.AddComponent<MapController>();
         RandomController = new RandomController();
         CollectionController.Initialization();
-        InterfeceRandomCardsController = new InterfeceRandomCardsController();
+        InterfeceRandomCardsController = gameObject.AddComponent<InterfeceRandomCardsController>();
         CardLevelController = new CardLevelController();
         ResourcesController = gameObject.GetComponent<ResourcesController>();
         SpawnEnemiesController = gameObject.AddComponent<SpawnEnemiesController>();
-        EnemiesController = new();
+        ButtonController = gameObject.GetComponent<ButtonController>();
+        EnemiesController = gameObject.AddComponent<EnemiesController> ();
         WaveController = new();
         StartHeightCamera = Camera.transform.position.y;
         ChangingNumberCards = new Action(() => { });
+    }
+    private void Start()
+    {
+        InterfeceRandomCardsController.GetRandomCards();
     }
     [HideInInspector] public float StartHeightCamera;
     public Action ChangingNumberCards;
@@ -38,6 +43,7 @@ public class GameController : MonoBehaviour
     [HideInInspector] public SpawnEnemiesController SpawnEnemiesController;
     [HideInInspector] public EnemiesController EnemiesController;
     [HideInInspector] public WaveController WaveController;
+    [HideInInspector] public ButtonController ButtonController;
     public RandomController RandomController;
     public GameObject InterfeceHand;
     public GameObject ButtonNewMapBlock;
@@ -47,6 +53,5 @@ public class GameController : MonoBehaviour
     public GameObject InterfeceRandomCards;
     public GameObject LevelPanel;
     public GameObject DefeatInterfece;
-    [SerializeField] public ButtonController ButtonController;
     public CollectionsController CollectionController;
 }

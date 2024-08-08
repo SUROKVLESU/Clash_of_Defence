@@ -588,7 +588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &161180288
 RectTransform:
   m_ObjectHideFlags: 0
@@ -789,9 +789,8 @@ GameObject:
   - component: {fileID: 248216097}
   - component: {fileID: 248216096}
   - component: {fileID: 248216095}
-  - component: {fileID: 248216094}
   m_Layer: 5
-  m_Name: TestButton2
+  m_Name: StartWaveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -813,21 +812,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 879, y: 381.7}
+  m_AnchoredPosition: {x: -545, y: 478}
   m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &248216094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248216092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 771ce4fd49a49234fa184cd4b46604fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &248216095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,65 +1129,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424652272}
   m_CullTransparentMesh: 1
---- !u!1 &469836638
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 469836640}
-  - component: {fileID: 469836639}
-  m_Layer: 0
-  m_Name: ButtonController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &469836639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469836638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0acb99aad8879e3498b29af0ed20b2b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NewMapBlockButton: {fileID: 1124257061}
-  ReturnCardYourHandButton: {fileID: 1001520857}
-  DeleteBuildingsButton: {fileID: 1103172500}
-  ZoomAndScrollButton: {fileID: 755643965}
-  LevelUpBuildingButton: {fileID: 700700979}
-  HandBoxCollider: {fileID: 1023010498}
-  OkRandomCardsButton: {fileID: 1254837727}
-  ReverseRandomCardsButton: {fileID: 1551912619}
-  PauseButton: {fileID: 1869884868}
-  OnPauseButton: {fileID: 1544616764}
-  OffPauseButton: {fileID: 631663426}
-  MenuButton: {fileID: 1279247803}
-  RestartButton: {fileID: 519495057}
-  NewLifeButton: {fileID: 40404681}
-  MultiplyGoldButton: {fileID: 1722582993}
---- !u!4 &469836640
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469836638}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6170596, y: 13.039773, z: -11.050276}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474483772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,6 +2520,7 @@ GameObject:
   - component: {fileID: 978560668}
   - component: {fileID: 978560667}
   - component: {fileID: 978560669}
+  - component: {fileID: 978560670}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2617,6 +2546,7 @@ MonoBehaviour:
   ResourcesController: {fileID: 0}
   SpawnEnemiesController: {fileID: 0}
   EnemiesController: {fileID: 0}
+  ButtonController: {fileID: 0}
   InterfeceHand: {fileID: 582366259}
   ButtonNewMapBlock: {fileID: 1121071599819169386, guid: 255cea1bb8b55254a9c5b9484d090610,
     type: 3}
@@ -2627,7 +2557,6 @@ MonoBehaviour:
   InterfeceRandomCards: {fileID: 1350356891}
   LevelPanel: {fileID: 1036822847}
   DefeatInterfece: {fileID: 784015155}
-  ButtonController: {fileID: 469836639}
   CollectionController:
     AllCardsPower:
     - Power: 1
@@ -2683,6 +2612,34 @@ MonoBehaviour:
   LevelUpTextIron: {fileID: 56761524}
   LevelUpTextPower: {fileID: 487824494}
   PriceNewMapBlockText: {fileID: 73660779}
+--- !u!114 &978560670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978560666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acb99aad8879e3498b29af0ed20b2b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NewMapBlockButton: {fileID: 1124257061}
+  ReturnCardYourHandButton: {fileID: 1001520857}
+  DeleteBuildingsButton: {fileID: 1103172500}
+  ZoomAndScrollButton: {fileID: 755643965}
+  LevelUpBuildingButton: {fileID: 700700979}
+  HandBoxCollider: {fileID: 1023010498}
+  StartWaveButton: {fileID: 248216095}
+  OkRandomCardsButton: {fileID: 1254837727}
+  ReverseRandomCardsButton: {fileID: 1551912619}
+  PauseButton: {fileID: 1869884868}
+  OnPauseButton: {fileID: 1544616764}
+  OffPauseButton: {fileID: 631663426}
+  MenuButton: {fileID: 1279247803}
+  RestartButton: {fileID: 519495057}
+  NewLifeButton: {fileID: 40404681}
+  MultiplyGoldButton: {fileID: 1722582993}
 --- !u!1 &989682117
 GameObject:
   m_ObjectHideFlags: 0
@@ -4280,6 +4237,8 @@ GameObject:
   - component: {fileID: 1350356894}
   - component: {fileID: 1350356893}
   - component: {fileID: 1350356892}
+  - component: {fileID: 1350356897}
+  - component: {fileID: 1350356896}
   m_Layer: 5
   m_Name: InterfeceRandomCards
   m_TagString: Untagged
@@ -4370,6 +4329,39 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1350356896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350356891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6847182be6065b74c90c874df919e04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1350356897
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350356891}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1920, y: 1080, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1361638918
 GameObject:
   m_ObjectHideFlags: 0
@@ -5871,7 +5863,6 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 978560668}
-  - {fileID: 469836640}
   - {fileID: 582366263}
   - {fileID: 1740988961}
   - {fileID: 1350356895}

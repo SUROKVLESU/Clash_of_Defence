@@ -9,6 +9,7 @@ public class ButtonController:MonoBehaviour
     [SerializeField] Button ZoomAndScrollButton;
     [SerializeField] Button LevelUpBuildingButton;
     [SerializeField] BoxCollider HandBoxCollider;
+    [SerializeField] Button StartWaveButton;
 
     [Header("InterfeceRandomCards")]
     [SerializeField] Button OkRandomCardsButton;
@@ -17,7 +18,7 @@ public class ButtonController:MonoBehaviour
     [SerializeField] Button PauseButton;
     [SerializeField] GameObject OnPauseButton;
     [SerializeField] GameObject OffPauseButton;
-    [Header("LostInterfeceButton")]
+    [Header("DefeatInterfeceButton")]
     [SerializeField] Button MenuButton;
     [SerializeField] Button RestartButton;
     [SerializeField] Button NewLifeButton;
@@ -32,13 +33,17 @@ public class ButtonController:MonoBehaviour
             GameController.instance.InterfeceRandomCardsController.ReceiveRandomCards
                 (GameController.instance.RandomController.GetRandomCards(UnityEngine.Random.Range(2, 18)));
         });
-        OkRandomCardsButton.onClick.AddListener(() => { GameController.instance.InterfeceRandomCardsController.AddCards(); });
+        OkRandomCardsButton.onClick.AddListener(() => { 
+            GameController.instance.InterfeceRandomCardsController.AddCards();
+            OnInterfeceHand();
+        });
         LevelUpBuildingButton.onClick.AddListener(() => {
             GameController.instance.CardLevelController.LewelUpBuilding
                 (GameController.instance.MapController.SelectedCardGameObject?.Card);
         });
         PauseButton.onClick.AddListener(() =>
         {
+            if(!GameController.instance.WaveController.IsGame) return;
             if (OnPauseButton.activeSelf)
             {
                 OnPauseButton.SetActive(false);
@@ -56,6 +61,7 @@ public class ButtonController:MonoBehaviour
                 GameController.instance.SpawnEnemiesController.OffPause();
             }
         });
+        StartWaveButton.onClick.AddListener(() => { GameController.instance.WaveController.StartWave(); });
     }
     private void OnClickZoomAndScrollButton()
     {
@@ -91,6 +97,19 @@ public class ButtonController:MonoBehaviour
         DeleteBuildingsButton.enabled = true;
         ZoomAndScrollButton.enabled = true;
         GameController.instance.ZoomAndScroll.SetActive(false);
+    }
+    public void GetRandomCards()
+    {
+        OffInterfeceHand();
+        GameController.instance.ZoomAndScroll.SetActive(false);
+    }
+    public void OnStartWaveButton()
+    {
+        StartWaveButton.enabled = true;
+    }
+    public void OffStartWaveButton()
+    {
+        StartWaveButton.enabled = false;
     }
 }
 

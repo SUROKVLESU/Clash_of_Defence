@@ -65,7 +65,7 @@ public class MapBlock
         {
             for (int j = 0; j < SizeMap; j++)
             {
-                if (ArrayMapCell[i, j].Position == position && ArrayMapCell[i,j].Free)
+                if ((ArrayMapCell[i, j].Position - position).sqrMagnitude < 1 && ArrayMapCell[i,j].Free)
                 {
                     return true;
                 }
@@ -79,7 +79,7 @@ public class MapBlock
         {
             for (int j = 0; j < SizeMap; j++)
             {
-                if (ArrayMapCell[i, j].Position == position)
+                if ((ArrayMapCell[i, j].Position - position).sqrMagnitude<1)
                 {
                     ArrayMapCell[i, j].Free = free;
                 }

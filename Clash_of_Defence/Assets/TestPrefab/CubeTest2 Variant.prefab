@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1041385001189318442, guid: 7d4848def3e0ee84d840289843f0697e,
+        type: 3}
+      propertyPath: HP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041385001189318442, guid: 7d4848def3e0ee84d840289843f0697e,
+        type: 3}
+      propertyPath: AttackRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041385001189318442, guid: 7d4848def3e0ee84d840289843f0697e,
+        type: 3}
+      propertyPath: AttackReloading
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041385001189318442, guid: 7d4848def3e0ee84d840289843f0697e,
+        type: 3}
+      propertyPath: Damage.Physical
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4867832854460605849, guid: 7d4848def3e0ee84d840289843f0697e,
         type: 3}
       propertyPath: m_Name
