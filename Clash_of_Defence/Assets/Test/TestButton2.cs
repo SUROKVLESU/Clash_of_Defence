@@ -10,7 +10,7 @@ public class TestButton2:MonoBehaviour
         button.onClick.AddListener(() =>
         {
             GameController.instance.SpawnEnemiesController.SpawnEnemies
-            (GameController.instance.RandomController.GetRandomEnemies(GameController.instance.WaveController.CurentPowerEnemies));
+            (GameController.instance.RandomController.GetRandomEnemies(GameController.instance.WaveController.CurentMaxPowerEnemies));
             GameController.instance.ButtonController.OffInterfeceHand();
         });
     }

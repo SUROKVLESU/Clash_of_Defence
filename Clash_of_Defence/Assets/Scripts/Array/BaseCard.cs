@@ -4,6 +4,7 @@
 public class BaseCard: BaseEssenceObject
 {
     public GameObject CardCover;
-    public Resources[] Price;
+    public Resources[] PriceBuilding;
+    public int[] PriceCard;
 }
 

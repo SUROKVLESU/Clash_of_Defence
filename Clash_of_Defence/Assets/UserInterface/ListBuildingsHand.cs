@@ -59,21 +59,7 @@ public class ListBuildingsHand : MonoBehaviour
             }
             return;
         }
-        /*if (Math.Abs(OldMousePosition.x-Input.mousePosition.x)<= Sensitivity
-            || Math.Abs(OldMousePosition.x - Input.mousePosition.x) >= CardScrolling)
-        {
-            OldMousePosition = Input.mousePosition;
-            return;
-        }*/
         float MousePositionX = Input.mousePosition.x-OldMousePosition.x;
-        /*if (MousePositionX > CardScrolling)
-        {
-            MousePositionX = CardScrolling;
-        }
-        else if (MousePositionX < -CardScrolling)
-        {
-            MousePositionX = -CardScrolling;
-        }*/
         if (RectTransformCards.Length>=1&& RectTransformCards[0].localPosition.x<=FrontierLCard
             && RectTransformCards[RectTransformCards.Length-1].localPosition.x>=FrontierRCard)
         { 

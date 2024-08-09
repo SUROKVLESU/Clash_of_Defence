@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System;
 public class ResourcesController:MonoBehaviour
 {
-    [HideInInspector] public int Gold;
+    /*[HideInInspector]*/ public int Gold;
     [HideInInspector] public Resources GameResources;
     [HideInInspector] public Resources PriceNewMapBlock = new Resources() { Gold=500};
     [HideInInspector] public bool IsMultiplier = false;
@@ -21,6 +21,8 @@ public class ResourcesController:MonoBehaviour
     [SerializeField] Text PriceNewMapBlockText;
     [Header("DefeatInterfece")]
     [SerializeField] Text DefeatText;
+    [Header("ShopInterfece")]
+    [SerializeField] Text TextGoldShop;
     public ResourcesController()
     {
         GameResources = new() {Gold=200,Iron=0,Power=0 };
@@ -98,5 +100,9 @@ public class ResourcesController:MonoBehaviour
             return number.ToString() + "K";
         }
         return number.ToString();
+    }
+    public void PrintShopGold()
+    {
+        TextGoldShop.text = ":" + CircumcisionNumber(Gold);
     }
 }

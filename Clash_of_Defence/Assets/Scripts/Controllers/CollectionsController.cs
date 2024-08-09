@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 [Serializable]
 public class CollectionsController
@@ -257,6 +258,18 @@ public class CollectionsController
             }
         }
         InitializationUnlockedPower();
+    }
+    public List<BaseCard> GetAllCards()
+    {
+        List<BaseCard> arr = new List<BaseCard>();
+        for (int i = 0; i < AllCardsPower.Length; i++)
+        {
+            for (int j = 0; j < AllCardsPower[i].Length; j++)
+            {
+                arr.Add((BaseCard)AllCardsPower[i][j]);
+            }
+        }
+        return arr;
     }
 }
 

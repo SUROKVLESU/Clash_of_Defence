@@ -48,12 +48,14 @@ public class BaseEssenceObject: ScriptableObject
     {
         return CurrentMaxLevel;
     }
-    public void SetCurrentMaxLevel(int currentMaxLevelCard)
+    public bool SetCurrentMaxLevel(int currentMaxLevelCard)
     {
         if (currentMaxLevelCard >= 0 && currentMaxLevelCard <= MaxLevel)
         {
             this.CurrentMaxLevel = currentMaxLevelCard;
+            return true;
         }
+        else return false;
     }
     public void ResetLevel()
     {

@@ -96,7 +96,7 @@ public class InterfeceRandomCardsController:MonoBehaviour
         GameController.instance.InterfeceRandomCards.SetActive(true);
         Initialization();
         ReceiveRandomCards(GameController.instance.RandomController.GetRandomCards
-            (GameController.instance.WaveController.CurentPowerCards));
+            (GameController.instance.WaveController.CurentMaxPowerCards));
         GameController.instance.ButtonController.GetRandomCards();
         GameController.instance.ButtonController.OffStartWaveButton();
     }

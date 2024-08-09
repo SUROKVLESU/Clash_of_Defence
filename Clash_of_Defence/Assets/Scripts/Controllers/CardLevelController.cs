@@ -5,7 +5,7 @@ public class CardLevelController
     {
         if (baseCard == null) return;
         GameController.instance.ResourcesController.UpdateGameResources
-            (GameController.instance.MapController.SelectedCardGameObject.Card.Price
+            (GameController.instance.MapController.SelectedCardGameObject.Card.PriceBuilding
             [GameController.instance.MapController.SelectedCardGameObject.Card.GetLevel() + 1],false);
         GameController.instance.MapController.LewelUpBuilding
             (GameController.instance.CollectionController.LevelUpBaseCard(baseCard));
@@ -22,7 +22,7 @@ public class CardLevelController
             return;
         }
         if (onOff && !GameController.instance.MapController.SelectedCardGameObject.Card.IsMaxLevel()
-            && GameController.instance.MapController.SelectedCardGameObject.Card.Price
+            && GameController.instance.MapController.SelectedCardGameObject.Card.PriceBuilding
             [GameController.instance.MapController.SelectedCardGameObject.Card.GetLevel()+1]
             <= GameController.instance.ResourcesController.GameResources)
         {
@@ -30,19 +30,19 @@ public class CardLevelController
             GameController.instance.LevelPanel.transform.GetChild(3).gameObject.SetActive(onOff);
             GameController.instance.LevelPanel.transform.GetChild(2).gameObject.SetActive(false);
             GameController.instance.ResourcesController.SetTextOnUpdate
-                (GameController.instance.MapController.SelectedCardGameObject.Card.Price
+                (GameController.instance.MapController.SelectedCardGameObject.Card.PriceBuilding
             [GameController.instance.MapController.SelectedCardGameObject.Card.GetLevel() + 1]);
             return;
         }
         if(onOff && !GameController.instance.MapController.SelectedCardGameObject.Card.IsMaxLevel()
-            && !(GameController.instance.MapController.SelectedCardGameObject.Card.Price
+            && !(GameController.instance.MapController.SelectedCardGameObject.Card.PriceBuilding
             [GameController.instance.MapController.SelectedCardGameObject.Card.GetLevel() + 1]
             <= GameController.instance.ResourcesController.GameResources))
         {
             GameController.instance.LevelPanel.transform.GetChild(2).gameObject.SetActive(true);
             GameController.instance.LevelPanel.transform.GetChild(3).gameObject.SetActive(true);
             GameController.instance.ResourcesController.SetTextOnUpdate
-                (GameController.instance.MapController.SelectedCardGameObject.Card.Price
+                (GameController.instance.MapController.SelectedCardGameObject.Card.PriceBuilding
             [GameController.instance.MapController.SelectedCardGameObject.Card.GetLevel() + 1]);
         }
     }

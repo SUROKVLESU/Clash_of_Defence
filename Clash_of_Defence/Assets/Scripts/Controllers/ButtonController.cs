@@ -24,6 +24,8 @@ public class ButtonController:MonoBehaviour
     [SerializeField] Button RestartButton;
     [SerializeField] Button NewLifeButton;
     [SerializeField] Button MultiplyGoldButton;
+    [Header("ShopInterfece")]
+    [SerializeField] Button ExitShopButton;
     private void Awake()
     {
         NewMapBlockButton.onClick.AddListener(() => { GameController.instance.MapController.CreateButtonNewMapBlock(); });
@@ -33,7 +35,7 @@ public class ButtonController:MonoBehaviour
         ReverseRandomCardsButton.onClick.AddListener(() => {
             GameController.instance.InterfeceRandomCardsController.ReceiveRandomCards
                 (GameController.instance.RandomController.GetRandomCards
-                (GameController.instance.WaveController.CurentPowerCards));
+                (GameController.instance.WaveController.CurentMaxPowerCards));
         });
         OkRandomCardsButton.onClick.AddListener(() => { 
             GameController.instance.InterfeceRandomCardsController.AddCards();});
@@ -66,6 +68,7 @@ public class ButtonController:MonoBehaviour
         RestartButton.onClick.AddListener(() => { RestartGame(); });
         MultiplyGoldButton.onClick.AddListener(() => { GameController.instance.ResourcesController.MultiplierResources(); });
         NewLifeButton.onClick.AddListener(() => { NewLife(); });
+        ExitShopButton.onClick.AddListener(() => { ExitShop(); });
     }
     private void OnClickZoomAndScrollButton()
     {
@@ -133,7 +136,7 @@ public class ButtonController:MonoBehaviour
         GameController.instance.Camera.transform.position = new Vector3(0,15,-12);
         GameController.instance.StartGame();
     }
-    public void NewLife()
+    private void NewLife()
     {
         if (GameController.instance.WaveController.IsPlayerDefeat) return;
         GameController.instance.WaveController.IsPlayerDefeat = true;
@@ -142,6 +145,11 @@ public class ButtonController:MonoBehaviour
             (GameController.instance.ResourcesController.GameResources * (-1));
         GameController.instance.InterfeceHand.SetActive (true);
         GameController.instance.DefeatInterfece.SetActive (false);
+    }
+    private void ExitShop()
+    {
+        //GameController.instance.MenuInterfece.SetActive(true);
+        GameController.instance.ShopInterfeceObject.SetActive (false);
     }
 }
 

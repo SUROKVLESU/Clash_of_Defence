@@ -1,10 +1,11 @@
 ﻿
 public class WaveController
 {
-    public int CurentPowerCards;
+    public int CurentMaxPowerCards;
     private const int MaxBoostCards = 3;
-    public int CurentPowerEnemies;
+    public int CurentMaxPowerEnemies;
     private const int MaxBoostEnemies = 6;
+    private const int MinBoostEnemies = 4;
     public bool IsGame = false;
     public bool IsPlayerDefeat = false;
     public int CountWave = 1;
@@ -42,8 +43,9 @@ public class WaveController
     }
     public void PowerBoost()
     {
-        CurentPowerCards+= UnityEngine.Random.Range(1, MaxBoostCards+1);
-        CurentPowerEnemies += UnityEngine.Random.Range(1, MaxBoostEnemies + 1);
+
+        CurentMaxPowerCards+= UnityEngine.Random.Range(1, MaxBoostCards+1);
+        CurentMaxPowerEnemies += UnityEngine.Random.Range(1, MaxBoostEnemies + 1);
     }
     public void StartWave()
     {
@@ -56,13 +58,13 @@ public class WaveController
         IsGame= true;
         GameController.instance.MapController.CancellationSelected();
         GameController.instance.SpawnEnemiesController.SpawnEnemies
-            (GameController.instance.RandomController.GetRandomEnemies(GameController.instance.WaveController.CurentPowerEnemies));
+            (GameController.instance.RandomController.GetRandomEnemies(GameController.instance.WaveController.CurentMaxPowerEnemies));
         GameController.instance.ButtonController.OffInterfeceHand();
     }
     public void Initialization()
     {
-        CurentPowerCards = UnityEngine.Random.Range(2, 18);
-        CurentPowerEnemies = UnityEngine.Random.Range(2, 18);
+        CurentMaxPowerCards = UnityEngine.Random.Range(2, 18);
+        CurentMaxPowerEnemies = UnityEngine.Random.Range(2, 18);
         IsPlayerDefeat = false;
         IsPlayerDefeat = false;
         CountWave = 1;
