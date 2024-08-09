@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     public GameObject LevelPanel;
     public GameObject DefeatInterfece;
     public GameObject MenuInterfece;
+    public Text CountWaveText;
     public CollectionsController CollectionController;
     public void StartGame()
     {

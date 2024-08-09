@@ -8,8 +8,7 @@ public class StartGame:MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(() => {
-            GameController.instance.ButtonController.OffMenuInterfece();
-            GameController.instance.StartGame();
+            GameController.instance.ButtonController.RestartGame();
         });
     }
 }

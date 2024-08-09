@@ -63,7 +63,9 @@ public class ButtonController:MonoBehaviour
         });
         StartWaveButton.onClick.AddListener(() => { GameController.instance.WaveController.StartWave(); });
         MenuButton.onClick.AddListener(() => { GameController.instance.WaveController.OnMenuInterfece(); });
-        RestartButton.onClick.AddListener(() => { OffMenuInterfece(); });
+        RestartButton.onClick.AddListener(() => { RestartGame(); });
+        MultiplyGoldButton.onClick.AddListener(() => { GameController.instance.ResourcesController.MultiplierResources(); });
+        NewLifeButton.onClick.AddListener(() => { NewLife(); });
     }
     private void OnClickZoomAndScrollButton()
     {
@@ -118,7 +120,7 @@ public class ButtonController:MonoBehaviour
         GameController.instance.InterfeceHand.SetActive(false);
         GameController.instance.MenuInterfece.SetActive(true);
     }
-    public void OffMenuInterfece()
+    public void RestartGame()
     {
         GameController.instance.InterfeceHand.SetActive(true);
         GameController.instance.MenuInterfece.SetActive(false);
@@ -129,6 +131,17 @@ public class ButtonController:MonoBehaviour
         GameController.instance.CollectionController.Initialization();
         GameController.instance.CardListController.ResetController();
         GameController.instance.Camera.transform.position = new Vector3(0,15,-12);
+        GameController.instance.StartGame();
+    }
+    public void NewLife()
+    {
+        if (GameController.instance.WaveController.IsPlayerDefeat) return;
+        GameController.instance.WaveController.IsPlayerDefeat = true;
+        GameController.instance.InterfeceRandomCardsController.GetRandomCards();
+        GameController.instance.ResourcesController.SaveGameGold
+            (GameController.instance.ResourcesController.GameResources * (-1));
+        GameController.instance.InterfeceHand.SetActive (true);
+        GameController.instance.DefeatInterfece.SetActive (false);
     }
 }
 
