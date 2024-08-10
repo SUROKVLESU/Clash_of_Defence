@@ -11,18 +11,32 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
 
     public virtual void SearchAttackTarget()
     {
+        if (GameController.instance.EnemiesController.Enemies.Count==0) return;
+        GameObject attackTarget = null;
         for (int i = 0; i < GameController.instance.EnemiesController.Enemies.Count; i++)
         {
-            if (GameController.instance.EnemiesController.Enemies[i].activeSelf 
-                && (GameController.instance.EnemiesController.Enemies[i].transform.position - transform.position).sqrMagnitude
+            if ((GameController.instance.EnemiesController.Enemies[i].transform.position - transform.position).sqrMagnitude
                 <= (AttackRadius * AttackRadius))
             {
-                TransformAttackTarget = GameController.instance.EnemiesController.Enemies[i].transform;
-                AttackTarget = TransformAttackTarget.GetComponent<IBaseInterface>();
-                return;
+                attackTarget = GameController.instance.EnemiesController.Enemies[i];
+                break;
             }
         }
-
+        if (attackTarget == null) return;
+        for (int i = 0; i < GameController.instance.EnemiesController.Enemies.Count; i++)
+        {
+            if ((GameController.instance.EnemiesController.Enemies[i].transform.position - transform.position).sqrMagnitude
+                <= (AttackRadius * AttackRadius))
+            {
+                if ((GameController.instance.EnemiesController.Enemies[i].transform.position - transform.position).sqrMagnitude
+                <= (attackTarget.transform.position - transform.position).sqrMagnitude)
+                {
+                    attackTarget = GameController.instance.EnemiesController.Enemies[i];
+                }
+            }
+        }
+        TransformAttackTarget = attackTarget.transform;
+        AttackTarget = TransformAttackTarget.GetComponent<IBaseInterface>();
     }
     public virtual void Attack()
     {

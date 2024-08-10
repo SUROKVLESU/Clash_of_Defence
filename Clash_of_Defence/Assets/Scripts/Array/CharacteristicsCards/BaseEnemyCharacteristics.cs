@@ -6,6 +6,9 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     [SerializeField] protected float SpeedMovement;
     [SerializeField] protected Resources FallingResources;
     protected event Action MovementEvent;
+    protected float Angle;
+    protected bool IsAimingTarget = false;
+    protected const float RotSpeed = 400f;
 
     public virtual void Move()
     {
@@ -32,6 +35,8 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     protected virtual IEnumerator MovementCoroutine()
     {
         if (TransformAttackTarget == null) yield break;
+        Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
+        StartCoroutine(AimingTargetCoroutine());
         while (true)
         {
             if (!TransformAttackTarget.gameObject.activeSelf)
@@ -97,6 +102,31 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     private void Awake()
     {
         MovementEvent += Attack;
+    }
+    protected virtual IEnumerator AimingTargetCoroutine()
+    {
+        if (IsAimingTarget)
+        {
+            while (true)
+            {
+                if(!IsAimingTarget) break;
+                yield return null;
+            }
+        }
+        IsAimingTarget = true;
+        while (true)
+        {
+            if(!IsAimingTarget) continue;
+            if (TransformAttackTarget == null)
+            {
+                yield break;
+            }
+            transform.rotation = Quaternion.Euler(Vector3.MoveTowards(transform.rotation.eulerAngles,
+            new Vector3(0, Angle, 0), RotSpeed * Time.deltaTime));
+            if ((int)transform.rotation.eulerAngles.y == (int)Angle) break;
+            yield return null;
+        }
+        IsAimingTarget=false;
     }
 }
 public interface IMovement
