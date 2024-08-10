@@ -26,12 +26,14 @@ public class GameController : MonoBehaviour
         ButtonController = gameObject.GetComponent<ButtonController>();
         EnemiesController = gameObject.AddComponent<EnemiesController> ();
         WaveController = new();
+        SaveGame = new();
         StartHeightCamera = Camera.transform.position.y;
         ChangingNumberCards = new Action(() => { });
     }
     private void Start()
     {
         ButtonController.OnMenuInterfece();
+        SaveGame.Load();
     }
     [HideInInspector] public float StartHeightCamera;
     public Action ChangingNumberCards;
@@ -44,6 +46,7 @@ public class GameController : MonoBehaviour
     [HideInInspector] public EnemiesController EnemiesController;
     [HideInInspector] public WaveController WaveController;
     [HideInInspector] public ButtonController ButtonController;
+    [HideInInspector] public SaveGame SaveGame;
     public RandomController RandomController;
     public GameObject InterfeceHand;
     public GameObject ButtonNewMapBlock;

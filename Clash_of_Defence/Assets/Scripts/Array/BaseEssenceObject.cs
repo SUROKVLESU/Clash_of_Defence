@@ -57,6 +57,13 @@ public class BaseEssenceObject: ScriptableObject
         }
         else return false;
     }
+    public void LoadCurentMaxLevel(int currentMaxLevelCard)
+    {
+        if (currentMaxLevelCard >= 0 && currentMaxLevelCard <= MaxLevel)
+        {
+            this.CurrentMaxLevel = currentMaxLevelCard;
+        }
+    }
     public void ResetLevel()
     {
         Level = 1;

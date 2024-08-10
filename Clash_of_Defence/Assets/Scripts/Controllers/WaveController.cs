@@ -18,6 +18,7 @@ public class WaveController
     {
         GameController.instance.DefeatInterfece.SetActive(true);
         GameController.instance.InterfeceHand.SetActive(false);
+        GameController.instance.SaveGame.Save();
     }
     public void EnemiesDefeat()
     {

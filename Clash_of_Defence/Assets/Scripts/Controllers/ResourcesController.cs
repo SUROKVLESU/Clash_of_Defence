@@ -77,6 +77,7 @@ public class ResourcesController:MonoBehaviour
         SaveGameGold(GameResources * MultiplierGameResources - GameResources);
         GameResources*=MultiplierGameResources;
         PrintDefeatGold();
+        GameController.instance.SaveGame.Save();
     }
     public void PrintDefeatGold()
     {

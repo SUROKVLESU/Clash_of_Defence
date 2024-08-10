@@ -150,6 +150,7 @@ public class ButtonController:MonoBehaviour
     {
         //GameController.instance.MenuInterfece.SetActive(true);
         GameController.instance.ShopInterfeceObject.SetActive (false);
+        GameController.instance.SaveGame.Save();
     }
 }
 
