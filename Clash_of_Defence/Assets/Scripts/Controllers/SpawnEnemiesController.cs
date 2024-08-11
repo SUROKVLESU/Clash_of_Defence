@@ -5,7 +5,7 @@ public class SpawnEnemiesController:MonoBehaviour
 {
     private const float DistanceSpawn = 40;
     private const float DepthSpawn = 5;//пока не используется(глубина спавна)
-    private const float SpawnReloading = 6;
+    private const float SpawnReloading = 2;
     private Coroutine Coroutine;
     private const float MaxStartFraction = 0.5f;
     private BaseEssenceObject[] EnemiesSpawn = new BaseEssenceObject[0];

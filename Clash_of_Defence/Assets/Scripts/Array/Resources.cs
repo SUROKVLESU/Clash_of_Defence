@@ -19,15 +19,15 @@ public class Resources
     }
     public static bool operator <(Resources resourcesL, Resources resourcesR)
     {
-        if (resourcesL.Gold < resourcesR.Gold && resourcesL.Iron < resourcesR.Iron && resourcesL.Power < resourcesR.Power)
-            return true;
-        else return false;
+        if (resourcesL.Gold >= resourcesR.Gold && resourcesL.Iron >= resourcesR.Iron && resourcesL.Power >= resourcesR.Power)
+            return false;
+        else return true;
     }
     public static bool operator >(Resources resourcesL, Resources resourcesR)
     {
-        if (resourcesL.Gold > resourcesR.Gold && resourcesL.Iron > resourcesR.Iron && resourcesL.Power > resourcesR.Power)
-            return true;
-        else return false;
+        if (resourcesL.Gold <= resourcesR.Gold && resourcesL.Iron <= resourcesR.Iron && resourcesL.Power <= resourcesR.Power)
+            return false;
+        else return true;
     }
     public static Resources operator -(Resources resourcesL, Resources resourcesR)
     {

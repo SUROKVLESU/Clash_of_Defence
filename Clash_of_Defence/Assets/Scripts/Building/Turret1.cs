@@ -6,16 +6,18 @@ public class Turret1:AttackingBuildingCharacteristics
 {
     protected Transform TransformTower;
     protected float Angle;
-    protected const float RotSpeed = 270f;
+    protected const float RotSpeed = 100f;
+    protected AudioSource AudioSource;
     private void Start()
     {
         TransformTower = transform.GetChild(0);
+        AudioSource = GetComponent<AudioSource>();
         ActivationBuildings();
     }
     public override void ActivationBuildings()
     {
         base.ActivationBuildings();
-        Coroutine = Coroutine = StartCoroutine(AimingTargetCoroutine());
+        Coroutine = StartCoroutine(AimingTargetCoroutine());
     }
     protected virtual void TurningTower()
     {
@@ -49,6 +51,7 @@ public class Turret1:AttackingBuildingCharacteristics
                 Coroutine = StartCoroutine(AimingTargetCoroutine());
                 yield break;
             }
+            AudioSource.PlayOneShot(AudioSource.clip);
             if (!AttackTarget.TakingDamage(Damage))
             {
                 TransformAttackTarget = null;

@@ -101,7 +101,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     }
     private void Awake()
     {
-        MovementEvent += Attack;
+        MovementEvent += ()=> { Coroutine = StartCoroutine(AttackCoroutine()); };
     }
     protected virtual IEnumerator AimingTargetCoroutine()
     {

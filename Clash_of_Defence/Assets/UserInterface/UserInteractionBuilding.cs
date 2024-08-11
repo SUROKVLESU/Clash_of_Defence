@@ -7,7 +7,7 @@ public class UserInteractionBuilding : MonoBehaviour
     private static int NextUniqueNumber = 0;
     private Vector3 MousePositionDown;
     private Vector2Int OldPosition;
-    private float ScrollStep;
+    private float ScrollStep = 180;
     private Vector2Int newPosition;
     private bool Selected = false;
     private bool Moved = false;
@@ -15,7 +15,7 @@ public class UserInteractionBuilding : MonoBehaviour
     private const int SizeCell = 4;
     private void Awake()
     {
-        ScrollStep = 180 * (Screen.currentResolution.height / 1080);
+        ScrollStep *= (Screen.currentResolution.height / 1080);
         UniqueNumber = NextUniqueNumber++;
     }
     private void OnMouseDown()
@@ -40,7 +40,8 @@ public class UserInteractionBuilding : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        GameController.instance.MapController.SetFreeCell(newPosition, false);
+        Vector2Int vector2Int = new Vector2Int((int)transform.position.x, (int)transform.position.z);
+        GameController.instance.MapController.SetFreeCell(vector2Int, false);
         if (Moved)
         {
             SelectedBuilding(false);

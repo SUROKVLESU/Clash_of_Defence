@@ -3,7 +3,7 @@ using System.Collections;
 public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterface
 {
     [SerializeField] protected Attributes Damage;
-    [SerializeField] protected int AttackReloading;
+    [SerializeField] protected float AttackReloading;
     [SerializeField] protected float AttackRadius;
     protected IBaseInterface AttackTarget;
     protected Transform TransformAttackTarget;
@@ -38,10 +38,7 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
         TransformAttackTarget = attackTarget.transform;
         AttackTarget = TransformAttackTarget.GetComponent<IBaseInterface>();
     }
-    public virtual void Attack()
-    {
-        Coroutine=StartCoroutine(AttackCoroutine());
-    }
+    public virtual void Attack(){ }
     protected virtual IEnumerator AttackCoroutine()
     {
         while (true)
