@@ -9,6 +9,7 @@ public class Turret1 : AttackingBuildingCharacteristics
     protected const float RotSpeed = 100f;
     protected AudioSource AudioSource;
     protected Animator Animator;
+    [SerializeField] protected string AnimationName;
     private void Start()
     {
         TransformTower = transform.GetChild(0);
@@ -54,7 +55,7 @@ public class Turret1 : AttackingBuildingCharacteristics
                 yield break;
             }
             AudioSource.PlayOneShot(AudioSource.clip);
-            Animator.Play("CubeTest");
+            Animator.Play(AnimationName);
             if (!AttackTarget.TakingDamage(Damage))
             {
                 TransformAttackTarget = null;

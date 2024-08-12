@@ -10,26 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e931b32f61c3f014c96ea4154b4c84a2, type: 3}
-  m_Name: Id0BaseCard
+  m_Name: Id0MainBuilding
   m_EditorClassIdentifier: 
   Id: 0
   Name: 
-  CurrentMaxLevel: 2
+  CurrentMaxLevel: 1
   Power: 1
   ProbabilityFalling: 2
   GameObjects:
-  - {fileID: 4867832854460605849, guid: 7d4848def3e0ee84d840289843f0697e, type: 3}
-  - {fileID: 8374920033024172914, guid: c221f1e62c32d134fb528c0b79a5c1d4, type: 3}
-  CardCover: {fileID: 4780246985810963226, guid: ff7ce727e9cd5a7459869007d9ebcfb3,
+  - {fileID: 8244070023005224609, guid: 2ef6e9de184c8a54b9a2ebcaf5dc85db, type: 3}
+  CardCover: {fileID: 6711170651937843983, guid: d574156f16c8ebb428ce9fe56c62d949,
     type: 3}
   PriceBuilding:
   - Gold: 0
     Iron: 0
     Power: 0
-  - Gold: 0
-    Iron: 0
-    Power: 0
-  PriceCard: 0a00000032000000
+  PriceCard: 00000000
   SizeMapCell:
     Sizes:
-    - line: 01
+    - line: 0101
+    - line: 0101
