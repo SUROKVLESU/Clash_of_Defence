@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MapController:MonoBehaviour
@@ -15,6 +14,7 @@ public class MapController:MonoBehaviour
     public int ActiveCount {  get;  set; }
     private float Radius = 10;
     private const int SizeMapXxX = 20;
+    private const int SizeCell = 4;
     public MapController()
     {
         ArrayMapBlock = new MapBlock[] { new MapBlock() };
@@ -42,11 +42,11 @@ public class MapController:MonoBehaviour
             }
         }
     }
-    public bool IsFreeCell()
+    public bool IsFreeCell(SizeMapCell sizeMapCell)
     {
         for (int i = 0; i < ArrayMapBlock.Length; i++)
         {
-            if(ArrayMapBlock[i].IsFreeCell())
+            if(ArrayMapBlock[i].IsFreeCell(sizeMapCell))
             {
                 return true;
             }
@@ -79,15 +79,16 @@ public class MapController:MonoBehaviour
             arr[i]=Buildings[i];
         }
         GameObject gameObject = Instantiate(baseCard.GameObjects[baseCard.GetLevel()]);
-        MapCell FreeCell = SearchFreeCell();
+        MapCell FreeCell = SearchFreeCell(baseCard.SizeMapCell);
         gameObject.transform.position = new Vector3(FreeCell.Position.x,0,FreeCell.Position.y);
         arr[Buildings.Length] = gameObject;
         Buildings = arr;
         Buildings[Buildings.Length-1].GetComponent<UserInteractionBuilding>().Card = baseCard;
-        FreeCell.Free=false;
+        SetFreeCell(FreeCell.Position,baseCard.SizeMapCell,false);
+        //FreeCell.Free=false;
         ActiveCount += 1;
     }
-    private MapCell SearchFreeCell()
+    private MapCell SearchFreeCell(SizeMapCell sizeMapCell)
     {
         Vector2Int vector = GetCenterScreenWorldCoordinate();
         int tryingFind = 1;
@@ -98,9 +99,9 @@ public class MapController:MonoBehaviour
             {
                 if (Mathf.Abs(ArrayMapBlock[i].Position.x - vector.x) < SizeMapXxX * tryingFind/2
                     && Mathf.Abs(ArrayMapBlock[i].Position.y - vector.y) < SizeMapXxX * tryingFind/2
-                    && ArrayMapBlock[i].IsFreeCell())
+                    && ArrayMapBlock[i].IsFreeCell(sizeMapCell))
                 {
-                    result= ArrayMapBlock[i].SearchFreeCell();
+                    result= ArrayMapBlock[i].SearchFreeCell(sizeMapCell);
                     break;
                 }
             }
@@ -108,22 +109,72 @@ public class MapController:MonoBehaviour
         }
         return result;
     }
-    public bool IsPositionCell(Vector2Int position)
+    private MapCell SearchFreeCell(Vector2Int position)
     {
         for (int i = 0; i < ArrayMapBlock.Length; i++)
         {
-            if (ArrayMapBlock[i].IsPositionCell(position))
+            MapCell result = ArrayMapBlock[i].SearchFreeCell(position);
+            if (result != null)
+            {
+                return result;
+            }
+        }
+        return null;
+    }
+    public bool IsPositionCell(Vector2Int position,SizeMapCell sizeMapCell)
+    {
+        for (int i = 0; i < ArrayMapBlock.Length; i++)
+        {
+            if (ArrayMapBlock[i].IsPositionSizeMapCell(position,sizeMapCell))
             {
                 return true;
             }
         }
         return false;
     }
-    public void SetFreeCell(Vector2Int position, bool free)
+    public bool IsPositionCellSizeMapCell(Vector2Int position,SizeMapCell sizeMapCell)
+    {
+        for (int k = 0; k < sizeMapCell.Sizes.Length; k++)
+        {
+            for (int l = 0; l < sizeMapCell.Sizes[k].line.Length; l++)
+            {
+                if (sizeMapCell.Sizes[k].line[l]
+                    && IsPositionCell(new Vector2Int(position.x + SizeCell * l, position.y + SizeCell * k)))
+                {
+                    continue;
+                }
+                else return false;
+            }
+        }
+        return true;
+    }
+    public bool IsPositionCell(Vector2Int position)
     {
         for (int i = 0; i < ArrayMapBlock.Length; i++)
         {
-            ArrayMapBlock[i].SetFreeCell(position, free);
+            if (ArrayMapBlock[i].IsPositionCell(position))
+            {
+                return true ;
+            }
+        }
+        return false;
+    }
+    public void SetFreeCell(Vector2Int position,SizeMapCell sizeMapCell, bool free)
+    {
+        /*for (int i = 0; i < ArrayMapBlock.Length; i++)
+        {
+            ArrayMapBlock[i].SetFreeCell(position,sizeMapCell, free);
+        }
+        */
+        for (int k = 0; k < sizeMapCell.Sizes.Length; k++)
+        {
+            for (int l = 0; l < sizeMapCell.Sizes[k].line.Length; l++)
+            {
+                if (sizeMapCell.Sizes[k].line[l])
+                {
+                    SearchFreeCell(new Vector2Int(position.x + SizeCell * l, position.y + SizeCell * k)).Free=free;
+                }
+            }
         }
     }
     public void CreateButtonNewMapBlock()
@@ -227,7 +278,8 @@ public class MapController:MonoBehaviour
         }
         GameController.instance.CardListController.ReturnCardYourHand(SelectedCardGameObject.Card);
         SetFreeCell(new Vector2Int
-            ((int)SelectedCardGameObject.transform.position.x, (int)SelectedCardGameObject.transform.position.z), true);
+            ((int)SelectedCardGameObject.transform.position.x, (int)SelectedCardGameObject.transform.position.z)
+            , SelectedCardGameObject.Card.SizeMapCell, true);
         GameObject[] arr = new GameObject[Buildings.Length-1];
         for (int i = 0,j=0; i < Buildings.Length; i++,j++)
         {
@@ -249,10 +301,9 @@ public class MapController:MonoBehaviour
     {
         if (Buildings.Length == 0) { return; }
         GameController.instance.CardListController.ReturnAllCardYourHand();
+        ResetFreeMapCell();
         for (int i = 0; i < Buildings.Length; i++)
         {
-            SetFreeCell(new Vector2Int
-            ((int)Buildings[i].transform.position.x, (int)Buildings[i].transform.position.z), true);
             Destroy (Buildings[i].gameObject);
         }
         Buildings = new GameObject [0];
@@ -300,12 +351,16 @@ public class MapController:MonoBehaviour
     }
     public void ActivationBuildings()
     {
+        IBaseInterface attacking;
         for (int i = 0; i < Buildings.Length; i++)
         {
             Buildings[i].SetActive(true);
-            IBaseInterface attacking = Buildings[i].GetComponent<IBaseInterface>();
+            attacking = Buildings[i].GetComponent<IBaseInterface>();
+            if (attacking.GetHP()<0)
+            {
+                attacking.ActivationBuildings();
+            }
             attacking.ResetHP();
-            attacking.ActivationBuildings();
         }
         ActiveCount = Buildings.Length;
     }
@@ -370,6 +425,13 @@ public class MapController:MonoBehaviour
                     ArrayNewPositionMapBlock[i] = new Vector3Int(SizeMapXxX, 0, 0);
                     break;
             }
+        }
+    }
+    private void ResetFreeMapCell()
+    {
+        foreach (var item in ArrayMapBlock)
+        {
+            item.ResetFreeMapCell();
         }
     }
 }

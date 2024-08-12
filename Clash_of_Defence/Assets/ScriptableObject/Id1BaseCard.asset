@@ -26,3 +26,6 @@ MonoBehaviour:
     Iron: 0
     Power: 0
   PriceCard: 00000000
+  SizeMapCell:
+    Sizes:
+    - line: 01

@@ -2,16 +2,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class Turret1:AttackingBuildingCharacteristics
+public class Turret1 : AttackingBuildingCharacteristics
 {
     protected Transform TransformTower;
     protected float Angle;
     protected const float RotSpeed = 100f;
     protected AudioSource AudioSource;
+    protected Animator Animator;
     private void Start()
     {
         TransformTower = transform.GetChild(0);
         AudioSource = GetComponent<AudioSource>();
+        Animator = GetComponent<Animator>();
         ActivationBuildings();
     }
     public override void ActivationBuildings()
@@ -23,8 +25,8 @@ public class Turret1:AttackingBuildingCharacteristics
     {
         if(TransformAttackTarget == null) return;
         Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
-        TransformTower.rotation= Quaternion.Euler(Vector3.MoveTowards(TransformTower.rotation.eulerAngles,
-            new Vector3(0,Angle,0), RotSpeed * Time.deltaTime));
+        TransformTower.rotation= Quaternion.Euler(new Vector3
+            (0,MySpecialClass.MyMoveTowards(TransformTower.rotation.eulerAngles.y, Angle,RotSpeed),0));
     }
     protected virtual IEnumerator AimingTargetCoroutine()
     {
@@ -52,10 +54,13 @@ public class Turret1:AttackingBuildingCharacteristics
                 yield break;
             }
             AudioSource.PlayOneShot(AudioSource.clip);
+            Animator.Play("CubeTest");
             if (!AttackTarget.TakingDamage(Damage))
             {
                 TransformAttackTarget = null;
                 AttackTarget = null;
+                Coroutine = StartCoroutine(AimingTargetCoroutine());
+                yield break;
             }
             yield return new WaitForSeconds(AttackReloading);
         }

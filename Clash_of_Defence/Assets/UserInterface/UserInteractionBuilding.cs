@@ -22,6 +22,7 @@ public class UserInteractionBuilding : MonoBehaviour
     {
         MousePositionDown = Input.mousePosition;
         OldPosition = new Vector2Int((int)transform.position.x, (int)transform.position.z);
+        GameController.instance.MapController.SetFreeCell(OldPosition, Card.SizeMapCell, true);
     }
     private void OnMouseDrag()
     {
@@ -31,9 +32,9 @@ public class UserInteractionBuilding : MonoBehaviour
         int CountY = (int)((vector.y / ScrollStep) 
             * (GameController.instance.Camera.transform.position.y / GameController.instance.StartHeightCamera));
         newPosition = new Vector2Int(OldPosition.x+ SizeCell * CountX, OldPosition.y+ SizeCell * CountY);
-        if(GameController.instance.MapController.IsPositionCell(newPosition))
+        if(GameController.instance.MapController.IsPositionCellSizeMapCell(newPosition,Card.SizeMapCell))
         {
-            GameController.instance.MapController.SetFreeCell(OldPosition, true);
+            //GameController.instance.MapController.SetFreeCell(OldPosition, Card.SizeMapCell, true);
             transform.position = new Vector3(newPosition.x, LiftingHeight, newPosition.y);
             Moved = true;
         }
@@ -41,7 +42,7 @@ public class UserInteractionBuilding : MonoBehaviour
     private void OnMouseUp()
     {
         Vector2Int vector2Int = new Vector2Int((int)transform.position.x, (int)transform.position.z);
-        GameController.instance.MapController.SetFreeCell(vector2Int, false);
+        GameController.instance.MapController.SetFreeCell(vector2Int, Card.SizeMapCell, false);
         if (Moved)
         {
             SelectedBuilding(false);

@@ -28,5 +28,13 @@ public static class MySpecialClass
             return angle;
         }
     }
+    public static float MyMoveTowards(float angle1,float angle2,float speed)
+    {
+        if(angle2-angle1 >= 0) angle1 += speed * Time.deltaTime;
+        else angle1 -= speed * Time.deltaTime;
+        if (angle2 - angle1 > 0 && angle1 >= angle2) return angle2;
+        if (angle2 - angle1 < 0 && angle1 <= angle2) return angle2;
+        return angle1;
+    }
 }
 

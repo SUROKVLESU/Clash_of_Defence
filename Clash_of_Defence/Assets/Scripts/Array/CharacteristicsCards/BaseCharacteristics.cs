@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 
-public class BaseCharacteristics:MonoBehaviour, IBaseInterface
+public class BaseCharacteristics : MonoBehaviour, IBaseInterface
 {
     [SerializeField] protected float HP;
     [SerializeField] protected Attributes Protection;
     protected float HPStart;
+    public float GetHP()
+    {
+        return HP;
+    }
 
     public virtual bool TakingDamage(Attributes damage)
     {
@@ -38,4 +42,5 @@ public interface IBaseInterface
     public void ResetHP();
     public void ActivationBuildings();
     public void Stop();
+    public float GetHP();
 }

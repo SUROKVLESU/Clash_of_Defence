@@ -49,7 +49,8 @@ public class ListBuildingsHand : MonoBehaviour
         {
             if (RectTransformCards.Length == 0)
             { return; }
-            if(GameController.instance.MapController.IsFreeCell()&& IsCardUsed)
+            if(IsCardUsed && GameController.instance.MapController.IsFreeCell
+                (GameController.instance.CardListController.BaseCardsHand[IndexSelectedCard].SizeMapCell))
             {
                 IsCardUsed = false;
                 GameController.instance.MapController.AddBuilding
