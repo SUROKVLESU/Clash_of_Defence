@@ -170,11 +170,6 @@ public class MapController:MonoBehaviour
     }
     public void SetFreeCell(Vector2Int position,SizeMapCell sizeMapCell, bool free)
     {
-        /*for (int i = 0; i < ArrayMapBlock.Length; i++)
-        {
-            ArrayMapBlock[i].SetFreeCell(position,sizeMapCell, free);
-        }
-        */
         for (int k = 0; k < sizeMapCell.Sizes.Length; k++)
         {
             for (int l = 0; l < sizeMapCell.Sizes[k].line.Length; l++)
@@ -281,7 +276,7 @@ public class MapController:MonoBehaviour
     }
     public void ReturnCardYourHand()
     {
-        if (SelectedCardGameObject==null)
+        if (SelectedCardGameObject==null|| SelectedCardGameObject.Card.Id==0)
         {
             return;
         }
@@ -341,6 +336,7 @@ public class MapController:MonoBehaviour
         {
             Buildings[i].GetComponent<UserInteractionBuilding>().ResetPosition();
         }
+        MainBuilding.GetComponent<UserInteractionBuilding>().ResetPosition();
         GameController.instance.CardLevelController.OnOffUpdeteMenu(false);
     }
     public void LewelUpBuilding(BaseEssenceObject baseCard)
@@ -371,10 +367,15 @@ public class MapController:MonoBehaviour
             }
             attacking.ResetHP();
         }
-        MainBuilding.SetActive(true);
+        //MainBuilding.SetActive(true);
         IBaseInterface mainBuilding = MainBuilding.GetComponent<IBaseInterface>();
         mainBuilding.ResetHP();
-        mainBuilding.ActivationBuildings();
+        //mainBuilding.Stop();
+        if (!MainBuilding.activeSelf)
+        {
+            MainBuilding.SetActive(true);
+            mainBuilding.ActivationBuildings();
+        }
         ActiveCount = Buildings.Length;
     }
     public void Pause()
@@ -417,7 +418,7 @@ public class MapController:MonoBehaviour
             Destroy(Buildings[i]);
         }
         Destroy(MainBuilding);
-        MainBuilding = null;
+        //MainBuilding = null;
         Buildings = new GameObject[0];
         ArrayOldPositionMapBlock = new Vector3Int[] { new Vector3Int() };
         ArrayNewPositionMapBlock = new Vector3Int[4];

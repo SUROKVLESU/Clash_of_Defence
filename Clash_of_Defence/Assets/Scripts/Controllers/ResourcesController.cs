@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 using System;
 public class ResourcesController:MonoBehaviour
 {
-    /*[HideInInspector]*/ public int Gold;
+    [HideInInspector] public int Gold;
     [HideInInspector] public Resources GameResources;
+    private List<ResourcesCell> ArrayResourcesCell=new();
     [HideInInspector] public Resources PriceNewMapBlock = new Resources() { Gold=500};
     [HideInInspector] public bool IsMultiplier = false;
     private const float MultiplierPriceNewMapBlock = 1.4f;
@@ -23,6 +25,47 @@ public class ResourcesController:MonoBehaviour
     [SerializeField] Text DefeatText;
     [Header("ShopInterfece")]
     [SerializeField] Text TextGoldShop;
+    public void SetGameResources(Resources gameResources)
+    {
+        GameResources=gameResources;
+    }
+    public void AddResourcesCell(ResourcesCell resourcesCell)
+    {
+        ArrayResourcesCell.Add(resourcesCell);
+    }
+    public void DeleteResourcesCell(ResourcesCell resourcesCell)
+    {
+        ArrayResourcesCell.Remove(resourcesCell);
+    }
+    public void PlaceResourcesWarehouses(Resources resources)
+    {   
+        Resources addResources = resources;
+        for (int i = 0; i < ArrayResourcesCell.Count; i++)
+        {
+            resources=ArrayResourcesCell[i].AddResources(resources);
+            if (resources == new Resources()) break;
+        }
+        UpdateGameResources(addResources-resources);
+    }
+    public void GetResourcesWarehouses(Resources resources)
+    {
+        UpdateGameResources(resources,false);
+        for (int i = 0; i < ArrayResourcesCell.Count; i++)
+        {
+            resources = ArrayResourcesCell[i].GetResources(resources);
+            if (resources == new Resources()) break;
+        }
+    }
+    public void ResetResourcesWarehouses()
+    {
+        Resources gameResources = GameResources;
+        SetGameResources(new Resources());
+        for (int i = 0; i < ArrayResourcesCell.Count; i++)
+        {
+            ArrayResourcesCell[i].DeleteResources();
+        }
+        PlaceResourcesWarehouses(gameResources);
+    }
     public ResourcesController()
     {
         GameResources = new() {Gold=200,Iron=0,Power=0 };
@@ -54,7 +97,7 @@ public class ResourcesController:MonoBehaviour
     }
     public void UbdatePriceNewMapBlockText()
     {
-        UpdateGameResources(PriceNewMapBlock,false);
+        GetResourcesWarehouses(PriceNewMapBlock);
         PriceNewMapBlock *= MultiplierPriceNewMapBlock;
         PriceNewMapBlockText.text = ":" + CircumcisionNumber(PriceNewMapBlock.Gold);
     }
@@ -67,6 +110,7 @@ public class ResourcesController:MonoBehaviour
         IsMultiplier=false;
         GameResources = new();
         PriceNewMapBlock = new Resources() { Gold = 500 };
+        ArrayResourcesCell = new();
         Start();
     }
     public void MultiplierResources()

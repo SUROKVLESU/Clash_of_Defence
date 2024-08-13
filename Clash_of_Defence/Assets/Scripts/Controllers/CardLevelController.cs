@@ -4,9 +4,9 @@ public class CardLevelController
     public void LewelUpBuilding(BaseCard baseCard)
     {
         if (baseCard == null) return;
-        GameController.instance.ResourcesController.UpdateGameResources
+        GameController.instance.ResourcesController.GetResourcesWarehouses
             (GameController.instance.MapController.SelectedCardGameObject.Card.PriceBuilding
-            [GameController.instance.MapController.SelectedCardGameObject.Card.GetLevel() + 1],false);
+            [GameController.instance.MapController.SelectedCardGameObject.Card.GetLevel() + 1]);
         GameController.instance.MapController.LewelUpBuilding
             (GameController.instance.CollectionController.LevelUpBaseCard(baseCard));
     }

@@ -54,6 +54,8 @@ public class Turret1 : AttackingBuildingCharacteristics
                 Coroutine = StartCoroutine(AimingTargetCoroutine());
                 yield break;
             }
+            yield return new WaitForSeconds(AttackReloading);
+            if (TransformAttackTarget == null) continue;
             AudioSource.PlayOneShot(AudioSource.clip);
             Animator.Play(AnimationName);
             if (!AttackTarget.TakingDamage(Damage))
@@ -63,7 +65,6 @@ public class Turret1 : AttackingBuildingCharacteristics
                 Coroutine = StartCoroutine(AimingTargetCoroutine());
                 yield break;
             }
-            yield return new WaitForSeconds(AttackReloading);
         }
     }
 }

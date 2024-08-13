@@ -5,7 +5,7 @@ public class BaseResourcesBuildingCharacteristics : BaseCharacteristics
     public virtual void GetResources()
     {
         if(!gameObject.activeSelf) return;
-        GameController.instance.ResourcesController.UpdateGameResources(Resources);
+        GameController.instance.ResourcesController.PlaceResourcesWarehouses(Resources);
     }
 }
 

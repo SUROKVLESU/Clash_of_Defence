@@ -184,7 +184,7 @@ MonoBehaviour:
   LForder: {fileID: 0}
   RForder: {fileID: 0}
   Damage:
-    Physical: 1
+    Physical: 3
     Acid: 0
     Ice: 0
   AttackReloading: 0.3
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792d32146513a214aae08858f09707b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 25
+  HP: 600
   Protection:
     Physical: 0
     Acid: 0
@@ -432,6 +432,10 @@ MonoBehaviour:
   AttackTargetPosition: {fileID: 1038954910684838776}
   LForder: {fileID: 88188030800834619}
   RForder: {fileID: 5547189151755513960}
+  SizeWarehouse:
+    Gold: 450
+    Iron: 65
+    Power: 0
   GameObjectTurret: {fileID: 7235605638626337475}
 --- !u!1001 &1326509124052499250
 PrefabInstance:

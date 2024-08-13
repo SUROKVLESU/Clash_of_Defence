@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
     public CollectionsController CollectionController;
     public void StartGame()
     {
-        WaveController.Initialization();
+        //WaveController.Initialization();
         InterfeceRandomCardsController.GetRandomCards();
     }
 }

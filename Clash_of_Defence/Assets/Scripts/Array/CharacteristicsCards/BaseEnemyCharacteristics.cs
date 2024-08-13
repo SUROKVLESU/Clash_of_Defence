@@ -12,15 +12,16 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
 
     public virtual void Move()
     {
-        if (GameController.instance.MapController.ActiveCount == 0) return;
+        //if (GameController.instance.MapController.ActiveCount == 0) return;
         Coroutine = StartCoroutine(MovementCoroutine());
     }
     public override bool TakingDamage(Attributes damage)
     {
-        HP -= damage - Protection;
+        if (HP < 0) return false;
+            HP -= damage - Protection;
         if (HP < 0)
         {
-            GameController.instance.ResourcesController.UpdateGameResources(FallingResources);
+            GameController.instance.ResourcesController.PlaceResourcesWarehouses(FallingResources);
             GameController.instance.EnemiesController.Enemies.Remove(gameObject);
             Destroy(gameObject);
             if (GameController.instance.EnemiesController.Enemies.Count == 0
@@ -57,7 +58,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     }
     protected override IEnumerator AttackCoroutine()
     {
-        if(TransformAttackTarget == null||GameController.instance.MapController.ActiveCount==0) yield break;
+        if(TransformAttackTarget == null) yield break;
         while (true)
         {
             if (!TransformAttackTarget.gameObject.activeSelf)
@@ -66,21 +67,14 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
                 Move();
                 yield break;
             }
-            AttackTarget.TakingDamage(Damage);
             yield return new WaitForSeconds(AttackReloading);
+            if (!TransformAttackTarget.gameObject.activeSelf) continue;
+            AttackTarget.TakingDamage(Damage);
         }
     }
     public override void SearchAttackTarget()
     {   
         GameObject attackTarget = GameController.instance.MapController.MainBuilding;
-        /*for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
-        {
-            if (GameController.instance.MapController.Buildings[i].activeSelf)
-            {
-                attackTarget = GameController.instance.MapController.Buildings[i];
-                break;
-            }
-        }*/
         for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
         {
             if (GameController.instance.MapController.Buildings[i].activeSelf
@@ -101,7 +95,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     }
     public override void Attack()
     {
-        if (GameController.instance.MapController.ActiveCount == 0) return;
+        //if (GameController.instance.MapController.ActiveCount == 0) return;
         base.Attack();
     }
     private void Awake()

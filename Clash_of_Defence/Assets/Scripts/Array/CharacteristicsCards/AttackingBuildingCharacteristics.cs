@@ -50,12 +50,13 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
                 yield return null;
                 continue;
             }
+            yield return new WaitForSeconds(AttackReloading);
+            if (TransformAttackTarget == null) continue;
             if (!AttackTarget.TakingDamage(Damage))
             {
                 TransformAttackTarget = null;
                 AttackTarget = null;
             }
-            yield return new WaitForSeconds(AttackReloading);
         }
     }
     public override void ActivationBuildings() 

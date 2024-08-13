@@ -15,7 +15,6 @@ public class InterfeceRandomCardsController:MonoBehaviour
             RectTransform = GameController.instance.InterfeceRandomCards.transform.GetChild(0).GetComponent<RectTransform>();
             Height = RectTransform.rect.height;
         }
-        //GameController.instance.InterfeceRandomCards.SetActive(false);
     }
     public void ReceiveRandomCards(BaseCard[] cards)
     {

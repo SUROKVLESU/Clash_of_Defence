@@ -1,4 +1,4 @@
-﻿
+﻿using UnityEngine;
 public class WaveController
 {
     public int CurentMaxPowerCards;
@@ -50,16 +50,12 @@ public class WaveController
     }
     public void StartWave()
     {
-        if (GameController.instance.MapController.ActiveCount == 0)
-        {
-            PlayerDefeat();
-            return;
-        }
+        GameController.instance.ResourcesController.ResetResourcesWarehouses();
         GameController.instance.ButtonController.OffStartWaveButton();
         IsGame= true;
         GameController.instance.MapController.CancellationSelected();
         GameController.instance.SpawnEnemiesController.SpawnEnemies
-            (GameController.instance.RandomController.GetRandomEnemies(GameController.instance.WaveController.CurentMaxPowerEnemies));
+            (GameController.instance.RandomController.GetRandomEnemies(CurentMaxPowerEnemies));
         GameController.instance.ButtonController.OffInterfeceHand();
     }
     public void Initialization()

@@ -4,8 +4,6 @@ using System;
 public class ListBuildingsHand : MonoBehaviour
 {
     private RectTransform[] RectTransformCards;
-    private const float ScaleHeight = 192;
-    //private const float ScaleWidth = 960;
     private float CardScrolling = 20;
     private float Sensitivity = 6;
     private int NumberVisibleCards;

@@ -34,7 +34,6 @@ public class UserInteractionBuilding : MonoBehaviour
         newPosition = new Vector2Int(OldPosition.x+ SizeCell * CountX, OldPosition.y+ SizeCell * CountY);
         if(GameController.instance.MapController.IsPositionCellSizeMapCell(newPosition,Card.SizeMapCell))
         {
-            //GameController.instance.MapController.SetFreeCell(OldPosition, Card.SizeMapCell, true);
             transform.position = new Vector3(newPosition.x, LiftingHeight, newPosition.y);
             if ((int)transform.position.x!=OldPosition.x|| (int)transform.position.z != OldPosition.y)
             {

@@ -84,7 +84,7 @@ public class ButtonController:MonoBehaviour
     }
     public void OffInterfeceHand()
     {
-        HandBoxCollider.isTrigger = false;
+        HandBoxCollider.enabled = false;
         NewMapBlockButton.enabled = false;
         ReturnCardYourHandButton.enabled = false;
         DeleteBuildingsButton.enabled = false;
@@ -98,7 +98,7 @@ public class ButtonController:MonoBehaviour
     }
     public void OnInterfeceHand()
     {
-        HandBoxCollider.isTrigger = true;
+        HandBoxCollider.enabled = true;
         NewMapBlockButton.enabled = true;
         ReturnCardYourHandButton.enabled = true;
         DeleteBuildingsButton.enabled = true;
@@ -149,7 +149,6 @@ public class ButtonController:MonoBehaviour
     }
     private void ExitShop()
     {
-        //GameController.instance.MenuInterfece.SetActive(true);
         GameController.instance.ShopInterfeceObject.SetActive (false);
         GameController.instance.SaveGame.Save();
     }
