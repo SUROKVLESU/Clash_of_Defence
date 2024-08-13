@@ -134,12 +134,14 @@ MonoBehaviour:
     Physical: 0
     Acid: 0
     Ice: 0
+  AttackTargetPosition: {fileID: 1220480764293023231}
+  AttackTargetRadius: 0
   Damage:
     Physical: 2
     Acid: 0
     Ice: 0
   AttackReloading: 1
-  AttackRadius: 3
+  AttackRadius: 0.5
   SpeedMovement: 5
   FallingResources:
     Gold: 25

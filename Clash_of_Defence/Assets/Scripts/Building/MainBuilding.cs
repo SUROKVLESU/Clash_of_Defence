@@ -16,5 +16,16 @@ public class MainBuilding:BaseCharacteristics
     {
         Turret.ActivationBuildings();
     }
+    public override bool TakingDamage(Attributes damage)
+    {
+        HP -= damage - Protection;
+        if (HP < 0)
+        {
+            gameObject.SetActive(false);
+            GameController.instance.WaveController.PlayerDefeat();
+            return false;
+        }
+        else return true;
+    }
 }
 

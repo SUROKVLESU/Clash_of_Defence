@@ -45,8 +45,12 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
                 Move();
                 yield break;
             }
-            transform.position = Vector3.MoveTowards(transform.position , TransformAttackTarget.position, SpeedMovement*Time.deltaTime);
-            if((TransformAttackTarget.position - transform.position).sqrMagnitude<= (AttackRadius * AttackRadius)) break;
+            transform.position = Vector3.MoveTowards
+                (transform.position , TransformAttackTarget.position, SpeedMovement*Time.deltaTime);
+            if (transform.position.x+AttackRadius>AttackTarget.GetForder(true).position.x
+                && transform.position.x - AttackRadius < AttackTarget.GetForder(false).position.x
+                && transform.position.z - AttackRadius < AttackTarget.GetForder(true).position.z
+                && transform.position.z + AttackRadius > AttackTarget.GetForder(false).position.z) break;
             yield return null;
         }
         MovementEvent();
@@ -68,15 +72,15 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     }
     public override void SearchAttackTarget()
     {   
-        GameObject attackTarget = GameController.instance.MapController.Buildings[0];
-        for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
+        GameObject attackTarget = GameController.instance.MapController.MainBuilding;
+        /*for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
         {
             if (GameController.instance.MapController.Buildings[i].activeSelf)
             {
                 attackTarget = GameController.instance.MapController.Buildings[i];
                 break;
             }
-        }
+        }*/
         for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
         {
             if (GameController.instance.MapController.Buildings[i].activeSelf
@@ -88,6 +92,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
         }
         TransformAttackTarget = attackTarget.transform;
         AttackTarget = TransformAttackTarget.GetComponent<IBaseInterface>();
+        TransformAttackTarget = AttackTarget.GetAttackTargetPosition();
     }
     public override void ActivationBuildings()
     {

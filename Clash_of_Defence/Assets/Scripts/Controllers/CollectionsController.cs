@@ -7,6 +7,7 @@ public class CollectionsController
     [Header("Cards")]
     [SerializeField] EssenceObjectPower[] AllCardsPower;
     [HideInInspector] public EssenceObjectPower[] UnlockedCardsPower;
+    [SerializeField] public BaseEssenceObject MainBuilding;
     [Header("Enemy")]
     [SerializeField] EssenceObjectPower[] AllEnemiesPower;
     [HideInInspector] public EssenceObjectPower[] UnlockedEnemiesPower;

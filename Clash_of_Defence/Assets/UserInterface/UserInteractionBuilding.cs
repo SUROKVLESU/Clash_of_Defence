@@ -36,7 +36,10 @@ public class UserInteractionBuilding : MonoBehaviour
         {
             //GameController.instance.MapController.SetFreeCell(OldPosition, Card.SizeMapCell, true);
             transform.position = new Vector3(newPosition.x, LiftingHeight, newPosition.y);
-            Moved = true;
+            if ((int)transform.position.x!=OldPosition.x|| (int)transform.position.z != OldPosition.y)
+            {
+                Moved = true;
+            }
         }
     }
     private void OnMouseUp()

@@ -65,7 +65,7 @@ public class WaveController
     public void Initialization()
     {
         CurentMaxPowerCards = UnityEngine.Random.Range(2, 18);
-        CurentMaxPowerEnemies = UnityEngine.Random.Range(2, 18);
+        CurentMaxPowerEnemies =UnityEngine.Random.Range(2, 18);
         IsPlayerDefeat = false;
         IsPlayerDefeat = false;
         CountWave = 1;

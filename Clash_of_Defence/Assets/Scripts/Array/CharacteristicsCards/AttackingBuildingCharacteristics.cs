@@ -37,6 +37,7 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
         }
         TransformAttackTarget = attackTarget.transform;
         AttackTarget = TransformAttackTarget.GetComponent<IBaseInterface>();
+        TransformAttackTarget = AttackTarget.GetAttackTargetPosition();
     }
     public virtual void Attack(){ }
     protected virtual IEnumerator AttackCoroutine()

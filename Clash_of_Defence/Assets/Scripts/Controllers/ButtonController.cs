@@ -145,6 +145,7 @@ public class ButtonController:MonoBehaviour
             (GameController.instance.ResourcesController.GameResources * (-1));
         GameController.instance.InterfeceHand.SetActive (true);
         GameController.instance.DefeatInterfece.SetActive (false);
+        GameController.instance.WaveController.ResetBuildingsAndEnemies();
     }
     private void ExitShop()
     {

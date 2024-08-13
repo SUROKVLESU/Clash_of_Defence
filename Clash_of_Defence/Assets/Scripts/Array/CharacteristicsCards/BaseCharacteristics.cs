@@ -5,6 +5,18 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
     [SerializeField] protected float HP;
     [SerializeField] protected Attributes Protection;
     protected float HPStart;
+    [SerializeField] protected Transform AttackTargetPosition;
+    [SerializeField] protected Transform LForder;
+    [SerializeField] protected Transform RForder;
+    public Transform GetAttackTargetPosition()
+    {
+        return AttackTargetPosition;
+    }
+    public Transform GetForder(bool lForder)
+    {
+        if(lForder)return LForder;
+        return RForder;
+    }
     public float GetHP()
     {
         return HP;
@@ -16,11 +28,6 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
         if (HP < 0)
         {
             gameObject.SetActive(false);
-            GameController.instance.MapController.ActiveCount--;
-            if (GameController.instance.MapController.ActiveCount == 0)
-            {
-                GameController.instance.WaveController.PlayerDefeat();
-            }
             return false;
         }
         else return true;
@@ -43,4 +50,6 @@ public interface IBaseInterface
     public void ActivationBuildings();
     public void Stop();
     public float GetHP();
+    public Transform GetForder(bool lForder);
+    public Transform GetAttackTargetPosition();
 }
