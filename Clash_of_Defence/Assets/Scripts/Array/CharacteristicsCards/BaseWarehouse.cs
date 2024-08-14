@@ -8,6 +8,7 @@ public class BaseWarehouse:BaseCharacteristics
     {
         ResourcesCell = new ResourcesCell(SizeWarehouse);
         GameController.instance.ResourcesController.AddResourcesCell(ResourcesCell);
+        GameController.instance.ResourcesController.UpdateMaxGameResources();
     }
     public override bool TakingDamage(Attributes damage)
     {
@@ -16,6 +17,7 @@ public class BaseWarehouse:BaseCharacteristics
         {
             ResourcesCell.OffWarehouse();
             GameController.instance.ResourcesController.DeleteResourcesCell(ResourcesCell);
+            GameController.instance.ResourcesController.UpdateMaxGameResources();
             gameObject.SetActive(false);
             return false;
         }
@@ -24,11 +26,13 @@ public class BaseWarehouse:BaseCharacteristics
     public override void ActivationBuildings()
     {
         GameController.instance.ResourcesController.AddResourcesCell(ResourcesCell);
+        GameController.instance.ResourcesController.UpdateMaxGameResources();
     }
 
     private void OnDestroy()
     {
         GameController.instance.ResourcesController?.DeleteResourcesCell(ResourcesCell);
+        GameController.instance.ResourcesController.UpdateMaxGameResources();
     }
 }
 

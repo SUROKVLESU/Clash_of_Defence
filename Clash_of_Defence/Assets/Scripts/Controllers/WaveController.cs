@@ -54,6 +54,7 @@ public class WaveController
         GameController.instance.ButtonController.OffStartWaveButton();
         IsGame= true;
         GameController.instance.MapController.CancellationSelected();
+        //Debug.Log(GameController.instance.CollectionController.GetRandomEnemy(1).Id);// тут ошибка
         GameController.instance.SpawnEnemiesController.SpawnEnemies
             (GameController.instance.RandomController.GetRandomEnemies(CurentMaxPowerEnemies));
         GameController.instance.ButtonController.OffInterfeceHand();

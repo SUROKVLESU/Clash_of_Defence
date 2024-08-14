@@ -15,6 +15,10 @@ public class ResourcesController:MonoBehaviour
     [SerializeField] Text TextGold;
     [SerializeField] Text TextIron;
     [SerializeField] Text TextPower;
+    [Header("MaxGameResources")]
+    [SerializeField] Text MaxTextGold;
+    [SerializeField] Text MaxTextIron;
+    [SerializeField] Text MaxTextPower;
     [Header("GameLevelUpBuilding")]
     [SerializeField] Text LevelUpTextGold;
     [SerializeField] Text LevelUpTextIron;
@@ -25,6 +29,17 @@ public class ResourcesController:MonoBehaviour
     [SerializeField] Text DefeatText;
     [Header("ShopInterfece")]
     [SerializeField] Text TextGoldShop;
+    public void UpdateMaxGameResources()
+    {
+        Resources resources = new();
+        for (int i = 0; i < ArrayResourcesCell.Count; i++)
+        {
+            resources += ArrayResourcesCell[i].GetMax();
+        }
+        MaxTextGold.text = CircumcisionNumber(resources.Gold);
+        MaxTextIron.text = CircumcisionNumber(resources.Iron);
+        MaxTextPower.text = CircumcisionNumber(resources.Power);
+    }
     public void SetGameResources(Resources gameResources)
     {
         GameResources=gameResources;

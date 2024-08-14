@@ -17,6 +17,10 @@ public class ResourcesCell
     {
         return Resources;
     }
+    public Resources GetMax()
+    {
+        return MaxResources;
+    }
     public Resources AddResources(Resources resources)
     {
         Resources result = new Resources();

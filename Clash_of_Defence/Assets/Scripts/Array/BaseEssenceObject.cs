@@ -12,7 +12,7 @@ public class BaseEssenceObject: ScriptableObject
             return GameObjects.Length;
         }
     }
-    [HideInInspector] int CurrentMaxLevel;
+    [SerializeField] int CurrentMaxLevel;//Это не трогать
     public int Power;
     public float ProbabilityFalling;
     public GameObject[] GameObjects;
