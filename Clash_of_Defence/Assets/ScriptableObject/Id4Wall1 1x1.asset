@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e931b32f61c3f014c96ea4154b4c84a2, type: 3}
-  m_Name: Id2BaseCard
+  m_Name: Id4Wall1 1x1
   m_EditorClassIdentifier: 
-  Id: 2
+  Id: 4
   Name: 
   CurrentMaxLevel: 1
   Power: 1
   ProbabilityFalling: 2
   GameObjects:
-  - {fileID: 8078224705766401677, guid: 62514d3160fb69f45acc08faf7fb006f, type: 3}
-  CardCover: {fileID: 9134385167729602409, guid: 329190f01cf1f6443a242db81e6b1b99,
+  - {fileID: 3289937462396247434, guid: 461e1a398d41fae47a2c52639cecfc4e, type: 3}
+  CardCover: {fileID: 3853612970565829599, guid: b610184f191a9a4488924376e5ee8436,
     type: 3}
   PriceBuilding:
   - Gold: 0
@@ -28,4 +28,6 @@ MonoBehaviour:
   PriceCard: 00000000
   SizeMapCell:
     Sizes:
-    - line: 01
+    - line: 010101
+    - line: 010001
+    - line: 010101

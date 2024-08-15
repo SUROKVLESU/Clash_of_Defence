@@ -135,7 +135,9 @@ MonoBehaviour:
     Acid: 0
     Ice: 0
   AttackTargetPosition: {fileID: 1220480764293023231}
-  AttackTargetRadius: 0
+  LForder: {fileID: 0}
+  RForder: {fileID: 0}
+  TypeBuilding: 2
   Damage:
     Physical: 2
     Acid: 0

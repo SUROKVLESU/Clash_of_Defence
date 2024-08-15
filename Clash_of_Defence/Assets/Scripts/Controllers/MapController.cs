@@ -43,6 +43,38 @@ public class MapController:MonoBehaviour
             }
         }
     }
+    public void SetWall()
+    {
+        IBaseInterface baseMainBuilding = MainBuilding.GetComponent<IBaseInterface>();
+        IBaseInterface[] basesBuilding = new IBaseInterface[Buildings.Length];
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            basesBuilding[i] = Buildings[i].GetComponent<IBaseInterface>();
+            basesBuilding[i].WallGameObject=null;
+        }
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            if (basesBuilding[i].GetTypeBuilding() == TypeBuilding.Wall)
+            {
+                for (int j = 0; j < Buildings.Length; j++)
+                {
+                    if (j == i) continue;
+                    if (basesBuilding[j].GetAttackTargetPosition().position.x 
+                        > basesBuilding[i].GetForder(true).position.x
+                        && basesBuilding[j].GetAttackTargetPosition().position.x 
+                        < basesBuilding[i].GetForder(false).position.x
+                        && basesBuilding[j].GetAttackTargetPosition().position.z 
+                        < basesBuilding[i].GetForder(true).position.z
+                        && basesBuilding[j].GetAttackTargetPosition().position.z 
+                        > basesBuilding[i].GetForder(false).position.z)
+                    {
+                        basesBuilding[j].WallGameObject = Buildings[i];
+                    }
+                }
+            }
+        }
+
+    }
     public bool IsFreeCell(SizeMapCell sizeMapCell)
     {
         for (int i = 0; i < ArrayMapBlock.Length; i++)
@@ -147,12 +179,18 @@ public class MapController:MonoBehaviour
         {
             for (int l = 0; l < sizeMapCell.Sizes[k].line.Length; l++)
             {
-                if (sizeMapCell.Sizes[k].line[l]
-                    && IsPositionCell(new Vector2Int(position.x + SizeCell * l, position.y + SizeCell * k)))
+                if (sizeMapCell.Sizes[k].line[l])
+                {
+                    if (IsPositionCell(new Vector2Int(position.x + SizeCell * l, position.y + SizeCell * k)))
+                    {
+                        continue;
+                    }
+                    else return false;
+                }
+                else
                 {
                     continue;
                 }
-                else return false;
             }
         }
         return true;

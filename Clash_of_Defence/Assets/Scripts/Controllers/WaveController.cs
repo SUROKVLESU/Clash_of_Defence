@@ -50,6 +50,7 @@ public class WaveController
     }
     public void StartWave()
     {
+        GameController.instance.MapController.SetWall();
         GameController.instance.ResourcesController.ResetResourcesWarehouses();
         GameController.instance.ButtonController.OffStartWaveButton();
         IsGame= true;

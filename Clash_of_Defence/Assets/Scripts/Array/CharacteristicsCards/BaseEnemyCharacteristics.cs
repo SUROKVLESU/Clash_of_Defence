@@ -40,7 +40,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
         StartCoroutine(AimingTargetCoroutine());
         while (true)
         {
-            if (!TransformAttackTarget.gameObject.activeSelf)
+            if (!TransformAttackTarget.parent.gameObject.activeSelf)
             {
                 SearchAttackTarget();
                 Move();
@@ -61,7 +61,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
         if(TransformAttackTarget == null) yield break;
         while (true)
         {
-            if (!TransformAttackTarget.gameObject.activeSelf)
+            if (!TransformAttackTarget.parent.gameObject.activeSelf)
             {
                 SearchAttackTarget();
                 Move();
@@ -81,7 +81,12 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
                 && (GameController.instance.MapController.Buildings[i].transform.position - transform.position).sqrMagnitude
                 <= (attackTarget.transform.position - transform.position).sqrMagnitude)
             {
-                attackTarget = GameController.instance.MapController.Buildings[i];
+                IBaseInterface baseInterface = GameController.instance.MapController.Buildings[i].GetComponent<IBaseInterface>();
+                if (baseInterface.WallGameObject!=null&& baseInterface.WallGameObject.activeSelf)
+                {
+                    attackTarget = baseInterface.WallGameObject;
+                }
+                else attackTarget = GameController.instance.MapController.Buildings[i];
             }
         }
         TransformAttackTarget = attackTarget.transform;

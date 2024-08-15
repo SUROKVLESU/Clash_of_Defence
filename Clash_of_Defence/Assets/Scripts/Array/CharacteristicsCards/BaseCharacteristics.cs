@@ -8,6 +8,10 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
     [SerializeField] protected Transform AttackTargetPosition;
     [SerializeField] protected Transform LForder;
     [SerializeField] protected Transform RForder;
+    [SerializeField] protected GameObject WallGameObject;
+    GameObject IBaseInterface.WallGameObject { get { return WallGameObject; } set { WallGameObject = value; } }
+
+    public TypeBuilding TypeBuilding;
     public Transform GetAttackTargetPosition()
     {
         return AttackTargetPosition;
@@ -42,6 +46,10 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
     }
     public virtual void ActivationBuildings(){ }
     public virtual void Stop() { }
+    public TypeBuilding GetTypeBuilding()
+    {
+        return TypeBuilding;
+    }
 }
 public interface IBaseInterface
 {
@@ -52,4 +60,6 @@ public interface IBaseInterface
     public float GetHP();
     public Transform GetForder(bool lForder);
     public Transform GetAttackTargetPosition();
+    public GameObject WallGameObject { get; set; }
+    public TypeBuilding GetTypeBuilding();
 }

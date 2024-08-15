@@ -110,12 +110,24 @@ public class MapBlock
         {
             for (int l = 0; l < sizeMapCell.Sizes[k].line.Length; l++)
             {
-                if (sizeMapCell.Sizes[k].line[l]
+                /*if (sizeMapCell.Sizes[k].line[l]
                     &&IsPositionCell(new Vector2Int(position.x+SizeCell*l, position.y + SizeCell * k)))
                 {
                     continue;
                 }
-                else return false;
+                else return false;*/
+                if (sizeMapCell.Sizes[k].line[l])
+                {
+                    if (IsPositionCell(new Vector2Int(position.x + SizeCell * l, position.y + SizeCell * k)))
+                    {
+                        continue;
+                    }
+                    else return false;
+                }
+                else
+                {
+                    continue;
+                }
             }
         }
         return true;

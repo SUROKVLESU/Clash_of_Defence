@@ -133,6 +133,7 @@ Transform:
   - {fileID: 1268592077784824343}
   - {fileID: 221841116432102383}
   - {fileID: 1387996786602339734}
+  - {fileID: 8678606734736816634}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &9206670507920334987
@@ -150,7 +151,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -182,12 +183,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cde2536006da3a4a859b22eadca8354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10000
+  HP: 2
   Protection:
     Physical: 0
     Acid: 0
     Ice: 0
-  AttackTargetPosition: {fileID: 9100560677995990814}
+  AttackTargetPosition: {fileID: 8678606734736816634}
   LForder: {fileID: 221841116432102383}
   RForder: {fileID: 1387996786602339734}
   Damage:
@@ -344,6 +345,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3130989447788053868}
+  m_Father: {fileID: 9100560677995990814}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6432406198793607210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8678606734736816634}
+  m_Layer: 0
+  m_Name: AttackTargetPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8678606734736816634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432406198793607210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 9100560677995990814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1579902248914608808
