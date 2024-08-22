@@ -1277,8 +1277,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d90e9be036f6d4245bd05097c6ea8981, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2951,15 +2951,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5471698, g: 0.12690999, b: 0.07484871, a: 1}
+  m_Color: {r: 0.7529412, g: 0.59607846, b: 0.101960786, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6909fda7739fa0d40a658babc2edb657, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3187,7 +3187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -3764,6 +3764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e946367096632154cb65a0ad90fb6a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsPause: 0
   StartHeightCamera: 0
   MapController: {fileID: 0}
   InterfeceRandomCardsController: {fileID: 0}
@@ -3793,6 +3794,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 121e82bbfb38e3f4db8177f7c7d43637, type: 2}
       - {fileID: 11400000, guid: b73f7f5ccf950bc45839a5157bb3fbb4, type: 2}
       - {fileID: 11400000, guid: 7e074c6dc77a82542ae487eb1e6ae976, type: 2}
+      - {fileID: 11400000, guid: 9d91f33f60eb7544dabbc3de1bfebd50, type: 2}
     UnlockedCardsPower: []
     MainBuilding: {fileID: 11400000, guid: c7a2c7a341823994898eb76804b724f5, type: 2}
     AllEnemiesPower:
@@ -6702,15 +6704,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09040271, g: 0.6886792, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6909fda7739fa0d40a658babc2edb657, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

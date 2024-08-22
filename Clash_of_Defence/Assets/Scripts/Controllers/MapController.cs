@@ -54,7 +54,7 @@ public class MapController:MonoBehaviour
         }
         for (int i = 0; i < Buildings.Length; i++)
         {
-            if (basesBuilding[i].GetTypeBuilding() == TypeBuilding.Wall)
+            if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.Wall)
             {
                 for (int j = 0; j < Buildings.Length; j++)
                 {

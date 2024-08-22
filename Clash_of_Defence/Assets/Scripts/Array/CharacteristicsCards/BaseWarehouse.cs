@@ -4,24 +4,22 @@ public class BaseWarehouse:BaseCharacteristics
 {
     [SerializeField] protected Resources SizeWarehouse;
     protected ResourcesCell ResourcesCell;
-    private void Start()
+    public override void MyStart()
     {
         ResourcesCell = new ResourcesCell(SizeWarehouse);
         GameController.instance.ResourcesController.AddResourcesCell(ResourcesCell);
         GameController.instance.ResourcesController.UpdateMaxGameResources();
     }
-    public override bool TakingDamage(Attributes damage)
+    private void Start()
     {
-        HP -= damage - Protection;
-        if (HP < 0)
-        {
-            ResourcesCell.OffWarehouse();
-            GameController.instance.ResourcesController.DeleteResourcesCell(ResourcesCell);
-            GameController.instance.ResourcesController.UpdateMaxGameResources();
-            gameObject.SetActive(false);
-            return false;
-        }
-        else return true;
+        MyStart();
+    }
+    public override void Defeat()
+    {
+        ResourcesCell.OffWarehouse();
+        GameController.instance.ResourcesController.DeleteResourcesCell(ResourcesCell);
+        GameController.instance.ResourcesController.UpdateMaxGameResources();
+        gameObject.SetActive(false);
     }
     public override void ActivationBuildings()
     {
@@ -32,7 +30,7 @@ public class BaseWarehouse:BaseCharacteristics
     private void OnDestroy()
     {
         GameController.instance.ResourcesController?.DeleteResourcesCell(ResourcesCell);
-        GameController.instance.ResourcesController.UpdateMaxGameResources();
+        GameController.instance.ResourcesController?.UpdateMaxGameResources();
     }
 }
 

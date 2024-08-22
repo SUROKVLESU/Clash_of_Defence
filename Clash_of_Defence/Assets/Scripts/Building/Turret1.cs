@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Turret1 : AttackingBuildingCharacteristics
 {
-    protected Transform TransformTower;
+    /*protected Transform TransformTower;
     protected float Angle;
     protected const float RotSpeed = 100f;
     protected AudioSource AudioSource;
     protected Animator Animator;
     [SerializeField] protected string AnimationName;
     private void Start()
+    {
+        MyStart();
+    }
+    public override void MyStart()
     {
         TransformTower = transform.GetChild(0);
         AudioSource = GetComponent<AudioSource>();
@@ -66,6 +70,6 @@ public class Turret1 : AttackingBuildingCharacteristics
                 yield break;
             }
         }
-    }
+    }*/
 }
 

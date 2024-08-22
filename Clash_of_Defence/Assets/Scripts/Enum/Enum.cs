@@ -2,9 +2,18 @@
 {
 
 }
-public enum TypeBuilding
+public enum TypeBuildings
 {
     Building=0,
     Wall =1,
-    Enemy
+    Enemy,
+    AirEnemy,
+    AirBuilding
+}
+public enum TypeAttack
+{
+    Land=0,
+    Air,
+    All,
+    No
 }

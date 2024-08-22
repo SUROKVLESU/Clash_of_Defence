@@ -5,41 +5,52 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
 {
     [SerializeField] protected float SpeedMovement;
     [SerializeField] protected Resources FallingResources;
-    protected event Action MovementEvent;
-    protected float Angle;
+    //protected event Action MovementEvent;
+    //protected float Angle;
     protected bool IsAimingTarget = false;
-    protected const float RotSpeed = 400f;
+    //protected const float RotSpeed = 400f;
 
     public virtual void Move()
     {
-        //if (GameController.instance.MapController.ActiveCount == 0) return;
         Coroutine = StartCoroutine(MovementCoroutine());
     }
-    public override bool TakingDamage(Attributes damage)
+    private void Start()
     {
-        if (HP < 0) return false;
-            HP -= damage - Protection;
-        if (HP < 0)
+        MyStart();
+    }
+    public override void MyStart()
+    {
+        TransformTower = transform;
+        SearchAttackTarget();
+        Move();
+    }
+    public override void ActivationBuildings()
+    {
+        SearchAttackTarget();
+        Move();
+    }
+    public override void Defeat()
+    {
+        GameController.instance.ResourcesController.PlaceResourcesWarehouses(FallingResources);
+        GameController.instance.EnemiesController.Enemies.Remove(gameObject);
+        if (GameController.instance.EnemiesController.Enemies.Count == 0
+            && GameController.instance.SpawnEnemiesController.IsAllSpawnEnemies())
         {
-            GameController.instance.ResourcesController.PlaceResourcesWarehouses(FallingResources);
-            GameController.instance.EnemiesController.Enemies.Remove(gameObject);
-            Destroy(gameObject);
-            if (GameController.instance.EnemiesController.Enemies.Count == 0
-                && GameController.instance.SpawnEnemiesController.IsAllSpawnEnemies())
-            {
-                GameController.instance.WaveController.EnemiesDefeat();
-            }
-            return false;
+            GameController.instance.WaveController.EnemiesDefeat();
         }
-        else return true;
+        Destroy(gameObject);
     }
     protected virtual IEnumerator MovementCoroutine()
     {
-        if (TransformAttackTarget == null) yield break;
-        Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
+        Vector3 oldTransformAttackTarget = TransformAttackTarget.position;
         StartCoroutine(AimingTargetCoroutine());
         while (true)
         {
+            if (oldTransformAttackTarget!= TransformAttackTarget.position)
+            {
+                StartCoroutine(AimingTargetCoroutine());
+                oldTransformAttackTarget = TransformAttackTarget.position;
+            }
             if (!TransformAttackTarget.parent.gameObject.activeSelf)
             {
                 SearchAttackTarget();
@@ -54,17 +65,24 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
                 && transform.position.z + AttackRadius > AttackTarget.GetForder(false).position.z) break;
             yield return null;
         }
-        MovementEvent();
+        Coroutine = StartCoroutine(AttackCoroutine());
     }
     protected override IEnumerator AttackCoroutine()
     {
-        if(TransformAttackTarget == null) yield break;
+        if(!TransformAttackTarget.parent.gameObject.activeSelf) yield break;
+        Vector3 oldTransformAttackTarget = TransformAttackTarget.position;
         while (true)
         {
             if (!TransformAttackTarget.parent.gameObject.activeSelf)
             {
                 SearchAttackTarget();
                 Move();
+                yield break;
+            }
+            if (oldTransformAttackTarget != TransformAttackTarget.position)
+            {
+                Move();
+                oldTransformAttackTarget = TransformAttackTarget.position;
                 yield break;
             }
             yield return new WaitForSeconds(AttackReloading);
@@ -74,41 +92,28 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     }
     public override void SearchAttackTarget()
     {   
-        GameObject attackTarget = GameController.instance.MapController.MainBuilding;
+        Transform attackTarget = GameController.instance.MapController.MainBuilding.GetComponent<IBaseInterface>().GetAttackTargetPosition();
         for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
         {
+            IBaseInterface baseInterface = GameController.instance.MapController.Buildings[i].GetComponent<IBaseInterface>();
             if (GameController.instance.MapController.Buildings[i].activeSelf
-                && (GameController.instance.MapController.Buildings[i].transform.position - transform.position).sqrMagnitude
-                <= (attackTarget.transform.position - transform.position).sqrMagnitude)
+                && (baseInterface.GetAttackTargetPosition().position - transform.position).sqrMagnitude
+                <= (attackTarget.position - transform.position).sqrMagnitude&&(TypeAttack == TypeAttack.All
+                || TypeAttack == baseInterface.GetTypeTarget()))
             {
-                IBaseInterface baseInterface = GameController.instance.MapController.Buildings[i].GetComponent<IBaseInterface>();
                 if (baseInterface.WallGameObject!=null&& baseInterface.WallGameObject.activeSelf)
                 {
-                    attackTarget = baseInterface.WallGameObject;
+                    attackTarget = baseInterface.WallGameObject.transform;
                 }
-                else attackTarget = GameController.instance.MapController.Buildings[i];
+                else attackTarget = GameController.instance.MapController.Buildings[i].GetComponent<IBaseInterface>().GetAttackTargetPosition();
             }
         }
-        TransformAttackTarget = attackTarget.transform;
-        AttackTarget = TransformAttackTarget.GetComponent<IBaseInterface>();
-        TransformAttackTarget = AttackTarget.GetAttackTargetPosition();
+        TransformAttackTarget = attackTarget;
+        AttackTarget = TransformAttackTarget.parent.GetComponent<IBaseInterface>();
     }
-    public override void ActivationBuildings()
+    protected override IEnumerator AimingTargetCoroutine()
     {
-        TransformAttackTarget = null;
-        AttackTarget = null;
-    }
-    public override void Attack()
-    {
-        //if (GameController.instance.MapController.ActiveCount == 0) return;
-        base.Attack();
-    }
-    private void Awake()
-    {
-        MovementEvent += ()=> { Coroutine = StartCoroutine(AttackCoroutine()); };
-    }
-    protected virtual IEnumerator AimingTargetCoroutine()
-    {
+        Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
         if (IsAimingTarget)
         {
             while (true)
@@ -120,14 +125,12 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
         IsAimingTarget = true;
         while (true)
         {
-            if(!IsAimingTarget) continue;
-            if (TransformAttackTarget == null)
+            if (!TransformAttackTarget.parent.gameObject.activeSelf)
             {
                 yield break;
             }
-            transform.rotation = Quaternion.Euler(Vector3.MoveTowards(transform.rotation.eulerAngles,
-            new Vector3(0, Angle, 0), RotSpeed * Time.deltaTime));
-            if ((int)transform.rotation.eulerAngles.y == (int)Angle) break;
+            TurningTower();
+            if (Mathf.Abs(TransformTower.rotation.eulerAngles.y - Angle) <= 2) break;
             yield return null;
         }
         IsAimingTarget=false;

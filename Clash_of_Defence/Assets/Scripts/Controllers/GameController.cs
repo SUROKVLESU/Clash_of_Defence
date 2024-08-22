@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    public bool IsPause=false;
     private void Awake()
     {
         if (instance == null)

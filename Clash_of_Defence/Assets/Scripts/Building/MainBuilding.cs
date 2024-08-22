@@ -4,26 +4,27 @@ public class MainBuilding: BaseWarehouse
 {
     [SerializeField] GameObject GameObjectTurret;
     private IBaseInterface Turret;
+    private void Start()
+    {
+        MyStart();
+    }
+    public override void Defeat()
+    {
+        gameObject.SetActive(false);
+        GameController.instance.WaveController.PlayerDefeat();
+    }
+    public override void MyStart()
+    {
+        base.MyStart();
+        Turret = GameObjectTurret.GetComponent<IBaseInterface>();
+    }
     public override void Stop()
     {
-        Turret = GameObjectTurret.GetComponent<IBaseInterface>();
         Turret.Stop();
     }
     public override void ActivationBuildings()
     {
-        Turret = GameObjectTurret.GetComponent<IBaseInterface>();
         Turret.ActivationBuildings();
-    }
-    public override bool TakingDamage(Attributes damage)
-    {
-        HP -= damage - Protection;
-        if (HP < 0)
-        {
-            gameObject.SetActive(false);
-            GameController.instance.WaveController.PlayerDefeat();
-            return false;
-        }
-        else return true;
     }
 }
 

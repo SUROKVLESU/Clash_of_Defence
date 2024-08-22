@@ -1,20 +1,32 @@
-﻿using UnityEngine;
-
+﻿using System;
+using System.Reflection.Emit;
+using UnityEngine;
+[Serializable]
 public class BaseCharacteristics : MonoBehaviour, IBaseInterface
 {
     [SerializeField] protected float HP;
-    [SerializeField] protected Attributes Protection;
     protected float HPStart;
+    [SerializeField] protected Attributes Protection;
     [SerializeField] protected Transform AttackTargetPosition;
     [SerializeField] protected Transform LForder;
     [SerializeField] protected Transform RForder;
     [SerializeField] protected GameObject WallGameObject;
     GameObject IBaseInterface.WallGameObject { get { return WallGameObject; } set { WallGameObject = value; } }
 
-    public TypeBuilding TypeBuilding;
+    [SerializeField] protected TypeAttack TypeBuilding;
+    [SerializeField] protected TypeAttack TypeAttack;
+    [SerializeField] protected TypeBuildings TypeBuildings;
     public Transform GetAttackTargetPosition()
     {
         return AttackTargetPosition;
+    }
+    public TypeAttack GetTypeAttack()
+    {
+        return TypeAttack;
+    }
+    public TypeBuildings GetTypeBuilder()
+    {
+        return TypeBuildings;
     }
     public Transform GetForder(bool lForder)
     {
@@ -26,16 +38,15 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
         return HP;
     }
 
-    public virtual bool TakingDamage(Attributes damage)
+    public void TakingDamage(Attributes damage)
     {
         HP -= damage - Protection;
         if (HP < 0)
         {
-            gameObject.SetActive(false);
-            return false;
+            Defeat();
         }
-        else return true;
     }
+    public virtual void Defeat() { }
     public virtual void ResetHP()
     {
         HP=HPStart;
@@ -46,14 +57,15 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
     }
     public virtual void ActivationBuildings(){ }
     public virtual void Stop() { }
-    public TypeBuilding GetTypeBuilding()
+    public TypeAttack GetTypeTarget()
     {
         return TypeBuilding;
     }
+    public virtual void MyStart() { }
 }
 public interface IBaseInterface
 {
-    public bool TakingDamage(Attributes damage);
+    public void TakingDamage(Attributes damage);
     public void ResetHP();
     public void ActivationBuildings();
     public void Stop();
@@ -61,5 +73,9 @@ public interface IBaseInterface
     public Transform GetForder(bool lForder);
     public Transform GetAttackTargetPosition();
     public GameObject WallGameObject { get; set; }
-    public TypeBuilding GetTypeBuilding();
+    public TypeAttack GetTypeTarget();
+    public TypeAttack GetTypeAttack();
+    public TypeBuildings GetTypeBuilder();
+    public void MyStart();
+    //public void Defeat();
 }

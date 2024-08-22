@@ -53,6 +53,7 @@ public class ButtonController:MonoBehaviour
                 GameController.instance.MapController.Pause();
                 GameController.instance.EnemiesController.Pause();
                 GameController.instance.SpawnEnemiesController.Pause();
+                GameController.instance.IsPause = true;
             }
             else
             {
@@ -61,6 +62,7 @@ public class ButtonController:MonoBehaviour
                 GameController.instance.MapController.OffPause();
                 GameController.instance.EnemiesController.OffPause();
                 GameController.instance.SpawnEnemiesController.OffPause();
+                GameController.instance.IsPause = false;
             }
         });
         StartWaveButton.onClick.AddListener(() => { GameController.instance.WaveController.StartWave(); });
