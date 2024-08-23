@@ -46,6 +46,7 @@ public class MapController:MonoBehaviour
     public void SetWall()
     {
         IBaseInterface baseMainBuilding = MainBuilding.GetComponent<IBaseInterface>();
+        baseMainBuilding.WallGameObject = null;
         IBaseInterface[] basesBuilding = new IBaseInterface[Buildings.Length];
         for (int i = 0; i < Buildings.Length; i++)
         {
@@ -56,6 +57,17 @@ public class MapController:MonoBehaviour
         {
             if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.Wall)
             {
+                if (baseMainBuilding.GetAttackTargetPosition().position.x
+                        > basesBuilding[i].GetForder(true).position.x
+                        && baseMainBuilding.GetAttackTargetPosition().position.x
+                        < basesBuilding[i].GetForder(false).position.x
+                        && baseMainBuilding.GetAttackTargetPosition().position.z
+                        < basesBuilding[i].GetForder(true).position.z
+                        && baseMainBuilding.GetAttackTargetPosition().position.z
+                        > basesBuilding[i].GetForder(false).position.z)
+                {
+                    baseMainBuilding.WallGameObject = Buildings[i];
+                }
                 for (int j = 0; j < Buildings.Length; j++)
                 {
                     if (basesBuilding[j].GetTypeTarget()==TypeAttack.Air)
@@ -78,6 +90,85 @@ public class MapController:MonoBehaviour
             }
         }
 
+    }
+    public void ProtectionAmplifier()
+    {
+        IBaseInterface baseMainBuilding = MainBuilding.GetComponent<IBaseInterface>();
+        baseMainBuilding.AddProtection = new();
+        IBaseInterface[] basesBuilding = new IBaseInterface[Buildings.Length];
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            basesBuilding[i] = Buildings[i].GetComponent<IBaseInterface>();
+            basesBuilding[i].AddProtection=new();
+        }
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.ProtectionAmplifier)
+            {
+                ProtectionAmplifier prtAmp=Buildings[i].GetComponent< ProtectionAmplifier>();
+                if (baseMainBuilding.GetAttackTargetPosition().position.x
+                        > prtAmp.GetTransformForder(true).position.x
+                        && baseMainBuilding.GetAttackTargetPosition().position.x
+                        < prtAmp.GetTransformForder(false).position.x
+                        && baseMainBuilding.GetAttackTargetPosition().position.z
+                        < prtAmp.GetTransformForder(true).position.z
+                        && baseMainBuilding.GetAttackTargetPosition().position.z
+                        > prtAmp.GetTransformForder(false).position.z)
+                {
+                    baseMainBuilding.AddProtection += prtAmp.GetProtectionAdd;
+                }
+                for (int j = 0; j < Buildings.Length; j++)
+                {
+                    if (j == i) continue;
+                    if (basesBuilding[j].GetAttackTargetPosition().position.x
+                        > prtAmp.GetTransformForder(true).position.x
+                        && basesBuilding[j].GetAttackTargetPosition().position.x
+                        < prtAmp.GetTransformForder(false).position.x
+                        && basesBuilding[j].GetAttackTargetPosition().position.z
+                        < prtAmp.GetTransformForder(true).position.z
+                        && basesBuilding[j].GetAttackTargetPosition().position.z
+                        > prtAmp.GetTransformForder(false).position.z)
+                    {
+                        basesBuilding[j].AddProtection += prtAmp.GetProtectionAdd;
+                    }
+                }
+            }
+        }
+    }
+    public void ResourcesAmplifier()
+    {
+        IBaseInterface[] basesBuilding = new IBaseInterface[Buildings.Length];
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            basesBuilding[i] = Buildings[i].GetComponent<IBaseInterface>();
+            if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.Resources)
+            {
+                Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>().Add_Resources = new();
+            }
+        }
+        for (int i = 0; i < Buildings.Length; i++)
+        {
+            if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.ResourcesAmplifier)
+            {
+                ResourcesAmplifier resAmp =Buildings[i].GetComponent<ResourcesAmplifier>();
+                for (int j = 0; j < Buildings.Length; j++)
+                {
+                    if (j == i) continue;
+                    if (basesBuilding[j].GetTypeBuilder() == TypeBuildings.Resources
+                        &&basesBuilding[j].GetAttackTargetPosition().position.x
+                        > resAmp.GetTransformForder(true).position.x
+                        && basesBuilding[j].GetAttackTargetPosition().position.x
+                        < resAmp.GetTransformForder(false).position.x
+                        && basesBuilding[j].GetAttackTargetPosition().position.z
+                        < resAmp.GetTransformForder(true).position.z
+                        && basesBuilding[j].GetAttackTargetPosition().position.z
+                        > resAmp.GetTransformForder(false).position.z)
+                    {
+                        Buildings[j].GetComponent<BaseResourcesBuildingCharacteristics>().Add_Resources += resAmp.GetResourcesAdd;
+                    }
+                }
+            }
+        }
     }
     public bool IsFreeCell(SizeMapCell sizeMapCell)
     {

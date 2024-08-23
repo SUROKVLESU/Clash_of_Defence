@@ -8,12 +8,13 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
     [SerializeField] protected float HP;
     protected float HPStart;
     [SerializeField] protected Attributes Protection;
+    [SerializeField] protected Attributes AddProtection;
     [SerializeField] protected Transform AttackTargetPosition;
     [SerializeField] protected Transform LForder;
     [SerializeField] protected Transform RForder;
     [SerializeField] protected GameObject WallGameObject;
     GameObject IBaseInterface.WallGameObject { get { return WallGameObject; } set { WallGameObject = value; } }
-
+    Attributes IBaseInterface.AddProtection { get { return AddProtection; } set { AddProtection = value; } }
     [SerializeField] protected TypeAttack TypeBuilding;
     [SerializeField] protected TypeAttack TypeAttack;
     [SerializeField] protected TypeBuildings TypeBuildings;
@@ -41,7 +42,7 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
 
     public void TakingDamage(Attributes damage)
     {
-        HP -= damage - Protection;
+        HP -= damage - Protection- AddProtection;
         if (HP < 0)
         {
             Defeat();
@@ -78,6 +79,7 @@ public interface IBaseInterface
     public Transform GetForder(bool lForder);
     public Transform GetAttackTargetPosition();
     public GameObject WallGameObject { get; set; }
+    public Attributes AddProtection {  get; set; }
     public TypeAttack GetTypeTarget();
     public TypeAttack GetTypeAttack();
     public TypeBuildings GetTypeBuilder();

@@ -297,6 +297,10 @@ MonoBehaviour:
     Physical: 0
     Acid: 0
     Ice: 0
+  AddProtection:
+    Physical: 0
+    Acid: 0
+    Ice: 0
   AttackTargetPosition: {fileID: 0}
   LForder: {fileID: 0}
   RForder: {fileID: 0}
@@ -305,7 +309,7 @@ MonoBehaviour:
   TypeAttack: 0
   TypeBuildings: 0
   Damage:
-    Physical: 3
+    Physical: 60
     Acid: 0
     Ice: 0
   AttackReloading: 0.3
@@ -430,6 +434,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 600
   Protection:
+    Physical: 0
+    Acid: 0
+    Ice: 0
+  AddProtection:
     Physical: 0
     Acid: 0
     Ice: 0

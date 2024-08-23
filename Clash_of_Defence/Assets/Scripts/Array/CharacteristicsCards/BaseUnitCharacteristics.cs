@@ -54,6 +54,7 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
             yield break;
         }
         Vector3 oldTransformAttackTarget = TransformAttackTarget.position;
+        //StartCoroutine(AimingTargetCoroutine());
         TurningTower();
         while (true)
         {
@@ -67,6 +68,7 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
             if (oldTransformAttackTarget != TransformAttackTarget.position)
             {
                 TurningTower();
+                //StartCoroutine(AimingTargetCoroutine());
                 oldTransformAttackTarget = TransformAttackTarget.position;
             }
             transform.position = Vector3.MoveTowards
@@ -124,8 +126,17 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
 }
     protected override IEnumerator AimingTargetCoroutine()
     {
-        Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
-        /*if (IsAimingTarget)
+        /*if (Angle < 0)
+        {
+            Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
+        }
+        else
+        {
+            Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
+            yield break;
+        }
+        //Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
+        if (IsAimingTarget)
         {
             while (true)
             {
@@ -144,7 +155,10 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
             TurningTower();
             if (Mathf.Abs(TransformTower.rotation.eulerAngles.y - Angle) <= 2) break;
             yield return null;
+            //Debug.Log(Angle);
         }
+        Angle = -12;
+        //Debug.Log(Angle);
         //IsAimingTarget = false;
     }
     protected override void TurningTower()

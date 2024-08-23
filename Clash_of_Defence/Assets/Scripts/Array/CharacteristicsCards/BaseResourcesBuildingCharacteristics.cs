@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 public class BaseResourcesBuildingCharacteristics : BaseCharacteristics
 {
-    public Resources Resources;
+    [SerializeField] protected Resources Resources;
+    [SerializeField] protected Resources AddResources;
+    public Resources Add_Resources { get { return AddResources; } set { AddResources = value; } }
     public virtual void GetResources()
     {
         if(!gameObject.activeSelf) return;
-        GameController.instance.ResourcesController.PlaceResourcesWarehouses(Resources);
+        GameController.instance.ResourcesController.PlaceResourcesWarehouses(Resources*AddResources);
     }
 }
 

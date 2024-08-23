@@ -185,12 +185,24 @@ MonoBehaviour:
     Physical: 0
     Acid: 0
     Ice: 0
+  AddProtection:
+    Physical: 0
+    Acid: 0
+    Ice: 0
   AttackTargetPosition: {fileID: 591361334544044261}
   LForder: {fileID: 353881950348703036}
   RForder: {fileID: 5535554510571601100}
+  WallGameObject: {fileID: 0}
+  TypeBuilding: 0
+  TypeAttack: 0
+  TypeBuildings: 7
   Resources:
     Gold: 0
     Iron: 15
+    Power: 0
+  AddResources:
+    Gold: 0
+    Iron: 0
     Power: 0
 --- !u!65 &6482876313063891625
 BoxCollider:

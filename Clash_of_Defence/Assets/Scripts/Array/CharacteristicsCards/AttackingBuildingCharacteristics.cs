@@ -9,7 +9,7 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
     protected Transform TransformAttackTarget;
     protected Coroutine Coroutine;
     protected Transform TransformTower;
-    protected float Angle;
+    protected float Angle=-12;
     protected const float RotSpeed = 400f;
     protected AudioSource AudioSource;
     protected Animator Animator;

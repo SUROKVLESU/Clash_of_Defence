@@ -8,7 +8,10 @@ public enum TypeBuildings
     Wall =1,
     Enemy,
     AirEnemy,
-    AirBuilding
+    AirBuilding,
+    ProtectionAmplifier,
+    ResourcesAmplifier,
+    Resources
 }
 public enum TypeAttack
 {
