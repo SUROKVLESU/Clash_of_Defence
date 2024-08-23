@@ -3,15 +3,19 @@
   "WorkspaceRootPath": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\building\\turret1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\building\\turret1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|c:\\unity_next_surok_002\\clash_of_defence\\clash_of_defence\\assets\\scripts\\array\\characteristicscards\\aartillery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\array\\characteristicscards\\aartillery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\array\\characteristicscards\\attackingbuildingcharacteristics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\array\\characteristicscards\\attackingbuildingcharacteristics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|c:\\unity_next_surok_002\\clash_of_defence\\clash_of_defence\\assets\\scripts\\array\\characteristicscards\\resourcesamplifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\building\\turret1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\building\\turret1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\assets\\scripts\\array\\characteristicscards\\resourcesamplifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BE303691-46CD-270D-6CDD-D7307E8E1464}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\array\\characteristicscards\\resourcesamplifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -214,7 +218,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 19,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -226,7 +230,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Aartillery.cs",
+              "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\Aartillery.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CharacteristicsCards\\Aartillery.cs",
+              "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\Aartillery.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Array\\CharacteristicsCards\\Aartillery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T15:53:52.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ResourcesAmplifier.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\ResourcesAmplifier.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CharacteristicsCards\\ResourcesAmplifier.cs",
@@ -234,16 +251,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Array\\CharacteristicsCards\\ResourcesAmplifier.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T13:03:07.646Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+              "WhenOpened": "2024-08-23T13:03:07.646Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ProtectionAmplifier.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\ProtectionAmplifier.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CharacteristicsCards\\ProtectionAmplifier.cs",
@@ -251,12 +263,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Array\\CharacteristicsCards\\ProtectionAmplifier.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T11:26:40.615Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-23T11:26:40.615Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "BaseUnitCharacteristics.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\BaseUnitCharacteristics.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CharacteristicsCards\\BaseUnitCharacteristics.cs",
@@ -264,12 +275,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Array\\CharacteristicsCards\\BaseUnitCharacteristics.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T11:55:10.108Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T11:55:10.108Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "MapController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\MapController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\MapController.cs",
@@ -277,12 +287,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Controllers\\MapController.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAAAjwIMAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T18:44:05.517Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-27T18:44:05.517Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "BaseEnemyCharacteristics.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\BaseEnemyCharacteristics.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CharacteristicsCards\\BaseEnemyCharacteristics.cs",
@@ -294,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "HelicopterUnit.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Building\\Units\\HelicopterUnit.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Building\\Units\\HelicopterUnit.cs",
@@ -306,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "MainBuilding.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Building\\MainBuilding.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Building\\MainBuilding.cs",
@@ -318,7 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Barracks.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\Barracks.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CharacteristicsCards\\Barracks.cs",
@@ -330,7 +339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Enum.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Enum\\Enum.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enum\\Enum.cs",
@@ -338,12 +347,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Enum\\Enum.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T11:47:22.204Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T11:47:22.204Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "ResourcesController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\ResourcesController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\ResourcesController.cs",
@@ -355,7 +363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "WaveController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\WaveController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\WaveController.cs",
@@ -363,12 +371,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Controllers\\WaveController.cs",
               "ViewState": "AgIAACIAAAAAAAAAAIA2wDYAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T07:48:14.789Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T07:48:14.789Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "BaseWarehouse.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\BaseWarehouse.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CharacteristicsCards\\BaseWarehouse.cs",
@@ -379,12 +386,24 @@
               "WhenOpened": "2024-08-13T11:02:41.383Z"
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Turret1.cs",
+              "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Building\\Turret1.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Building\\Turret1.cs",
+              "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Building\\Turret1.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Building\\Turret1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T15:52:08.711Z"
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ResourcesCell.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\ResourcesCell.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\ResourcesCell.cs",
@@ -392,12 +411,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Array\\ResourcesCell.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T10:27:36.217Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-13T10:27:36.217Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "SizeMapCell.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\SizeMapCell.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\SizeMapCell.cs",
@@ -409,7 +427,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "MySpecialClass.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\MySpecialClass.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MySpecialClass.cs",
@@ -421,20 +439,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Turret1.cs",
-              "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Building\\Turret1.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Building\\Turret1.cs",
-              "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Building\\Turret1.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Building\\Turret1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-06T15:52:08.711Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "KeyValue.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\KeyValue.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\KeyValue.cs",
@@ -446,7 +451,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "SaveGame.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Save\\SaveGame.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Save\\SaveGame.cs",
@@ -458,7 +463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "ShopLevelUpButton.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Button\\ShopLevelUpButton.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Button\\ShopLevelUpButton.cs",
@@ -470,7 +475,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "ShopInterfece.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\UserInterface\\ShopInterfece.cs",
               "RelativeDocumentMoniker": "Assets\\UserInterface\\ShopInterfece.cs",
@@ -482,7 +487,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "CardLevelController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\CardLevelController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\CardLevelController.cs",
@@ -494,7 +499,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "Shop.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Button\\Shop.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Button\\Shop.cs",
@@ -506,7 +511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "StartGame.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Button\\StartGame.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Button\\StartGame.cs",
@@ -518,7 +523,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "ScaleBoxCollider.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Scale\\ScaleBoxCollider.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Scale\\ScaleBoxCollider.cs",
@@ -530,7 +535,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "ScaleButtonInterfeceRandomCards.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Scale\\ScaleButtonInterfeceRandomCards.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Scale\\ScaleButtonInterfeceRandomCards.cs",
@@ -542,7 +547,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "IronMine.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Building\\IronMine.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Building\\IronMine.cs",
@@ -554,7 +559,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "TestButton2.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Test\\TestButton2.cs",
               "RelativeDocumentMoniker": "Assets\\Test\\TestButton2.cs",
@@ -566,7 +571,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "Zombi1.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Enemy\\Zombi1.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Zombi1.cs",
@@ -578,7 +583,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "EnemiesController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\EnemiesController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\EnemiesController.cs",
@@ -590,7 +595,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "SpawnEnemiesController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\SpawnEnemiesController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\SpawnEnemiesController.cs",
@@ -602,7 +607,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "RandomController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\RandomController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\RandomController.cs",
@@ -614,7 +619,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "BaseEssenceObject.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\BaseEssenceObject.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\BaseEssenceObject.cs",
@@ -626,7 +631,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Attributes.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\Attributes.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\Attributes.cs",
@@ -634,12 +639,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Array\\Attributes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T14:26:56.572Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-01T14:26:56.572Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "GameController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\GameController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\GameController.cs",
@@ -651,7 +655,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "BaseResourcesBuildingCharacteristics.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\BaseResourcesBuildingCharacteristics.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CharacteristicsCards\\BaseResourcesBuildingCharacteristics.cs",
@@ -659,12 +663,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Array\\CharacteristicsCards\\BaseResourcesBuildingCharacteristics.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T11:52:36.867Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-01T11:52:36.867Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Resources.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\Resources.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\Resources.cs",
@@ -672,8 +675,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Array\\Resources.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T11:43:50.596Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-01T11:43:50.596Z"
             },
             {
               "$type": "Document",
@@ -683,14 +685,14 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CharacteristicsCards\\AttackingBuildingCharacteristics.cs",
               "ToolTip": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\AttackingBuildingCharacteristics.cs",
               "RelativeToolTip": "Assets\\Scripts\\Array\\CharacteristicsCards\\AttackingBuildingCharacteristics.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAwwDIAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAcwE4AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-01T09:18:48.381Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "BaseCharacteristics.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\CharacteristicsCards\\BaseCharacteristics.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\CharacteristicsCards\\BaseCharacteristics.cs",
@@ -698,12 +700,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Array\\CharacteristicsCards\\BaseCharacteristics.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T08:58:16.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-01T08:58:16.689Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "ButtonController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\ButtonController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\ButtonController.cs",
@@ -715,7 +716,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "InterfeceRandomCardsController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\InterfeceRandomCardsController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\InterfeceRandomCardsController.cs",
@@ -723,12 +724,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Controllers\\InterfeceRandomCardsController.cs",
               "ViewState": "AgIAADwAAAAAAAAAAAAjwE8AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T12:39:50.82Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-30T12:39:50.82Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "EssenceObjectPower.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\EssenceObjectPower.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\EssenceObjectPower.cs",
@@ -740,7 +740,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "CollectionsController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\CollectionsController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\CollectionsController.cs",
@@ -752,7 +752,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "NewMapBlock.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Button\\NewMapBlock.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Button\\NewMapBlock.cs",
@@ -764,7 +764,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "ListBuildingsHand.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\UserInterface\\ListBuildingsHand.cs",
               "RelativeDocumentMoniker": "Assets\\UserInterface\\ListBuildingsHand.cs",
@@ -776,7 +776,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "UserInteractionBuilding.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\UserInterface\\UserInteractionBuilding.cs",
               "RelativeDocumentMoniker": "Assets\\UserInterface\\UserInteractionBuilding.cs",
@@ -788,7 +788,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "BuildingFromCard.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\BuildingFromCard.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\BuildingFromCard.cs",
@@ -800,7 +800,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "MapBlock.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\MapBlock.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\MapBlock.cs",
@@ -812,7 +812,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "MapCell.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\MapCell.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\MapCell.cs",
@@ -824,7 +824,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "BaseCard.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Array\\BaseCard.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Array\\BaseCard.cs",
@@ -836,7 +836,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "CardListController.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Scripts\\Controllers\\CardListController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\CardListController.cs",
@@ -848,7 +848,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "TestButton.cs",
               "DocumentMoniker": "C:\\UNITY_NEXT_SUROK_002\\Clash_of_Defence\\Clash_of_Defence\\Assets\\Test\\TestButton.cs",
               "RelativeDocumentMoniker": "Assets\\Test\\TestButton.cs",
