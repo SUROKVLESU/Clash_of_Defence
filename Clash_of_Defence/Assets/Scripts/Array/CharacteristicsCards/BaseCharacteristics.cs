@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Reflection.Emit;
 using UnityEngine;
 [Serializable]
@@ -33,7 +34,7 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
         if(lForder)return LForder;
         return RForder;
     }
-    public float GetHP()
+    public virtual float GetHP()
     {
         return HP;
     }
@@ -46,7 +47,10 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
             Defeat();
         }
     }
-    public virtual void Defeat() { }
+    public virtual void Defeat() 
+    { 
+        gameObject.SetActive(false);
+    }
     public virtual void ResetHP()
     {
         HP=HPStart;
@@ -62,6 +66,7 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
         return TypeBuilding;
     }
     public virtual void MyStart() { }
+    public virtual void MyUpdate(IEnumerator enumerator) { }
 }
 public interface IBaseInterface
 {
@@ -77,5 +82,6 @@ public interface IBaseInterface
     public TypeAttack GetTypeAttack();
     public TypeBuildings GetTypeBuilder();
     public void MyStart();
+    public void MyUpdate(IEnumerator enumerator);
     //public void Defeat();
 }

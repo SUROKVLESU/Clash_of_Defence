@@ -100,7 +100,10 @@ MonoBehaviour:
   AttackTargetPosition: {fileID: 1574514238102702603}
   LForder: {fileID: 9174011488141189179}
   RForder: {fileID: 7560837367483042648}
-  TypeBuilding: 1
+  WallGameObject: {fileID: 0}
+  TypeBuilding: 0
+  TypeAttack: 3
+  TypeBuildings: 1
 --- !u!1 &3570153883211739905
 GameObject:
   m_ObjectHideFlags: 0

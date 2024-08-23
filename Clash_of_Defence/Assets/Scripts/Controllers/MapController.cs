@@ -58,6 +58,10 @@ public class MapController:MonoBehaviour
             {
                 for (int j = 0; j < Buildings.Length; j++)
                 {
+                    if (basesBuilding[j].GetTypeTarget()==TypeAttack.Air)
+                    {
+                        continue;
+                    }
                     if (j == i) continue;
                     if (basesBuilding[j].GetAttackTargetPosition().position.x 
                         > basesBuilding[i].GetForder(true).position.x

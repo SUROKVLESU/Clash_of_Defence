@@ -25,10 +25,6 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
         Animator = GetComponent<Animator>();
         ActivationBuildings();
     }
-    public override void Defeat()
-    {
-        gameObject.SetActive(false);
-    }
     public virtual void SearchAttackTarget()
     {
         if (GameController.instance.EnemiesController.Enemies.Count==0) return;
@@ -62,6 +58,7 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
                 yield break;
             }
             yield return new WaitForSeconds(AttackReloading);
+            if (GameController.instance.IsPause) { yield break; }
             if (TransformAttackTarget == null) continue;
             AudioSource.PlayOneShot(AudioSource.clip);
             Animator.Play(AnimationName);
@@ -72,6 +69,7 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
     {
         while (true)
         {
+            if (GameController.instance.IsPause) { yield break; }
             if (TransformAttackTarget == null)
             {
                 SearchAttackTarget();

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class ButtonController:MonoBehaviour
@@ -45,7 +46,8 @@ public class ButtonController:MonoBehaviour
         });
         PauseButton.onClick.AddListener(() =>
         {
-            if(!GameController.instance.WaveController.IsGame) return;
+            if(!GameController.instance.WaveController.IsGame||!IsOnPauseButton) return;
+            StartCoroutine(PauseReloading());
             if (OnPauseButton.activeSelf)
             {
                 OnPauseButton.SetActive(false);
@@ -57,12 +59,12 @@ public class ButtonController:MonoBehaviour
             }
             else
             {
+                GameController.instance.IsPause = false;
                 OnPauseButton.SetActive(true);
                 OffPauseButton.SetActive(false);
                 GameController.instance.MapController.OffPause();
                 GameController.instance.EnemiesController.OffPause();
                 GameController.instance.SpawnEnemiesController.OffPause();
-                GameController.instance.IsPause = false;
             }
         });
         StartWaveButton.onClick.AddListener(() => { GameController.instance.WaveController.StartWave(); });
@@ -153,6 +155,14 @@ public class ButtonController:MonoBehaviour
     {
         GameController.instance.ShopInterfeceObject.SetActive (false);
         GameController.instance.SaveGame.Save();
+    }
+    private float PauseButtonReloading = 0.2f;
+    private bool IsOnPauseButton = true;
+    private IEnumerator PauseReloading()
+    {
+        IsOnPauseButton = false;
+        yield return new WaitForSeconds(PauseButtonReloading);
+        IsOnPauseButton = true;
     }
 }
 

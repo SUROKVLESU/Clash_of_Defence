@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e19b972dbec7484d811599e1e702c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 20
+  HP: 200000
   Protection:
     Physical: 0
     Acid: 0
@@ -93,6 +93,10 @@ MonoBehaviour:
   AttackTargetPosition: {fileID: 9202158631083381386}
   LForder: {fileID: 3876674739553904961}
   RForder: {fileID: 4704885555169044533}
+  WallGameObject: {fileID: 0}
+  TypeBuilding: 0
+  TypeAttack: 0
+  TypeBuildings: 0
   SizeWarehouse:
     Gold: 200
     Iron: 0

@@ -17,12 +17,17 @@ public class Barracks:BaseCharacteristics
     }
     public override void ActivationBuildings()
     {
+        GameObjectUnit.SetActive(true);
         Unit.ActivationBuildings();
     }
     public override void ResetHP()
     {
         base.ResetHP();
         Unit.ResetHP();
+    }
+    public override float GetHP()
+    {
+        return Unit.GetHP();
     }
 }
 
