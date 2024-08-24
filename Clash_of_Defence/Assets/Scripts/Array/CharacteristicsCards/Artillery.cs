@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class Aartillery:AttackingBuildingCharacteristics
+public class Artillery:AttackingBuildingCharacteristics
 {
     [SerializeField] protected float SqrProjectileVelocity;
     protected override IEnumerator AttackCoroutine()

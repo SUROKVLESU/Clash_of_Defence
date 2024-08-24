@@ -21,6 +21,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     public override void MyStart()
     {
         TransformTower = transform;
+        Animator = GetComponent<Animator>();
         SearchAttackTarget();
         Move();
     }
@@ -44,6 +45,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     {
         Vector3 oldTransformAttackTarget = TransformAttackTarget.position;
         StartCoroutine(AimingTargetCoroutine());
+        Animator.SetBool("Move",true);
         while (true)
         {
             if (oldTransformAttackTarget!= TransformAttackTarget.position)
@@ -66,6 +68,8 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
                 && transform.position.z + AttackRadius > AttackTarget.GetForder(false).position.z) break;
             yield return null;
         }
+        //Animator.speed = 10;
+        Animator.SetBool("Move", false);
         Coroutine = StartCoroutine(AttackCoroutine());
     }
     protected override IEnumerator AttackCoroutine()
@@ -78,14 +82,21 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
             {
                 SearchAttackTarget();
                 Move();
+                Animator.speed = 1;
+                Animator.SetBool("Attack", false);
                 yield break;
             }
             if (oldTransformAttackTarget != TransformAttackTarget.position)
             {
                 Move();
+                Animator.speed = 1;
+                Animator.SetBool("Attack", false);
                 oldTransformAttackTarget = TransformAttackTarget.position;
                 yield break;
             }
+            Animator.StopPlayback();
+            Animator.speed = (1/AttackReloading);
+            Animator.SetBool("Attack", true);
             yield return new WaitForSeconds(AttackReloading);
             if (!TransformAttackTarget.gameObject.activeSelf) continue;
             AttackTarget.TakingDamage(Damage);

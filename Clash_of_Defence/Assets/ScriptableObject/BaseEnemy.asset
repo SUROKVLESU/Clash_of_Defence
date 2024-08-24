@@ -18,4 +18,4 @@ MonoBehaviour:
   Power: 1
   ProbabilityFalling: 1
   GameObjects:
-  - {fileID: 5285335119072988722, guid: b59da8951b01781448201f0a787280c0, type: 3}
+  - {fileID: 3661146601584494923, guid: 6bb48af02b7cdae4fbbc9ff7bd9eb552, type: 3}
