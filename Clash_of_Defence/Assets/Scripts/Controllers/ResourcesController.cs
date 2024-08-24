@@ -156,7 +156,7 @@ public class ResourcesController:MonoBehaviour
         }
         if (number >= 10000)
         {
-            number /= 10000;
+            number /= 1000;
             return number.ToString() + "K";
         }
         return number.ToString();

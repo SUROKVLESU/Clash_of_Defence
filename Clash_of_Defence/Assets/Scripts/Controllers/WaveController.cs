@@ -9,6 +9,7 @@ public class WaveController
     public bool IsGame = false;
     public bool IsPlayerDefeat = false;
     public int CountWave = 1;
+    public int CountEnemis;
     public void ResetBuildingsAndEnemies()
     {
         GameController.instance.MapController.ActivationBuildings();
@@ -58,8 +59,10 @@ public class WaveController
         IsGame= true;
         GameController.instance.MapController.CancellationSelected();
         //Debug.Log(GameController.instance.CollectionController.GetRandomEnemy(1).Id);// тут ошибка
-        GameController.instance.SpawnEnemiesController.SpawnEnemies
-            (GameController.instance.RandomController.GetRandomEnemies(CurentMaxPowerEnemies));
+        BaseEssenceObject[] enemis = GameController.instance.RandomController.GetRandomEnemies(CurentMaxPowerEnemies);
+        CountEnemis = enemis.Length;
+        GameController.instance.CountEnemyText.text = ":" + CountEnemis;
+        GameController.instance.SpawnEnemiesController.SpawnEnemies(enemis);
         GameController.instance.ButtonController.OffInterfeceHand();
     }
     public void Initialization()

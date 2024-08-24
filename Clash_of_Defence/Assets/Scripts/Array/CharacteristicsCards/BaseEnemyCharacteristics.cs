@@ -34,7 +34,9 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     {
         GameController.instance.ResourcesController.PlaceResourcesWarehouses(FallingResources);
         GameController.instance.EnemiesController.Enemies.Remove(gameObject);
-        if (GameController.instance.EnemiesController.Enemies.Count == 0
+        //GameController.instance.WaveController.CountEnemis--;
+        GameController.instance.CountEnemyText.text = ":" + --GameController.instance.WaveController.CountEnemis;
+        if (GameController.instance.WaveController.CountEnemis == 0
             && GameController.instance.SpawnEnemiesController.IsAllSpawnEnemies())
         {
             GameController.instance.WaveController.EnemiesDefeat();
@@ -125,7 +127,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     }
     protected override IEnumerator AimingTargetCoroutine()
     {
-        Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
+        //Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
         if (IsAimingTarget)
         {
             while (true)
@@ -142,7 +144,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
                 yield break;
             }
             TurningTower();
-            if (Mathf.Abs(TransformTower.rotation.eulerAngles.y - Angle) <= 2) break;
+            if (Mathf.Abs(TransformTower.rotation.eulerAngles.y - Angle) <= 10) break;
             yield return null;
         }
         IsAimingTarget=false;

@@ -88,6 +88,10 @@ MonoBehaviour:
     Physical: 0
     Acid: 0
     Ice: 0
+  AddProtection:
+    Physical: 0
+    Acid: 0
+    Ice: 0
   AttackTargetPosition: {fileID: 9096106693527949658}
   LForder: {fileID: 0}
   RForder: {fileID: 0}
@@ -180,12 +184,16 @@ MonoBehaviour:
     Physical: 0
     Acid: 0
     Ice: 0
+  AddProtection:
+    Physical: 0
+    Acid: 0
+    Ice: 0
   AttackTargetPosition: {fileID: 9096106693527949658}
   LForder: {fileID: 9170170303112179869}
   RForder: {fileID: 2805243600078234857}
   WallGameObject: {fileID: 0}
   TypeBuilding: 1
-  TypeAttack: 1
+  TypeAttack: 2
   TypeBuildings: 4
   Damage:
     Physical: 2

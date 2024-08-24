@@ -28,5 +28,4 @@ MonoBehaviour:
   PriceCard: 00000000
   SizeMapCell:
     Sizes:
-    - line: 
     - line: 01

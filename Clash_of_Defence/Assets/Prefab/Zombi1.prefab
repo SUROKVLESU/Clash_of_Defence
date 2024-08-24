@@ -237,7 +237,7 @@ MonoBehaviour:
   AttackReloading: 4
   AttackRadius: 0.5
   AnimationName: 
-  SpeedMovement: 0.5
+  SpeedMovement: 4
   FallingResources:
     Gold: 15
     Iron: 0

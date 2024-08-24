@@ -77,7 +77,7 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
                 continue;
             }
             TurningTower();
-            if (Mathf.Abs(TransformTower.rotation.eulerAngles.y-Angle) <=2) break;
+            if (Mathf.Abs(TransformTower.rotation.eulerAngles.y-Angle) <=10) break;
             yield return null;
         }
         Coroutine = StartCoroutine(AttackCoroutine());

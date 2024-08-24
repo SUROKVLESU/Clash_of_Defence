@@ -59,6 +59,7 @@ public class GameController : MonoBehaviour
     public GameObject DefeatInterfece;
     public GameObject MenuInterfece;
     public Text CountWaveText;
+    public Text CountEnemyText;
     public GameObject ShopInterfeceObject;
     public ShopInterfece ShopInterfece;
     public CollectionsController CollectionController;

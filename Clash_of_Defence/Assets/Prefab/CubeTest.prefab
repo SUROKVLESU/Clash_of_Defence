@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7e35be40dbff34ab519751d7060dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 600
+  HP: 6000
   Protection:
     Physical: 0
     Acid: 0
