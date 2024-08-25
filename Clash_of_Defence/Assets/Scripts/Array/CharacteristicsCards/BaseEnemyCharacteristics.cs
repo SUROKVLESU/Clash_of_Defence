@@ -34,9 +34,8 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     {
         GameController.instance.ResourcesController.PlaceResourcesWarehouses(FallingResources);
         GameController.instance.EnemiesController.Enemies.Remove(gameObject);
-        //GameController.instance.WaveController.CountEnemis--;
         GameController.instance.CountEnemyText.text = ":" + --GameController.instance.WaveController.CountEnemis;
-        if (GameController.instance.WaveController.CountEnemis == 0
+        if (GameController.instance.EnemiesController.Enemies.Count == 0
             && GameController.instance.SpawnEnemiesController.IsAllSpawnEnemies())
         {
             GameController.instance.WaveController.EnemiesDefeat();

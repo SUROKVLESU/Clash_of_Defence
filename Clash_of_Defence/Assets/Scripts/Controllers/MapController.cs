@@ -143,7 +143,8 @@ public class MapController:MonoBehaviour
             basesBuilding[i] = Buildings[i].GetComponent<IBaseInterface>();
             if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.Resources)
             {
-                Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>().Add_Resources = new();
+                Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>().Add_Resources 
+                    = new Resources() { Gold = 1, Iron = 1, Power = 1 };
             }
         }
         for (int i = 0; i < Buildings.Length; i++)
