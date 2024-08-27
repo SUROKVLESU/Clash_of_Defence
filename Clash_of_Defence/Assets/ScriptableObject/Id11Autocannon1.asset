@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e931b32f61c3f014c96ea4154b4c84a2, type: 3}
+  m_Name: Id11Autocannon1
+  m_EditorClassIdentifier: 
+  Id: 11
+  Name: 
+  CurrentMaxLevel: 10
+  Power: 1
+  ProbabilityFalling: 2
+  GameObjects:
+  - {fileID: 4913724881121637442, guid: 433e05e33e38c9947a8a093b72b07c59, type: 3}
+  - {fileID: 3651385727698551044, guid: 25b31c6751a158a4aa764a1f3f496572, type: 3}
+  - {fileID: 6661643182247205564, guid: 879af912bdc600e458dcd0b596f7a660, type: 3}
+  - {fileID: 1162222574211383429, guid: d8a4514e26293644fac0f907991f068a, type: 3}
+  - {fileID: 1131472799480029788, guid: 5ed9c4223058db045b7dc9174638e759, type: 3}
+  - {fileID: 8423127149005661285, guid: 402d9293c9d70dd44b2d473b8dc6d639, type: 3}
+  - {fileID: 7692513401606585885, guid: b81310d4aa4a2e64ea2fc595fb761a24, type: 3}
+  - {fileID: 8209043136594689212, guid: 9a03f937f7c3bc545b16a3fd9a6ddb4c, type: 3}
+  - {fileID: 830541589428675915, guid: c22ecaffd9961de4b9c964deb7ba6b40, type: 3}
+  - {fileID: 935734213476568294, guid: e9d21fa758807e24f907930fe7a55561, type: 3}
+  CardCover: {fileID: 1903048944795007090, guid: 3e6dc8fd915f7244dadfc00e9d08ba6f,
+    type: 3}
+  PriceBuilding:
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  PriceCard: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  SizeMapCell:
+    Sizes:
+    - line: 01

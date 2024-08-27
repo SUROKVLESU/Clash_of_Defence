@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e931b32f61c3f014c96ea4154b4c84a2, type: 3}
+  m_Name: Id10MachineGun1
+  m_EditorClassIdentifier: 
+  Id: 10
+  Name: 
+  CurrentMaxLevel: 10
+  Power: 1
+  ProbabilityFalling: 2
+  GameObjects:
+  - {fileID: 481526259588247449, guid: 308c8f7eda139dc458da3cc26ed5d1ea, type: 3}
+  - {fileID: 3176388343183806105, guid: 2f1e15d3dc16577419ce7e48a3027ef9, type: 3}
+  - {fileID: 5859017679341437646, guid: 75d83307f7427744d8d438bbe6bb6381, type: 3}
+  - {fileID: 5673021754582840256, guid: 9204363aa69813c439a42076bcfebbb3, type: 3}
+  - {fileID: 7389044484770989204, guid: b7ef6ae12ad9fbb4a8f87ef88295b530, type: 3}
+  - {fileID: 982214395641501843, guid: e5063d2119988ab4989f6e7911c55ee9, type: 3}
+  - {fileID: 7133669179048282990, guid: de16f146ee11fc047b8aedcad7e8c3bb, type: 3}
+  - {fileID: 5389029063563290688, guid: 0b53caa4141e94f4093ef0ddb6446428, type: 3}
+  - {fileID: 2125560011867084682, guid: 5af250e653ca69f4ab4d802d19eda301, type: 3}
+  - {fileID: 6122142662359833896, guid: a218095478eb92d45b80e416b8686098, type: 3}
+  CardCover: {fileID: 3956932355726986855, guid: 57c4fbdc6c905a744af95ce70d189f67,
+    type: 3}
+  PriceBuilding:
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 20
+    Power: 0
+  - Gold: 0
+    Iron: 30
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  PriceCard: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  SizeMapCell:
+    Sizes:
+    - line: 01

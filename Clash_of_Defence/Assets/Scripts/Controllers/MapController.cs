@@ -433,6 +433,7 @@ public class MapController:MonoBehaviour
         }
         Buildings=arr;
         ActiveCount -= 1;
+        CancellationSelected();
         SelectedCardGameObject = null;
     }
     public void ReturnAllCardYourHand()

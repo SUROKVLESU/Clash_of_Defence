@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 6493676001736502357}
   - component: {fileID: 6829984729003326399}
   m_Layer: 0
-  m_Name: CubeTest
+  m_Name: Turret1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
