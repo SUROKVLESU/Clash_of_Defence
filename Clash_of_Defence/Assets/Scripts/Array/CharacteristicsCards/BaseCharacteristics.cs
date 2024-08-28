@@ -68,6 +68,7 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
     }
     public virtual void MyStart() { }
     public virtual void MyUpdate(IEnumerator enumerator) { }
+    public virtual void PrintAttackRadius(bool on) { }
 }
 public interface IBaseInterface
 {
@@ -86,4 +87,5 @@ public interface IBaseInterface
     public void MyStart();
     public void MyUpdate(IEnumerator enumerator);
     //public void Defeat();
+    public void PrintAttackRadius(bool on);
 }

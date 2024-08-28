@@ -12,12 +12,11 @@ public class Artillery:AttackingBuildingCharacteristics
                 Coroutine = StartCoroutine(AimingTargetCoroutine());
                 yield break;
             }
-            yield return new WaitForSeconds(AttackReloading);
             if (GameController.instance.IsPause) { yield break; }
-            if (TransformAttackTarget == null) continue;
             AudioSource.PlayOneShot(AudioSource.clip);
             Animator.Play(AnimationName);
             StartCoroutine(AartilleryAttackCoroutine());
+            yield return new WaitForSeconds(AttackReloading);
         }
     }
     protected virtual IEnumerator AartilleryAttackCoroutine()

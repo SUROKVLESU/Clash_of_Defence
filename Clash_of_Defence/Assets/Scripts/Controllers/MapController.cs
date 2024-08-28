@@ -143,8 +143,7 @@ public class MapController:MonoBehaviour
             basesBuilding[i] = Buildings[i].GetComponent<IBaseInterface>();
             if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.Resources)
             {
-                Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>().Add_Resources 
-                    = new Resources() { Gold = 1, Iron = 1, Power = 1 };
+                Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>().Add_Resources = new ();
             }
         }
         for (int i = 0; i < Buildings.Length; i++)
@@ -203,7 +202,7 @@ public class MapController:MonoBehaviour
     public void AddMainBuilding()
     {
         BaseCard baseCard = (BaseCard)GameController.instance.CollectionController.MainBuilding;
-        MainBuilding = Instantiate(baseCard.GameObjects[0]);
+        MainBuilding = Instantiate(baseCard.GameObjects[baseCard.GetLevel()]);
         MapCell FreeCell = SearchFreeCell(baseCard.SizeMapCell);
         MainBuilding.transform.position = new Vector3(FreeCell.Position.x, 0, FreeCell.Position.y);
         MainBuilding.GetComponent<UserInteractionBuilding>().Card = baseCard;
@@ -441,6 +440,8 @@ public class MapController:MonoBehaviour
         if (Buildings.Length == 0) { return; }
         GameController.instance.CardListController.ReturnAllCardYourHand();
         ResetFreeMapCell();
+        SetFreeCell(new Vector2Int((int)MainBuilding.transform.position.x, (int)MainBuilding.transform.position.z),
+            ((BaseCard)GameController.instance.CollectionController.MainBuilding).SizeMapCell, false);
         for (int i = 0; i < Buildings.Length; i++)
         {
             Destroy (Buildings[i].gameObject);
@@ -470,6 +471,7 @@ public class MapController:MonoBehaviour
         for (int i = 0; i < Buildings.Length; i++)
         {
             Buildings[i].GetComponent<UserInteractionBuilding>().ResetPosition();
+            Buildings[i].GetComponent<IBaseInterface>().PrintAttackRadius(false);
         }
         MainBuilding.GetComponent<UserInteractionBuilding>().ResetPosition();
         GameController.instance.CardLevelController.OnOffUpdeteMenu(false);

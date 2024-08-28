@@ -20,6 +20,10 @@ public class Barracks:BaseCharacteristics
         GameObjectUnit.SetActive(true);
         Unit.ActivationBuildings();
     }
+    public override void PrintAttackRadius(bool on)
+    {
+        Unit.PrintAttackRadius(on);
+    }
     public override void ResetHP()
     {
         base.ResetHP();

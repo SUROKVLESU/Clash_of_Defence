@@ -63,9 +63,11 @@ public class UserInteractionBuilding : MonoBehaviour
             GameController.instance.MapController.SelectedCardGameObject = this;
             Selected = true;
             transform.position = new Vector3(transform.position.x, LiftingHeight, transform.position.z);
+            gameObject.GetComponent<IBaseInterface>().PrintAttackRadius(selected);
         }
         else
         {
+            gameObject.GetComponent<IBaseInterface>().PrintAttackRadius(selected);
             GameController.instance.MapController.SelectedCardGameObject = null;
             Selected = false;
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);

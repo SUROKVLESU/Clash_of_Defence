@@ -36,13 +36,20 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
     {
         TransformTower = transform.GetChild(0);
         StartHeight = transform.position.y;
+        if (TransformAttackRadius != null)
+        {
+            TransformAttackRadius.localScale = new Vector3(AttackRadius, 1, AttackRadius);
+        }
         SearchAttackTarget();
         Move();
     }
-    public override void ActivationBuildings()
+    protected override IEnumerator OffPause()
     {
+        yield return new WaitForSeconds(AttackReloading);
+        if (GameController.instance.IsPause) yield break;
         SearchAttackTarget();
         Move();
+        CoroutinePause = null;
     }
     protected virtual IEnumerator MovementCoroutine()
     {
@@ -81,7 +88,7 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
     }
     protected override IEnumerator AttackCoroutine()
     {
-        //Vector3 oldTransformAttackTarget = TransformAttackTarget.position;
+        Vector3 oldTransformAttackTarget = TransformAttackTarget.position;
         if (TransformAttackTarget==null) yield break;
         while (true)
         {
@@ -91,12 +98,17 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
                 Move();
                 yield break;
             }
+            if (oldTransformAttackTarget != TransformAttackTarget.position)
+            {
+                Move();
+                oldTransformAttackTarget = TransformAttackTarget.position;
+                yield break;
+            }
             Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
             TransformTower.rotation = Quaternion.Euler(new Vector3(0, Angle, 0));
-            yield return new WaitForSeconds(AttackReloading);
             if (GameController.instance.IsPause) { yield break; }
-            if (TransformAttackTarget==null) continue;
             AttackTarget.TakingDamage(Damage);
+            yield return new WaitForSeconds(AttackReloading);
         }
     }
     public override void SearchAttackTarget()

@@ -403,6 +403,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5198030941090852335}
   m_SourcePrefab: {fileID: 100100000, guid: 7d4848def3e0ee84d840289843f0697e, type: 3}
+--- !u!4 &1541022348485141295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8419040409230497370, guid: 7d4848def3e0ee84d840289843f0697e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7040462176379925877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1856650539735846031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8678606734736816634, guid: 7d4848def3e0ee84d840289843f0697e,
@@ -449,6 +455,7 @@ MonoBehaviour:
     Ice: 0
   AttackReloading: 7
   AttackRadius: 55
+  TransformAttackRadius: {fileID: 1541022348485141295}
   AnimationName: Aartillery1
   SqrProjectileVelocity: 100
 --- !u!95 &5198030941090852335

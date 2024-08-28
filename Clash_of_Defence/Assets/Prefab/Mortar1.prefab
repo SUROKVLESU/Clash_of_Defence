@@ -252,6 +252,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1984435692518305023}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1074370293080641488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1541022348485141295, guid: fab7c674f8f65c140bae2cc414021f93,
+    type: 3}
+  m_PrefabInstance: {fileID: 1984435692518305023}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4156992343586880531 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2466489614755123436, guid: fab7c674f8f65c140bae2cc414021f93,
@@ -292,6 +298,7 @@ MonoBehaviour:
     Ice: 0
   AttackReloading: 10
   AttackRadius: 600
+  TransformAttackRadius: {fileID: 1074370293080641488}
   AnimationName: Mortar1
   SqrProjectileVelocity: 2000
   MortarRadius: 8

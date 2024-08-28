@@ -5,15 +5,21 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
     [SerializeField] protected Attributes Damage;
     [SerializeField] protected float AttackReloading;
     [SerializeField] protected float AttackRadius;
+    [SerializeField] protected Transform TransformAttackRadius;
     protected IBaseInterface AttackTarget;
     protected Transform TransformAttackTarget;
     protected Coroutine Coroutine;
+    protected Coroutine CoroutinePause;
     protected Transform TransformTower;
     protected float Angle=-12;
     protected const float RotSpeed = 400f;
     protected AudioSource AudioSource;
     protected Animator Animator;
     [SerializeField] protected string AnimationName;
+    public override void PrintAttackRadius(bool on)
+    {
+        TransformAttackRadius.gameObject.SetActive(on);
+    }
     private void Start()
     {
         MyStart();
@@ -21,6 +27,10 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
     public override void MyStart()
     {
         TransformTower = transform.GetChild(0);
+        if (TransformAttackRadius!=null)
+        {
+            TransformAttackRadius.localScale = new Vector3(AttackRadius*2, 1, AttackRadius*2);
+        }
         AudioSource = GetComponent<AudioSource>();
         Animator = GetComponent<Animator>();
         ActivationBuildings();
@@ -50,20 +60,18 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
     public virtual void Attack(){ }
     protected virtual IEnumerator AttackCoroutine()
     {
-        while (true)
+        if (TransformAttackTarget == null)
         {
-            if (TransformAttackTarget == null)
-            {
-                Coroutine = StartCoroutine(AimingTargetCoroutine());
-                yield break;
-            }
-            yield return new WaitForSeconds(AttackReloading);
-            if (GameController.instance.IsPause) { yield break; }
-            if (TransformAttackTarget == null) continue;
-            AudioSource.PlayOneShot(AudioSource.clip);
-            Animator.Play(AnimationName);
-            AttackTarget.TakingDamage(Damage);
+            Coroutine = StartCoroutine(AimingTargetCoroutine());
+            yield break;
         }
+        if (GameController.instance.IsPause) { yield break; }
+        AudioSource.PlayOneShot(AudioSource.clip);
+        Animator.Play(AnimationName);
+        AttackTarget.TakingDamage(Damage);
+        yield return new WaitForSeconds(AttackReloading);
+        Coroutine = StartCoroutine(AimingTargetCoroutine());
+        yield break;
     }
     protected virtual IEnumerator AimingTargetCoroutine()
     {
@@ -91,7 +99,15 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
     }
     public override void ActivationBuildings() 
     {
-        Coroutine = StartCoroutine(AimingTargetCoroutine());
+        if (CoroutinePause != null)
+        {
+            StopCoroutine(CoroutinePause);
+            CoroutinePause = StartCoroutine(OffPause());
+        }
+        else
+        {
+            CoroutinePause = StartCoroutine(OffPause());
+        }
     }
     public override void Stop()
     {
@@ -100,6 +116,13 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
         if (Coroutine == null) return;
         StopCoroutine(Coroutine);
         Coroutine = null;
+    }
+    protected virtual IEnumerator OffPause()
+    {
+        yield return new WaitForSeconds(AttackReloading);
+        if (GameController.instance.IsPause) yield break;
+        Coroutine = StartCoroutine(AimingTargetCoroutine());
+        CoroutinePause = null;
     }
 }
 public interface IAttackInterface

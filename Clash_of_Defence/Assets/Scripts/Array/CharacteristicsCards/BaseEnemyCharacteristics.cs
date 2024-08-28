@@ -22,13 +22,20 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
     {
         TransformTower = transform;
         Animator = GetComponent<Animator>();
+        if (TransformAttackRadius != null)
+        {
+            TransformAttackRadius.localScale = new Vector3(AttackRadius, 1, AttackRadius);
+        }
         SearchAttackTarget();
         Move();
     }
-    public override void ActivationBuildings()
+    protected override IEnumerator OffPause()
     {
+        yield return new WaitForSeconds(AttackReloading);
+        if (GameController.instance.IsPause) yield break;
         SearchAttackTarget();
         Move();
+        CoroutinePause = null;
     }
     public override void Defeat()
     {
@@ -52,8 +59,8 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
             if (oldTransformAttackTarget!= TransformAttackTarget.position)
             {
                 StartCoroutine(AimingTargetCoroutine());
-                oldTransformAttackTarget = TransformAttackTarget.position;
                 SearchAttackTarget();
+                oldTransformAttackTarget = TransformAttackTarget.position;
             }
             if (!TransformAttackTarget.parent.gameObject.activeSelf)
             {
@@ -98,9 +105,9 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
             Animator.StopPlayback();
             Animator.speed = (1/AttackReloading);
             Animator.SetBool("Attack", true);
-            yield return new WaitForSeconds(AttackReloading);
-            if (!TransformAttackTarget.gameObject.activeSelf) continue;
+            //if (!TransformAttackTarget.gameObject.activeSelf) continue;
             AttackTarget.TakingDamage(Damage);
+            yield return new WaitForSeconds(AttackReloading);
         }
     }
     public override void SearchAttackTarget()
