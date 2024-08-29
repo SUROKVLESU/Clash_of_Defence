@@ -23,6 +23,7 @@ public class Artillery:AttackingBuildingCharacteristics
         yield return new WaitForSeconds((TransformAttackTarget.position-transform.position).sqrMagnitude/SqrProjectileVelocity);
         if(TransformAttackTarget == null) yield break;
         AttackTarget.TakingDamage(Damage);
+        if (IsSustainedDamage) AttackTarget.TakingSustainedDamage(SustainedDamage, TimeSustainedDamage);
         if (AttackTarget.GetHP()<0)
         {
             StopCoroutine(Coroutine);

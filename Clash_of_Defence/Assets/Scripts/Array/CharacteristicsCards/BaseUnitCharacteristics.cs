@@ -40,6 +40,10 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
         {
             TransformAttackRadius.localScale = new Vector3(AttackRadius, 1, AttackRadius);
         }
+        if (SustainedDamage > 0)
+        {
+            IsSustainedDamage = true;
+        }
         SearchAttackTarget();
         Move();
     }
@@ -107,6 +111,7 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
             Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
             TransformTower.rotation = Quaternion.Euler(new Vector3(0, Angle, 0));
             if (GameController.instance.IsPause) { yield break; }
+            if (IsSustainedDamage) AttackTarget.TakingSustainedDamage(SustainedDamage, TimeSustainedDamage);
             AttackTarget.TakingDamage(Damage);
             yield return new WaitForSeconds(AttackReloading);
         }

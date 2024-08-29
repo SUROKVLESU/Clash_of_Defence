@@ -3909,6 +3909,9 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 9940818858e5a624fb2f22a31f22e177, type: 2}
       - {fileID: 11400000, guid: 03f74529f0486454db5bd6d8c57cd30f, type: 2}
       - {fileID: 11400000, guid: c6a37b56706d7af4291bcf7309c01c5c, type: 2}
+      - {fileID: 11400000, guid: 498fb7479e6d5f1468fa661b37d64811, type: 2}
+      - {fileID: 11400000, guid: 39ebae30d018d894c939b158fc04a586, type: 2}
+      - {fileID: 11400000, guid: ac81ad6eac5d4d241803e4d8bb564455, type: 2}
     UnlockedCardsPower: []
     MainBuilding: {fileID: 11400000, guid: c7a2c7a341823994898eb76804b724f5, type: 2}
     AllEnemiesPower:

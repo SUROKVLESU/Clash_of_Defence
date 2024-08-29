@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e931b32f61c3f014c96ea4154b4c84a2, type: 3}
+  m_Name: Id14DoubleMachineGun1
+  m_EditorClassIdentifier: 
+  Id: 14
+  Name: 
+  CurrentMaxLevel: 0
+  Power: 1
+  ProbabilityFalling: 2
+  GameObjects:
+  - {fileID: 6935046608065201680, guid: c0d3c5da23b4df1428a27430d8a96375, type: 3}
+  - {fileID: 6412749172027409658, guid: fb6f7b786e94eda4b9a0ca5adc8eb124, type: 3}
+  - {fileID: 5815092589821990944, guid: fa7dca13e5f12b946abfa9a2f60ab490, type: 3}
+  - {fileID: 6753977990785802490, guid: df86b0088d470ef459039c01b8a48560, type: 3}
+  - {fileID: 988247254154618590, guid: 1d96eb7d71b418b4cb99587ffa189885, type: 3}
+  - {fileID: 8363547153930956089, guid: 96f4746fc06ebf24e869e667e891400a, type: 3}
+  - {fileID: 4283742445912709539, guid: a29a3f589ccde2d4e97c108e9603bce1, type: 3}
+  - {fileID: 4594291150232538686, guid: 3a287bf91373b5643a79024c65188fa5, type: 3}
+  - {fileID: 6971831763841829487, guid: de70d4f77514f97489a83e344a9b47aa, type: 3}
+  - {fileID: 4063359396218421331, guid: 2cf9842b557532249b7b38aa2d0b26ba, type: 3}
+  CardCover: {fileID: 5612960639501209794, guid: de67deb3fb27e9f45a0ccf39171939f9,
+    type: 3}
+  PriceBuilding:
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  PriceCard: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  SizeMapCell:
+    Sizes:
+    - line: 01

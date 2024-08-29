@@ -28,5 +28,26 @@ public class Attributes
     {
         return hp-attributes.Physical-attributes.Acid-attributes.Ice;
     }
+    public static bool operator >(Attributes attributes, int value)
+    {
+        if (attributes.Physical>0||attributes.Ice>0||attributes.Acid>0)
+        {
+            return true;
+        }
+        else return false;
+    }
+    public static bool operator <(Attributes attributes, int value)
+    {
+        return !(attributes>value);
+    }
+    public static Attributes operator /(Attributes attributes, int value)
+    {
+        return new Attributes()
+        {
+            Physical = attributes.Physical / value,
+            Ice = attributes.Ice / value,
+            Acid = attributes.Acid / value
+        };
+    }
 }
 

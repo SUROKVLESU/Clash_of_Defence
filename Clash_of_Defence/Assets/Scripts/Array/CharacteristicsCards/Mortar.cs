@@ -30,6 +30,7 @@ public class Mortar:Artillery
         foreach (var item in baseInterfaces)
         {
             item.TakingDamage(Damage);
+            if (IsSustainedDamage) AttackTarget.TakingSustainedDamage(SustainedDamage, TimeSustainedDamage);
         }
         if (AttackTarget.GetHP() < 0)
         {

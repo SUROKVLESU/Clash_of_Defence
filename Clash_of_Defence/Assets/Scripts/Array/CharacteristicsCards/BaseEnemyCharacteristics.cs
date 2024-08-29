@@ -26,6 +26,10 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
         {
             TransformAttackRadius.localScale = new Vector3(AttackRadius, 1, AttackRadius);
         }
+        if (SustainedDamage > 0)
+        {
+            IsSustainedDamage = true;
+        }
         SearchAttackTarget();
         Move();
     }
@@ -107,6 +111,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
             Animator.SetBool("Attack", true);
             //if (!TransformAttackTarget.gameObject.activeSelf) continue;
             AttackTarget.TakingDamage(Damage);
+            if (IsSustainedDamage) AttackTarget.TakingSustainedDamage(SustainedDamage, TimeSustainedDamage);
             yield return new WaitForSeconds(AttackReloading);
         }
     }

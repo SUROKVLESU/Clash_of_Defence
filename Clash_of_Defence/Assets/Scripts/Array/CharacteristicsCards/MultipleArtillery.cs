@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,6 +30,7 @@ public class MultipleArtillery:Mortar
         foreach (var item in baseInterfaces)
         {
             item.TakingDamage(Damage);
+            if (IsSustainedDamage) AttackTarget.TakingSustainedDamage(SustainedDamage, TimeSustainedDamage);
         }
     }
     public MultipleArtillery()

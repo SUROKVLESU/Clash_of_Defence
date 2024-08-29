@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409bbbcf74fd81147bd04aef085e3558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 30
   Protection:
     Physical: 0
     Acid: 0
@@ -234,8 +234,14 @@ MonoBehaviour:
     Physical: 2
     Acid: 0
     Ice: 0
+  SustainedDamage:
+    Physical: 0
+    Acid: 0
+    Ice: 0
+  TimeSustainedDamage: 0
   AttackReloading: 4
   AttackRadius: 0.5
+  TransformAttackRadius: {fileID: 0}
   AnimationName: 
   SpeedMovement: 4
   FallingResources:

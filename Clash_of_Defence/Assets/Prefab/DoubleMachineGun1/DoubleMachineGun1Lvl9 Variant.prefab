@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1939814737358216371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3662580965751346657}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 08731563dc98d0f4c809bd497582228a,
+        type: 3}
+      propertyPath: m_Name
+      value: DoubleMachineGun1-1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08731563dc98d0f4c809bd497582228a, type: 3}
+--- !u!4 &2117010977994095448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08731563dc98d0f4c809bd497582228a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1939814737358216371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6846280092759819345
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 146253726726464697, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146253726726464697, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146253726726464697, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146253726726464697, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 146253726726464697, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146253726726464697, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146253726726464697, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146253726726464697, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146253726726464697, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146253726726464697, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594291150232538686, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      propertyPath: m_Name
+      value: DoubleMachineGun1Lvl9 Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 918704509924237915, guid: 3a287bf91373b5643a79024c65188fa5, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7914731661385814448, guid: 3a287bf91373b5643a79024c65188fa5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2117010977994095448}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a287bf91373b5643a79024c65188fa5, type: 3}
+--- !u!4 &3662580965751346657 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7914731661385814448, guid: 3a287bf91373b5643a79024c65188fa5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6846280092759819345}
+  m_PrefabAsset: {fileID: 0}

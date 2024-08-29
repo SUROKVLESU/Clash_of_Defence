@@ -69,6 +69,25 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
     public virtual void MyStart() { }
     public virtual void MyUpdate(IEnumerator enumerator) { }
     public virtual void PrintAttackRadius(bool on) { }
+    protected virtual IEnumerator SustainedDamageCoroutine(Attributes attributes, int time)
+    {
+        int countTaking = time;
+        while (true)
+        {
+            if (!GameController.instance.IsPause)
+            {
+                TakingDamage(attributes / time);
+                countTaking--;
+                yield return new WaitForSeconds(1);
+                if (countTaking == 0) yield break;
+            }
+            yield return null;
+        }
+    }
+    public virtual void TakingSustainedDamage(Attributes attributes,int time)
+    {
+        StartCoroutine(SustainedDamageCoroutine(attributes,time));
+    }
 }
 public interface IBaseInterface
 {
@@ -88,4 +107,5 @@ public interface IBaseInterface
     public void MyUpdate(IEnumerator enumerator);
     //public void Defeat();
     public void PrintAttackRadius(bool on);
+    public void TakingSustainedDamage(Attributes attributes, int time);
 }

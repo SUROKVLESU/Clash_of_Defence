@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements.Experimental;
 public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterface
 {
     [SerializeField] protected Attributes Damage;
+    [SerializeField] protected Attributes SustainedDamage;
+    [SerializeField] protected int TimeSustainedDamage;
+    protected bool IsSustainedDamage=false;
     [SerializeField] protected float AttackReloading;
     [SerializeField] protected float AttackRadius;
     [SerializeField] protected Transform TransformAttackRadius;
@@ -33,6 +37,10 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
         }
         AudioSource = GetComponent<AudioSource>();
         Animator = GetComponent<Animator>();
+        if (SustainedDamage>0)
+        {
+            IsSustainedDamage = true;
+        }
         ActivationBuildings();
     }
     public virtual void SearchAttackTarget()
@@ -69,6 +77,7 @@ public class AttackingBuildingCharacteristics:BaseCharacteristics, IAttackInterf
         AudioSource.PlayOneShot(AudioSource.clip);
         Animator.Play(AnimationName);
         AttackTarget.TakingDamage(Damage);
+        if (IsSustainedDamage) AttackTarget.TakingSustainedDamage(SustainedDamage,TimeSustainedDamage);
         yield return new WaitForSeconds(AttackReloading);
         Coroutine = StartCoroutine(AimingTargetCoroutine());
         yield break;
