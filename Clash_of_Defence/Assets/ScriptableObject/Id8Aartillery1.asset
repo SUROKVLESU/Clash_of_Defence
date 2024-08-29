@@ -19,13 +19,33 @@ MonoBehaviour:
   ProbabilityFalling: 2
   GameObjects:
   - {fileID: 2466489614755123436, guid: fab7c674f8f65c140bae2cc414021f93, type: 3}
+  - {fileID: 6443393494302371891, guid: d3cef733531a0cb478eb8b3ccb899616, type: 3}
+  - {fileID: 7704841764454654171, guid: bee56dfcbd643fa488acec603c353c6d, type: 3}
+  - {fileID: 3679237221467373252, guid: 2981bb70e6412f0499317671a44edc34, type: 3}
+  - {fileID: 1264535806150445882, guid: 5b576d46bc88f4f4da60dd5e6d6b5286, type: 3}
+  - {fileID: 4722874962019205669, guid: 296fbf0cd6c567e4f9f80dbcff024fa3, type: 3}
   CardCover: {fileID: 8052471342507829706, guid: fdb5c9c97b5321e4a99f787c40f79902,
     type: 3}
   PriceBuilding:
   - Gold: 0
     Iron: 0
     Power: 0
-  PriceCard: 00000000
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  PriceCard: 000000000000000000000000000000000000000000000000
   SizeMapCell:
     Sizes:
     - line: 01

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e931b32f61c3f014c96ea4154b4c84a2, type: 3}
+  m_Name: Id12RocketLauncher1
+  m_EditorClassIdentifier: 
+  Id: 12
+  Name: 
+  CurrentMaxLevel: 10
+  Power: 1
+  ProbabilityFalling: 2
+  GameObjects:
+  - {fileID: 2580454679773483056, guid: 1c6bcbce76b33b34f92dc02605b748c1, type: 3}
+  - {fileID: 5455704250705739730, guid: 2bd247fa4ca48424aa98c2c7d40e87ed, type: 3}
+  - {fileID: 7838648354622567388, guid: e67b5a3c7b9124f419f36b02d083eda0, type: 3}
+  - {fileID: 6845725274580318848, guid: 7ae005042b6ee274ba130288c4249998, type: 3}
+  - {fileID: 6273441087380710498, guid: e302f26ad55e73946b3f6a974dd4005c, type: 3}
+  - {fileID: 2250872618211695645, guid: e2c0e29d1fa0dfe4e8cfd551de3d835e, type: 3}
+  - {fileID: 1575360953762907897, guid: 599e710cb6bfd654684d877a3c24ce8a, type: 3}
+  - {fileID: 1723557925042999600, guid: 837767091940e984b88aafbac2b2f86a, type: 3}
+  - {fileID: 2611591564248919820, guid: 73ac41b99c4fde64790a439f87fcae1b, type: 3}
+  - {fileID: 5499934726737353090, guid: b02b55af0050c914a95fcdf6f411422a, type: 3}
+  CardCover: {fileID: 930471311517454933, guid: a293c8b396784b04481e771538bf323a,
+    type: 3}
+  PriceBuilding:
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  - Gold: 0
+    Iron: 0
+    Power: 0
+  PriceCard: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  SizeMapCell:
+    Sizes:
+    - line: 01

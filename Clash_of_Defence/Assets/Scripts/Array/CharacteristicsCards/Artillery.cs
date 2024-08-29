@@ -5,19 +5,18 @@ public class Artillery:AttackingBuildingCharacteristics
     [SerializeField] protected float SqrProjectileVelocity;
     protected override IEnumerator AttackCoroutine()
     {
-        while (true)
+        if (TransformAttackTarget == null)
         {
-            if (TransformAttackTarget == null)
-            {
-                Coroutine = StartCoroutine(AimingTargetCoroutine());
-                yield break;
-            }
-            if (GameController.instance.IsPause) { yield break; }
-            AudioSource.PlayOneShot(AudioSource.clip);
-            Animator.Play(AnimationName);
-            StartCoroutine(AartilleryAttackCoroutine());
-            yield return new WaitForSeconds(AttackReloading);
+            Coroutine = StartCoroutine(AimingTargetCoroutine());
+            yield break;
         }
+        if (GameController.instance.IsPause) { yield break; }
+        AudioSource.PlayOneShot(AudioSource.clip);
+        Animator.Play(AnimationName);
+        StartCoroutine(AartilleryAttackCoroutine());
+        yield return new WaitForSeconds(AttackReloading);
+        Coroutine = StartCoroutine(AimingTargetCoroutine());
+        yield break;
     }
     protected virtual IEnumerator AartilleryAttackCoroutine()
     {
