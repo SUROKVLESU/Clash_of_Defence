@@ -8,7 +8,7 @@ public class MainBuilding: BaseWarehouse
     {
         MyStart();
     }
-    public override void Defeat()
+    protected override void Defeat()
     {
         gameObject.SetActive(false);
         GameController.instance.WaveController.PlayerDefeat();

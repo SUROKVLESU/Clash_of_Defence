@@ -14,7 +14,7 @@ public class BaseWarehouse:BaseCharacteristics
     {
         MyStart();
     }
-    public override void Defeat()
+    protected override void Defeat()
     {
         ResourcesCell.OffWarehouse();
         GameController.instance.ResourcesController.DeleteResourcesCell(ResourcesCell);

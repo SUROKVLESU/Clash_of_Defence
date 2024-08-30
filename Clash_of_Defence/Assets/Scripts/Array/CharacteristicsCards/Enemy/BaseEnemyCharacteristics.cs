@@ -41,7 +41,7 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
         Move();
         CoroutinePause = null;
     }
-    public override void Defeat()
+    protected override void Defeat()
     {
         GameController.instance.ResourcesController.PlaceResourcesWarehouses(FallingResources);
         GameController.instance.EnemiesController.Enemies.Remove(gameObject);

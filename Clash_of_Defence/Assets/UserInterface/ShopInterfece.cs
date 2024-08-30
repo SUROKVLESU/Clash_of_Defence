@@ -5,13 +5,13 @@ public class ShopInterfece:MonoBehaviour
 {
     private Vector3 OldMousePosition;
     private RectTransform TransformCardsPanel;
-    [SerializeField] RectTransform ParentPanel;
+    //[SerializeField] RectTransform ParentPanel;
     private List<BaseCard> Cards;
     private List<RectTransform> RectTransformCards=new();
     [SerializeField] GameObject CardShopPrefab;
     private RectTransform PrefabRectTransform;
     private const int CountCardsRow = 7;
-    private const int CountCardsHeight = 2;
+    private const float CountCardsHeight = 2;
     private void OnMouseDown()
     {
         OldMousePosition = Input.mousePosition;
@@ -20,16 +20,16 @@ public class ShopInterfece:MonoBehaviour
     {
         TransformCardsPanel.localPosition = new Vector3
             (0, TransformCardsPanel.localPosition.y+(Input.mousePosition.y-OldMousePosition.y));
-        if (TransformCardsPanel.localPosition.y > 0) TransformCardsPanel.localPosition = new Vector3();
-        if (RectTransformCards.Count / 7 > CountCardsHeight
-            && TransformCardsPanel.localPosition.y < (RectTransformCards[RectTransformCards.Count - 1].localPosition.y
-            - ((ParentPanel.rect.height / 2 - PrefabRectTransform.rect.height / 2) - PrefabRectTransform.rect.height * CountCardsHeight)))
+        if (TransformCardsPanel.localPosition.y < 0) TransformCardsPanel.localPosition = new Vector3();
+        if (RectTransformCards.Count / (float)CountCardsRow > CountCardsHeight
+            && TransformCardsPanel.localPosition.y > -(RectTransformCards[RectTransformCards.Count - 1].localPosition.y
+            - PrefabRectTransform.rect.height/2+TransformCardsPanel.rect.height/2))
         {
             TransformCardsPanel.localPosition = new Vector3
-                (0, (RectTransformCards[RectTransformCards.Count - 1].localPosition.y
-            - ((ParentPanel.rect.height / 2 - PrefabRectTransform.rect.height / 2) - PrefabRectTransform.rect.height * CountCardsHeight)));
+                (0, -(RectTransformCards[RectTransformCards.Count - 1].localPosition.y
+            - PrefabRectTransform.rect.height / 2 + TransformCardsPanel.rect.height / 2),0);
         }
-        else TransformCardsPanel.localPosition = new Vector3();
+        //else TransformCardsPanel.localPosition = new Vector3();
         OldMousePosition = Input.mousePosition;
     }
     private void OnMouseUp()
@@ -45,12 +45,12 @@ public class ShopInterfece:MonoBehaviour
     private void CreateArrayCard()
     {
         Vector2 newPositionCard = new Vector2
-            (-ParentPanel.rect.width/2+ PrefabRectTransform.rect.width/2,
-            ParentPanel.rect.height / 2 - PrefabRectTransform.rect.height / 2);
+            (-TransformCardsPanel.rect.width/2+ PrefabRectTransform.rect.width/2,
+            TransformCardsPanel.rect.height / 2 - PrefabRectTransform.rect.height / 2);
         int countCreateCard =CountCardsRow;
         for (int i = 0; i < Cards.Count; i++)
         {
-            RectTransformCards.Add(Instantiate(CardShopPrefab, ParentPanel).GetComponent<RectTransform>());
+            RectTransformCards.Add(Instantiate(CardShopPrefab, TransformCardsPanel).GetComponent<RectTransform>());
             RectTransformCards[i].localPosition = newPositionCard;
             RectTransformCards[i].GetChild(1).GetComponent<ShopLevelUpButton>().Initialization(Cards[i]);
             countCreateCard--;

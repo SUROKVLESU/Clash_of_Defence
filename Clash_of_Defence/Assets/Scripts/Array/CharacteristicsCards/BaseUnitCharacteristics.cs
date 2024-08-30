@@ -14,7 +14,7 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
             Coroutine = StartCoroutine(enumerator);
         }
     }
-    public override void Defeat()
+    protected override void Defeat()
     {
         gameObject.transform.parent.gameObject.SetActive(false);
         gameObject.SetActive(false);
