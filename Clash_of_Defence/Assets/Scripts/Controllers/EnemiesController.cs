@@ -24,7 +24,7 @@ public class EnemiesController:MonoBehaviour
         for (int i = 0; i < Enemies.Count; i++)
         {
             IBaseInterface attacking = Enemies[i].GetComponent<IBaseInterface>();
-            attacking.ActivationBuildings();
+            attacking.Activation();
         }
     }
 }

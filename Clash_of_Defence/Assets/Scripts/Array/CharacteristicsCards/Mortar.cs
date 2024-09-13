@@ -37,7 +37,7 @@ public class Mortar:Artillery
             StopCoroutine(Coroutine);
             TransformAttackTarget = null;
             AttackTarget = null;
-            ActivationBuildings();
+            Activation();
         }
     }
     protected virtual IEnumerator MortarExplosionCoroutine(Vector3 transform)

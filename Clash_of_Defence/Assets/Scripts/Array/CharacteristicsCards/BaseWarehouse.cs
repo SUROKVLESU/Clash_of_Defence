@@ -21,7 +21,7 @@ public class BaseWarehouse:BaseCharacteristics
         GameController.instance.ResourcesController.UpdateMaxGameResources();
         gameObject.SetActive(false);
     }
-    public override void ActivationBuildings()
+    public override void Activation()
     {
         GameController.instance.ResourcesController.AddResourcesCell(ResourcesCell);
         GameController.instance.ResourcesController.UpdateMaxGameResources();

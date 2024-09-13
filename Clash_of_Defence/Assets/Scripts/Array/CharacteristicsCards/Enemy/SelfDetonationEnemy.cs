@@ -9,30 +9,11 @@ class SelfDetonationEnemy:BaseEnemyCharacteristics
 
     protected override IEnumerator AttackCoroutine()
     {
-        if (!TransformAttackTarget.parent.gameObject.activeSelf) yield break;
-        Vector3 oldTransformAttackTarget = TransformAttackTarget.position;
         while (true)
         {
-            if (!TransformAttackTarget.parent.gameObject.activeSelf)
-            {
-                SearchAttackTarget();
-                Move();
-                Animator.speed = 1;
-                Animator.SetBool("Attack", false);
-                yield break;
-            }
-            if (oldTransformAttackTarget != TransformAttackTarget.position)
-            {
-                Move();
-                Animator.speed = 1;
-                Animator.SetBool("Attack", false);
-                oldTransformAttackTarget = TransformAttackTarget.position;
-                yield break;
-            }
             Animator.StopPlayback();
             Animator.speed = (1 / AttackReloading);
             Animator.SetBool("Attack", true);
-            //if (!TransformAttackTarget.gameObject.activeSelf) continue;
             ExplosionAttackCoroutine();
             yield return new WaitForSeconds(AttackReloading);
         }
@@ -41,7 +22,7 @@ class SelfDetonationEnemy:BaseEnemyCharacteristics
     {
         List<IBaseInterface> baseInterfaces = new();
         StartCoroutine(MortarExplosionCoroutine(transform.position));
-        for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
+        for (int i = 0; i < GameController.instance.MapController.Buildings.Count; i++)
         {
             if ((GameController.instance.MapController.Buildings[i].transform.position - transform.position).sqrMagnitude
                 <= (ExplosionRadius * ExplosionRadius) && (TypeAttack == TypeAttack.All || TypeAttack ==
@@ -62,6 +43,17 @@ class SelfDetonationEnemy:BaseEnemyCharacteristics
             if (IsSustainedDamage) AttackTarget.TakingSustainedDamage(SustainedDamage, TimeSustainedDamage);
         }
     }
+    protected override void Defeat()
+    {
+        GameController.instance.ResourcesController.PlaceResourcesWarehouses(FallingResources);
+        GameController.instance.EnemiesController.Enemies.Remove(gameObject);
+        GameController.instance.CountEnemyText.text = ":" + --GameController.instance.WaveController.CountEnemis;
+        if (GameController.instance.EnemiesController.Enemies.Count == 0
+            && GameController.instance.SpawnEnemiesController.IsAllSpawnEnemies())
+        {
+            GameController.instance.WaveController.EnemiesDefeat();
+        }
+    }
     protected virtual IEnumerator MortarExplosionCoroutine(Vector3 transform)
     {
         float CountTick = 5;
@@ -76,6 +68,7 @@ class SelfDetonationEnemy:BaseEnemyCharacteristics
             yield return new WaitForSeconds(ExplosionTime / CountTick);
         }
         Destroy(explosion);
+        Destroy(gameObject);
     }
 }
 

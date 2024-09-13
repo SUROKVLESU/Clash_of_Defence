@@ -292,10 +292,18 @@ MonoBehaviour:
   TypeBuilding: 0
   TypeAttack: 0
   TypeBuildings: 0
+  SustainedDamagePanel: []
+  DamageProtectionPanel: []
+  TakingDamagenPanel: {fileID: 0}
   Damage:
-    Physical: 400
+    Physical: 5
     Acid: 0
     Ice: 0
+  SustainedDamage:
+    Physical: 0
+    Acid: 0
+    Ice: 15
+  TimeSustainedDamage: 3
   AttackReloading: 10
   AttackRadius: 600
   TransformAttackRadius: {fileID: 1074370293080641488}

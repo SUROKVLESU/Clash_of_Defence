@@ -15,10 +15,10 @@ public class Barracks:BaseCharacteristics
     {
         Unit.Stop();
     }
-    public override void ActivationBuildings()
+    public override void Activation()
     {
         GameObjectUnit.SetActive(true);
-        Unit.ActivationBuildings();
+        Unit.Activation();
     }
     public override void PrintAttackRadius(bool on)
     {

@@ -4,8 +4,8 @@ public class WaveController
     public int CurentMaxPowerCards;
     private const int MaxBoostCards = 3;
     public int CurentMaxPowerEnemies;
-    private const int MaxBoostEnemies = 6;
-    private const int MinBoostEnemies = 4;
+    private const int MaxBoostEnemies = 60;
+    private const int MinBoostEnemies = 40;
     public bool IsGame = false;
     public bool IsPlayerDefeat = false;
     public int CountWave = 1;
@@ -26,6 +26,7 @@ public class WaveController
         GameController.instance.ButtonController.OnStartWaveButton();
         IsGame = false ;
         GameController.instance.MapController.GetResources();
+        GameController.instance.MapController.Pause();
         GameController.instance.WaveController.ResetBuildingsAndEnemies();
         GameController.instance.ButtonController.OnInterfeceHand();
         PowerBoost();

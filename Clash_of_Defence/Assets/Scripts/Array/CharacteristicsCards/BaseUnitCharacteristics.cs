@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
+public class BaseUnitCharacteristics:AttackingCharacteristics
 {
     [SerializeField] protected float SpeedMovement;
     [SerializeField] protected Resources FallingResources;
+    protected bool IsMoveUnit = false;  
     //protected bool IsAimingTarget = false;
     protected float StartHeight;
 
-    public override void MyUpdate(IEnumerator enumerator)
+    public override bool IsMove()
     {
-        if (!GameController.instance.IsPause)
-        {
-            Coroutine = StartCoroutine(enumerator);
-        }
+        return IsMoveUnit;
     }
     protected override void Defeat()
     {
@@ -57,6 +55,7 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
     }
     protected virtual IEnumerator MovementCoroutine()
     {
+        IsMoveUnit = true;
         if (TransformAttackTarget == null||GameController.instance.IsPause)
         {
             yield return null;
@@ -88,11 +87,11 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
                 && transform.position.z + AttackRadius > AttackTarget.GetForder(false).position.z) break;
             yield return null;
         }
+        IsMoveUnit = false;
         Coroutine = StartCoroutine(AttackCoroutine());
     }
     protected override IEnumerator AttackCoroutine()
     {
-        Vector3 oldTransformAttackTarget = TransformAttackTarget.position;
         if (TransformAttackTarget==null) yield break;
         while (true)
         {
@@ -102,21 +101,20 @@ public class BaseUnitCharacteristics:AttackingBuildingCharacteristics
                 Move();
                 yield break;
             }
-            if (oldTransformAttackTarget != TransformAttackTarget.position)
-            {
-                Move();
-                oldTransformAttackTarget = TransformAttackTarget.position;
-                yield break;
-            }
             Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
             TransformTower.rotation = Quaternion.Euler(new Vector3(0, Angle, 0));
             if (GameController.instance.IsPause) { yield break; }
             if (IsSustainedDamage) AttackTarget.TakingSustainedDamage(SustainedDamage, TimeSustainedDamage);
             AttackTarget.TakingDamage(Damage);
             yield return new WaitForSeconds(AttackReloading);
+            if (AttackTarget.IsMove())
+            {
+                Move();
+                yield break;
+            }
         }
     }
-    public override void SearchAttackTarget()
+    public /*override*/ void SearchAttackTarget()
     {
         if (GameController.instance.EnemiesController.Enemies.Count == 0) return;
         GameObject attackTarget = GameController.instance.EnemiesController.Enemies[0];

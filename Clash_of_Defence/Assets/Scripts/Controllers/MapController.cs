@@ -5,7 +5,7 @@ public class MapController:MonoBehaviour
 {
     public MapBlock[] ArrayMapBlock;
     public List<GameObject> ArrayMapBlockGameObjects=new List<GameObject>();
-    public GameObject[] Buildings;
+    public List<GameObject> Buildings;
     public GameObject MainBuilding;
     public Vector3Int[] ArrayNewPositionMapBlock;
     public Vector3Int[] ArrayOldPositionMapBlock;            //(3)
@@ -21,7 +21,7 @@ public class MapController:MonoBehaviour
         ArrayMapBlock = new MapBlock[] { new MapBlock() };
         NewFrontierMap();
         ArrayOldPositionMapBlock = new Vector3Int[] { new Vector3Int() };
-        Buildings = new GameObject[0];
+        Buildings = new();
         ArrayNewPositionMapBlock = new Vector3Int[4];
         ArrayNewMapBlockButton = new GameObject[4];
         for (int i = 0; i < 4; i++)
@@ -47,13 +47,13 @@ public class MapController:MonoBehaviour
     {
         IBaseInterface baseMainBuilding = MainBuilding.GetComponent<IBaseInterface>();
         baseMainBuilding.WallGameObject = null;
-        IBaseInterface[] basesBuilding = new IBaseInterface[Buildings.Length];
-        for (int i = 0; i < Buildings.Length; i++)
+        IBaseInterface[] basesBuilding = new IBaseInterface[Buildings.Count];
+        for (int i = 0; i < Buildings.Count; i++)
         {
             basesBuilding[i] = Buildings[i].GetComponent<IBaseInterface>();
             basesBuilding[i].WallGameObject=null;
         }
-        for (int i = 0; i < Buildings.Length; i++)
+        for (int i = 0; i < Buildings.Count; i++)
         {
             if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.Wall)
             {
@@ -68,7 +68,7 @@ public class MapController:MonoBehaviour
                 {
                     baseMainBuilding.WallGameObject = Buildings[i];
                 }
-                for (int j = 0; j < Buildings.Length; j++)
+                for (int j = 0; j < Buildings.Count; j++)
                 {
                     if (basesBuilding[j].GetTypeTarget()==TypeAttack.Air)
                     {
@@ -95,13 +95,13 @@ public class MapController:MonoBehaviour
     {
         IBaseInterface baseMainBuilding = MainBuilding.GetComponent<IBaseInterface>();
         baseMainBuilding.AddProtection = new();
-        IBaseInterface[] basesBuilding = new IBaseInterface[Buildings.Length];
-        for (int i = 0; i < Buildings.Length; i++)
+        IBaseInterface[] basesBuilding = new IBaseInterface[Buildings.Count];
+        for (int i = 0; i < Buildings.Count; i++)
         {
             basesBuilding[i] = Buildings[i].GetComponent<IBaseInterface>();
             basesBuilding[i].AddProtection=new();
         }
-        for (int i = 0; i < Buildings.Length; i++)
+        for (int i = 0; i < Buildings.Count; i++)
         {
             if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.ProtectionAmplifier)
             {
@@ -117,7 +117,7 @@ public class MapController:MonoBehaviour
                 {
                     baseMainBuilding.AddProtection += prtAmp.GetProtectionAdd;
                 }
-                for (int j = 0; j < Buildings.Length; j++)
+                for (int j = 0; j < Buildings.Count; j++)
                 {
                     if (j == i) continue;
                     if (basesBuilding[j].GetAttackTargetPosition().position.x
@@ -137,8 +137,8 @@ public class MapController:MonoBehaviour
     }
     public void ResourcesAmplifier()
     {
-        IBaseInterface[] basesBuilding = new IBaseInterface[Buildings.Length];
-        for (int i = 0; i < Buildings.Length; i++)
+        IBaseInterface[] basesBuilding = new IBaseInterface[Buildings.Count];
+        for (int i = 0; i < Buildings.Count; i++)
         {
             basesBuilding[i] = Buildings[i].GetComponent<IBaseInterface>();
             if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.Resources)
@@ -146,12 +146,12 @@ public class MapController:MonoBehaviour
                 Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>().Add_Resources = new ();
             }
         }
-        for (int i = 0; i < Buildings.Length; i++)
+        for (int i = 0; i < Buildings.Count; i++)
         {
             if (basesBuilding[i].GetTypeBuilder() == TypeBuildings.ResourcesAmplifier)
             {
                 ResourcesAmplifier resAmp =Buildings[i].GetComponent<ResourcesAmplifier>();
-                for (int j = 0; j < Buildings.Length; j++)
+                for (int j = 0; j < Buildings.Count; j++)
                 {
                     if (j == i) continue;
                     if (basesBuilding[j].GetTypeBuilder() == TypeBuildings.Resources
@@ -210,17 +210,11 @@ public class MapController:MonoBehaviour
     }
     public void AddBuilding(BaseCard baseCard)
     {
-        GameObject[] arr = new GameObject[Buildings.Length+1];
-        for(int i = 0; Buildings.Length > i; i++)
-        {
-            arr[i]=Buildings[i];
-        }
         GameObject gameObject = Instantiate(baseCard.GameObjects[baseCard.GetLevel()]);
         MapCell FreeCell = SearchFreeCell(baseCard.SizeMapCell);
         gameObject.transform.position = new Vector3(FreeCell.Position.x,0,FreeCell.Position.y);
-        arr[Buildings.Length] = gameObject;
-        Buildings = arr;
-        Buildings[Buildings.Length-1].GetComponent<UserInteractionBuilding>().Card = baseCard;
+        Buildings.Add(gameObject);
+        Buildings[Buildings.Count -1].GetComponent<UserInteractionBuilding>().Card = baseCard;
         SetFreeCell(FreeCell.Position,baseCard.SizeMapCell,false);
         ActiveCount += 1;
     }
@@ -417,36 +411,32 @@ public class MapController:MonoBehaviour
         SetFreeCell(new Vector2Int
             ((int)SelectedCardGameObject.transform.position.x, (int)SelectedCardGameObject.transform.position.z)
             , SelectedCardGameObject.Card.SizeMapCell, true);
-        GameObject[] arr = new GameObject[Buildings.Length-1];
-        for (int i = 0,j=0; i < Buildings.Length; i++,j++)
+        for (int i = 0,j=0; i < Buildings.Count; i++,j++)
         {
             if (Buildings[i].GetComponent<UserInteractionBuilding>().UniqueNumber == SelectedCardGameObject.UniqueNumber)
             {
-                Destroy(Buildings[i].gameObject);
+                GameObject building = Buildings[i];
+                Buildings.Remove(Buildings[i]);
+                Destroy(building);
                 j--;
             }
-            else
-            {
-                arr [j] = Buildings[i];
-            }
         }
-        Buildings=arr;
         ActiveCount -= 1;
         CancellationSelected();
         SelectedCardGameObject = null;
     }
     public void ReturnAllCardYourHand()
     {
-        if (Buildings.Length == 0) { return; }
+        if (Buildings.Count == 0) { return; }
         GameController.instance.CardListController.ReturnAllCardYourHand();
         ResetFreeMapCell();
         SetFreeCell(new Vector2Int((int)MainBuilding.transform.position.x, (int)MainBuilding.transform.position.z),
             ((BaseCard)GameController.instance.CollectionController.MainBuilding).SizeMapCell, false);
-        for (int i = 0; i < Buildings.Length; i++)
+        for (int i = 0; i < Buildings.Count; i++)
         {
             Destroy (Buildings[i].gameObject);
         }
-        Buildings = new GameObject [0];
+        Buildings = new();
         ActiveCount = 0;
     }
     private Vector2Int GetCenterScreenWorldCoordinate()
@@ -468,7 +458,7 @@ public class MapController:MonoBehaviour
     }
     public void CancellationSelected()
     {
-        for (int i = 0; i < Buildings.Length; i++)
+        for (int i = 0; i < Buildings.Count; i++)
         {
             Buildings[i].GetComponent<UserInteractionBuilding>().ResetPosition();
             Buildings[i].GetComponent<IBaseInterface>().PrintAttackRadius(false);
@@ -478,7 +468,7 @@ public class MapController:MonoBehaviour
     }
     public void LewelUpBuilding(BaseEssenceObject baseCard)
     {
-        for (int i = 0; Buildings.Length > i; i++)
+        for (int i = 0; Buildings.Count > i; i++)
         {
             if (Buildings[i].GetComponent<UserInteractionBuilding>().Card.Id == baseCard.Id)
             {
@@ -494,13 +484,13 @@ public class MapController:MonoBehaviour
     public void ActivationBuildings()
     {
         IBaseInterface attacking;
-        for (int i = 0; i < Buildings.Length; i++)
+        for (int i = 0; i < Buildings.Count; i++)
         {
             Buildings[i].SetActive(true);
             attacking = Buildings[i].GetComponent<IBaseInterface>();
             if (attacking.GetHP()<0)
             {
-                attacking.ActivationBuildings();
+                attacking.Activation();
             }
             attacking.ResetHP();
         }
@@ -511,13 +501,13 @@ public class MapController:MonoBehaviour
         if (!MainBuilding.activeSelf)
         {
             MainBuilding.SetActive(true);
-            mainBuilding.ActivationBuildings();
+            mainBuilding.Activation();
         }
-        ActiveCount = Buildings.Length;
+        ActiveCount = Buildings.Count;
     }
     public void Pause()
     {
-        for (int i = 0; i < Buildings.Length; i++)
+        for (int i = 0; i < Buildings.Count; i++)
         {
             Buildings[i].GetComponent<IBaseInterface>().Stop();
         }
@@ -525,16 +515,16 @@ public class MapController:MonoBehaviour
     }
     public void OffPause()
     {
-        for (int i = 0; i < Buildings.Length; i++)
+        for (int i = 0; i < Buildings.Count; i++)
         {
-            Buildings[i].GetComponent<IBaseInterface>().ActivationBuildings();
+            Buildings[i].GetComponent<IBaseInterface>().Activation();
         }
-        MainBuilding.GetComponent<IBaseInterface>().ActivationBuildings();
-        ActiveCount = Buildings.Length;
+        MainBuilding.GetComponent<IBaseInterface>().Activation();
+        ActiveCount = Buildings.Count;
     }
     public void GetResources()
     {
-        for (int i = 0; i < Buildings.Length; i++)
+        for (int i = 0; i < Buildings.Count; i++)
         {
             if (Buildings[i].GetComponent<BaseResourcesBuildingCharacteristics>())
             {
@@ -550,13 +540,13 @@ public class MapController:MonoBehaviour
         }
         ArrayMapBlockGameObjects.Clear();
         ArrayMapBlock = new MapBlock[] { new MapBlock() };
-        for (int i = 0; i < Buildings.Length; i++)
+        for (int i = 0; i < Buildings.Count; i++)
         {
             Destroy(Buildings[i]);
         }
         Destroy(MainBuilding);
         //MainBuilding = null;
-        Buildings = new GameObject[0];
+        Buildings = new();
         ArrayOldPositionMapBlock = new Vector3Int[] { new Vector3Int() };
         ArrayNewPositionMapBlock = new Vector3Int[4];
         AddMainBuilding();

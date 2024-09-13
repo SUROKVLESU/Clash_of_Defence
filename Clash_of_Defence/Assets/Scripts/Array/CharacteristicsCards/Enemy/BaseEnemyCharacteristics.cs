@@ -1,45 +1,46 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
+public class BaseEnemyCharacteristics:AttackingCharacteristics
 {
     [SerializeField] protected float SpeedMovement;
     [SerializeField] protected Resources FallingResources;
-    //protected event Action MovementEvent;
-    //protected float Angle;
     protected bool IsAimingTarget = false;
-    //protected const float RotSpeed = 400f;
+    protected bool IsMoveEnemy = false;
 
-    public virtual void Move()
+    public override bool IsMove()
     {
-        Coroutine = StartCoroutine(MovementCoroutine());
+        return IsMoveEnemy;
     }
     private void Start()
     {
         MyStart();
     }
+    public override void Activation()
+    {
+        Animator.SetBool("Attack", false);
+        Animator.speed = 1;
+        base.Activation();
+    }
     public override void MyStart()
     {
         TransformTower = transform;
         Animator = GetComponent<Animator>();
-        if (TransformAttackRadius != null)
-        {
-            TransformAttackRadius.localScale = new Vector3(AttackRadius, 1, AttackRadius);
-        }
-        if (SustainedDamage > 0)
-        {
-            IsSustainedDamage = true;
-        }
-        SearchAttackTarget();
-        Move();
+        base.MyStart();
     }
-    protected override IEnumerator OffPause()
+    protected override IEnumerator SearchAttackTargetCoroutine()
     {
-        yield return new WaitForSeconds(AttackReloading);
-        if (GameController.instance.IsPause) yield break;
-        SearchAttackTarget();
-        Move();
-        CoroutinePause = null;
+        while (true)
+        {
+            SearchAttackTarget(GameController.instance.MapController.Buildings);
+            if (AttackTarget != null)
+            {
+                break;
+            }
+            yield return new WaitForSeconds(0.2f);
+        }
+        Coroutine = StartCoroutine(MovementCoroutine());
     }
     protected override void Defeat()
     {
@@ -51,25 +52,19 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
         {
             GameController.instance.WaveController.EnemiesDefeat();
         }
-        Destroy(gameObject);
+        StartDead();
+        gameObject.SetActive(false);
     }
     protected virtual IEnumerator MovementCoroutine()
     {
-        Vector3 oldTransformAttackTarget = TransformAttackTarget.position;
+        IsMoveEnemy = true;
         StartCoroutine(AimingTargetCoroutine());
         Animator.SetBool("Move",true);
         while (true)
         {
-            if (oldTransformAttackTarget!= TransformAttackTarget.position)
+            if (AttackTarget.IsMove())
             {
-                StartCoroutine(AimingTargetCoroutine());
-                SearchAttackTarget();
-                oldTransformAttackTarget = TransformAttackTarget.position;
-            }
-            if (!TransformAttackTarget.parent.gameObject.activeSelf)
-            {
-                SearchAttackTarget();
-                Move();
+                Coroutine = StartCoroutine(SearchAttackTargetCoroutine());
                 yield break;
             }
             transform.position = Vector3.MoveTowards
@@ -80,65 +75,49 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
                 && transform.position.z + AttackRadius > AttackTarget.GetForder(false).position.z) break;
             yield return null;
         }
-        //Animator.speed = 10;
+        IsMoveEnemy = false;
         Animator.SetBool("Move", false);
         Coroutine = StartCoroutine(AttackCoroutine());
     }
     protected override IEnumerator AttackCoroutine()
     {
-        if(!TransformAttackTarget.parent.gameObject.activeSelf) yield break;
-        Vector3 oldTransformAttackTarget = TransformAttackTarget.position;
         while (true)
         {
-            if (!TransformAttackTarget.parent.gameObject.activeSelf)
-            {
-                SearchAttackTarget();
-                Move();
-                Animator.speed = 1;
-                Animator.SetBool("Attack", false);
-                yield break;
-            }
-            if (oldTransformAttackTarget != TransformAttackTarget.position)
-            {
-                Move();
-                Animator.speed = 1;
-                Animator.SetBool("Attack", false);
-                oldTransformAttackTarget = TransformAttackTarget.position;
-                yield break;
-            }
             Animator.StopPlayback();
             Animator.speed = (1/AttackReloading);
             Animator.SetBool("Attack", true);
-            //if (!TransformAttackTarget.gameObject.activeSelf) continue;
             AttackTarget.TakingDamage(Damage);
             if (IsSustainedDamage) AttackTarget.TakingSustainedDamage(SustainedDamage, TimeSustainedDamage);
             yield return new WaitForSeconds(AttackReloading);
-        }
-    }
-    public override void SearchAttackTarget()
-    {   
-        Transform attackTarget = GameController.instance.MapController.MainBuilding.GetComponent<IBaseInterface>().GetAttackTargetPosition();
-        for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
-        {
-            IBaseInterface baseInterface = GameController.instance.MapController.Buildings[i].GetComponent<IBaseInterface>();
-            if (GameController.instance.MapController.Buildings[i].activeSelf
-                && (baseInterface.GetAttackTargetPosition().position - transform.position).sqrMagnitude
-                <= (attackTarget.position - transform.position).sqrMagnitude&&(TypeAttack == TypeAttack.All
-                || TypeAttack == baseInterface.GetTypeTarget()))
+            if (AttackTarget.IsMove())
             {
-                if (baseInterface.WallGameObject!=null&& baseInterface.WallGameObject.activeSelf)
-                {
-                    attackTarget = baseInterface.WallGameObject.GetComponent<IBaseInterface>().GetAttackTargetPosition();
-                }
-                else attackTarget = GameController.instance.MapController.Buildings[i].GetComponent<IBaseInterface>().GetAttackTargetPosition();
+                Coroutine = StartCoroutine(SearchAttackTargetCoroutine());
+                Animator.speed = 1;
+                Animator.SetBool("Attack", false);
+                yield break;
             }
         }
-        TransformAttackTarget = attackTarget;
+    }
+    public override void SearchAttackTarget(List<GameObject> target)
+    {   
+        GameObject attackTarget = 
+            GameController.instance.MapController.MainBuilding.GetComponent<IBaseInterface>().GetAttackTargetPosition().gameObject;
+        for (int i = 0; i < target.Count; i++)
+        {
+            if (target[i].activeSelf &&(TypeAttack == TypeAttack.All || TypeAttack ==
+                target[i].GetComponent<IBaseInterface>().GetTypeTarget())
+                && (target[i].transform.position - transform.position).sqrMagnitude
+                < (attackTarget.transform.position- transform.position).sqrMagnitude)
+            {
+                attackTarget = target[i].GetComponent<IBaseInterface>().GetAttackTargetPosition().gameObject;
+            }
+        }
+        TransformAttackTarget = attackTarget.transform;
         AttackTarget = TransformAttackTarget.parent.GetComponent<IBaseInterface>();
+        AttackTarget.AddDead(DeadTarget);
     }
     protected override IEnumerator AimingTargetCoroutine()
     {
-        //Angle = MySpecialClass.GetAngleTarget(transform.position, TransformAttackTarget.position);
         if (IsAimingTarget)
         {
             while (true)
@@ -150,18 +129,10 @@ public class BaseEnemyCharacteristics:AttackingBuildingCharacteristics,IMovement
         IsAimingTarget = true;
         while (true)
         {
-            if (!TransformAttackTarget.parent.gameObject.activeSelf)
-            {
-                yield break;
-            }
             TurningTower();
             if (Mathf.Abs(TransformTower.rotation.eulerAngles.y - Angle) <= 10) break;
             yield return null;
         }
         IsAimingTarget=false;
     }
-}
-public interface IMovement
-{
-    public void Move();
 }

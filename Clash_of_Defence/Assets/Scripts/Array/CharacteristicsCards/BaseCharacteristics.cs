@@ -22,7 +22,9 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
     protected int CountAxidDamage;
     protected int CountIceDamage;
     [SerializeField] protected GameObject[] DamageProtectionPanel;
-    [SerializeField] protected GameObject TakingDamagenPanel;
+    [SerializeField] protected GameObject TakingDamagePanel;
+    private const float TimeOffPanel = 0.3f;
+    private Action Dead = new(() => { });
     public Transform GetAttackTargetPosition()
     {
         return AttackTargetPosition;
@@ -45,7 +47,7 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
         return HP;
     }
 
-    public void TakingDamage(Attributes damage)
+    public bool TakingDamage(Attributes damage)
     {
         Attributes attributes = damage - Protection - AddProtection;
         if (attributes.Physical < 0.105&&damage.Physical>0.1)
@@ -69,39 +71,42 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
         if (HP < 0)
         {
             Defeat();
+            return true;
         }
+        return false;   
         IEnumerator OffProtectedPanel(GameObject gameObject)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(TimeOffPanel);
             gameObject.SetActive(false);
         }
         IEnumerator HpPanel()
         {
-            TakingDamagenPanel.SetActive(true);
-            yield return new WaitForSeconds(0.1f);
-            TakingDamagenPanel.SetActive(false);
+            TakingDamagePanel.SetActive(true);
+            yield return new WaitForSeconds(TimeOffPanel);
+            TakingDamagePanel.SetActive(false);
         }
     }
     protected virtual void Defeat() 
-    { 
+    {
+        Dead();
         gameObject.SetActive(false);
     }
     public virtual void ResetHP()
     {
-        HP=HPStart;
+        RemoveDead();
+        HP =HPStart;
     }
     private void Awake()
     {
         HPStart = HP;
     }
-    public virtual void ActivationBuildings(){ }
+    public virtual void Activation(){ }
     public virtual void Stop() { }
     public TypeAttack GetTypeTarget()
     {
         return TypeBuilding;
     }
     public virtual void MyStart() { }
-    public virtual void MyUpdate(IEnumerator enumerator) { }
     public virtual void PrintAttackRadius(bool on) { }
     protected virtual IEnumerator SustainedDamageCoroutine(Attributes attributes, int time)
     {
@@ -143,12 +148,28 @@ public class BaseCharacteristics : MonoBehaviour, IBaseInterface
     {
         StartCoroutine(SustainedDamageCoroutine(attributes,time));
     }
+    public virtual bool IsMove()
+    {
+        return false;
+    }
+    public void RemoveDead()
+    {
+        Dead = new(() => { });
+    }
+    public void AddDead(Action action)
+    {
+        Dead += action;
+    }
+    public void StartDead()
+    {
+        Dead();
+    }
 }
 public interface IBaseInterface
 {
-    public void TakingDamage(Attributes damage);
+    public bool TakingDamage(Attributes damage);
     public void ResetHP();
-    public void ActivationBuildings();
+    public void Activation();
     public void Stop();
     public float GetHP();
     public Transform GetForder(bool lForder);
@@ -159,8 +180,12 @@ public interface IBaseInterface
     public TypeAttack GetTypeAttack();
     public TypeBuildings GetTypeBuilder();
     public void MyStart();
-    public void MyUpdate(IEnumerator enumerator);
+    //public void MyUpdate(IEnumerator enumerator);
     //public void Defeat();
     public void PrintAttackRadius(bool on);
     public void TakingSustainedDamage(Attributes attributes, int time);
+    public bool IsMove();
+    public void AddDead(Action action);
+    public void RemoveDead();
+    public void StartDead();
 }

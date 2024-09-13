@@ -18,7 +18,7 @@ public class EnemyMortar:EnemyArtillery
             transformV = TransformAttackTarget.position;
         }
         StartCoroutine(MortarExplosionCoroutine(transformV));
-        for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
+        for (int i = 0; i < GameController.instance.MapController.Buildings.Count; i++)
         {
             if ((GameController.instance.MapController.Buildings[i].transform.position - transformV).sqrMagnitude
                 <= (MortarRadius * MortarRadius) && (TypeAttack == TypeAttack.All || TypeAttack ==
@@ -43,7 +43,7 @@ public class EnemyMortar:EnemyArtillery
             StopCoroutine(Coroutine);
             TransformAttackTarget = null;
             AttackTarget = null;
-            ActivationBuildings();
+            Activation();
         }
     }
     protected virtual IEnumerator MortarExplosionCoroutine(Vector3 transform)

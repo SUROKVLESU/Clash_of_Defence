@@ -30,7 +30,7 @@ public class EnemyArtillery:EnemyGun
             StopCoroutine(Coroutine);
             TransformAttackTarget = null;
             AttackTarget = null;
-            ActivationBuildings();
+            Activation();
         }
     }
 }

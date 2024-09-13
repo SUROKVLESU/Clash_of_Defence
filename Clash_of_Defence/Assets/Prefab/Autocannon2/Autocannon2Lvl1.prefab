@@ -31,12 +31,12 @@ PrefabInstance:
     - target: {fileID: 6829984729003326399, guid: 7d4848def3e0ee84d840289843f0697e,
         type: 3}
       propertyPath: AttackReloading
-      value: 0.1
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6829984729003326399, guid: 7d4848def3e0ee84d840289843f0697e,
         type: 3}
       propertyPath: Damage.Physical
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9100560677995990814, guid: 7d4848def3e0ee84d840289843f0697e,
         type: 3}

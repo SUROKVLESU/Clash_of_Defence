@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Turret1 : AttackingBuildingCharacteristics
+public class Turret1 : AttackingCharacteristics
 {
     /*protected Transform TransformTower;
     protected float Angle;

@@ -9,7 +9,7 @@ public class EnemyMultipleArtillery:EnemyMortar
     {
         List<IBaseInterface> baseInterfaces = new();
         yield return new WaitForSeconds((TransformAttackTarget.position - transform.position).sqrMagnitude / SqrProjectileVelocity);
-        for (int i = 0; i < GameController.instance.MapController.Buildings.Length; i++)
+        for (int i = 0; i < GameController.instance.MapController.Buildings.Count; i++)
         {
             if ((GameController.instance.MapController.Buildings[i].transform.position - transform.position).sqrMagnitude
                 <= (AttackRadius * AttackRadius) && (TypeAttack == TypeAttack.All || TypeAttack ==
@@ -22,7 +22,7 @@ public class EnemyMultipleArtillery:EnemyMortar
             {
                 break;
             }
-            if (baseInterfaces.Count < CountTarget && i == GameController.instance.MapController.Buildings.Length - 1)
+            if (baseInterfaces.Count < CountTarget && i == GameController.instance.MapController.Buildings.Count - 1)
             {
                 i = 0;
             }

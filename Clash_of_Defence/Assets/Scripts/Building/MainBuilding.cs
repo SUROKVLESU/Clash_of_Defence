@@ -17,14 +17,15 @@ public class MainBuilding: BaseWarehouse
     {
         base.MyStart();
         Turret = GameObjectTurret.GetComponent<IBaseInterface>();
+        //Turret.MyStart();
     }
     public override void Stop()
     {
         Turret.Stop();
     }
-    public override void ActivationBuildings()
+    public override void Activation()
     {
-        Turret.ActivationBuildings();
+        Turret.Activation();
     }
 }
 

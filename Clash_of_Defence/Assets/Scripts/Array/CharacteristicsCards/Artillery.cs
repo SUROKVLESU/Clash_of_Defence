@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class Artillery:AttackingBuildingCharacteristics
+public class Artillery:AttackingCharacteristics
 {
     [SerializeField] protected float SqrProjectileVelocity;
     protected override IEnumerator AttackCoroutine()
@@ -29,7 +29,7 @@ public class Artillery:AttackingBuildingCharacteristics
             StopCoroutine(Coroutine);
             TransformAttackTarget = null;
             AttackTarget = null;
-            ActivationBuildings();
+            Activation();
         }
     }
 }
